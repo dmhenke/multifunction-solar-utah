@@ -1,398 +1,1013 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" data-theme="light" data-theme-setting="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multifunction Solar on Utah's Public Waters and Working Lands</title>
+    <meta
+      name="description"
+      content="A research-first pre-feasibility strategy for solar sited where it does more than one job: power generation paired with water conservation, dust suppression, and ecosystem enhancement."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700|Spectral:400,500,600,700|JetBrains+Mono:400,500&display=swap"
+    />
+
+    <script>
+      // Applied before first paint to avoid a flash of the wrong theme.
+      (function () {
+        var setting = "system";
+        try {
+          setting = localStorage.getItem("theme-setting") || "system";
+        } catch (e) {
+          /* storage unavailable — fall back to system */
+        }
+        var resolved =
+          setting === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : setting;
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.setAttribute("data-theme-setting", setting);
+      })();
+    </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #25384a;
-            background: #fafbfc;
+      /* ---------------------------------------------------------------
+       * Theme variables — mirrors the al-folio clinical-teal palette used
+       * on davidhenke.github.io (_sass/_variables.scss, _sass/_themes.scss).
+       * --------------------------------------------------------------- */
+      :root {
+        color-scheme: light;
+        --global-bg-color: #ffffff;
+        --global-code-bg-color: rgba(181, 9, 172, 0.05);
+        --global-text-color: #000000;
+        --global-text-color-light: #828282;
+        --global-theme-color: #0d9488;
+        --global-hover-color: #0f766e;
+        --global-hover-text-color: #ffffff;
+        --global-footer-bg-color: #1c1c1d;
+        --global-footer-text-color: #e8e8e8;
+        --global-footer-link-color: #ffffff;
+        --global-divider-color: rgba(0, 0, 0, 0.1);
+        --global-card-bg-color: #ffffff;
+        --global-highlight-color: #b71c1c;
+        --global-surface-color: #fbfbfc;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #fff8d8;
+        --global-warning-block-text: #6b5900;
+        --global-warning-block-title: #b29400;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #ffe0e0;
+        --global-danger-block-text: #660000;
+        --global-danger-block-title: #cc0000;
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --global-bg-color: #1c1c1d;
+        --global-code-bg-color: #2c3237;
+        --global-text-color: #e8e8e8;
+        --global-text-color-light: #828282;
+        --global-theme-color: #2dd4bf;
+        --global-hover-color: #2dd4bf;
+        --global-hover-text-color: #1c1c1d;
+        --global-footer-bg-color: #e8e8e8;
+        --global-footer-text-color: #1c1c1d;
+        --global-footer-link-color: #000000;
+        --global-divider-color: #424246;
+        --global-card-bg-color: #212529;
+        --global-highlight-color: #ff6b6b;
+        --global-surface-color: #161617;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #6b5900;
+        --global-warning-block-text: #fff2af;
+        --global-warning-block-title: #fff8d8;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #660000;
+        --global-danger-block-text: #ffb9b9;
+        --global-danger-block-title: #ffe0e0;
+      }
+
+      /* ----- Base ---------------------------------------------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-feature-settings: "kern", "liga", "cv02", "cv03", "cv04", "cv11";
+        letter-spacing: 0.005em;
+        line-height: 1.7;
+        color: var(--global-text-color);
+        background-color: var(--global-bg-color);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Spectral", Georgia, "Times New Roman", serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      code,
+      pre,
+      kbd,
+      tt {
+        font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.86em;
+        background-color: var(--global-code-bg-color);
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+      }
+
+      a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+
+      /* ----- Navbar -------------------------------------------------- */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding: 0.85rem 1.5rem;
+        background-color: color-mix(in srgb, var(--global-bg-color) 88%, transparent);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .navbar__brand {
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      .navbar__brand:hover {
+        color: var(--global-theme-color);
+      }
+
+      .navbar__links {
+        display: flex;
+        gap: 1.25rem;
+        margin-left: auto;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .navbar__links a {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--global-text-color);
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .navbar__links a:hover,
+      .navbar__links a.is-current {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0.35rem;
+        color: var(--global-text-color);
+        transition: color 0.18s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--global-theme-color);
+      }
+
+      /* ----- Page header --------------------------------------------- */
+      .page-header {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 3.25rem 1.5rem 1.75rem;
+      }
+
+      .page-header__eyebrow {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--global-theme-color);
+        margin-bottom: 0.6rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+      }
+
+      .page-header p {
+        font-size: 1.08rem;
+        color: var(--global-text-color-light);
+        max-width: 62ch;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+      }
+
+      /* ----- Tabs ---------------------------------------------------- */
+      .tabs {
+        display: flex;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .tab-button {
+        background: transparent;
+        border: none;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .tab-button:hover {
+        color: var(--global-theme-color);
+      }
+
+      .tab-button.active {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.25s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
         }
-        header {
-            background: linear-gradient(135deg, #12283d 0%, #1f4e79 100%);
-            color: white;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        to {
+          opacity: 1;
+          transform: none;
         }
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .tabs {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid #c6d0d9;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .tab-button {
-            background: transparent;
-            border: none;
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #4a5b6b;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.3s ease;
-        }
-        .tab-button:hover {
-            background: #e8eef4;
-            color: #12283d;
-        }
-        .tab-button.active {
-            color: #12283d;
-            border-bottom-color: #2e75b6;
-            background: white;
-        }
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+      }
+
+      /* ----- Content card -------------------------------------------- */
+      .content {
+        background-color: var(--global-card-bg-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        padding: 2.25rem;
+      }
+
+      .content h2 {
+        font-size: 1.75rem;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .content h2:first-child {
+        margin-top: 0;
+      }
+
+      .content h3 {
+        font-size: 1.28rem;
+        margin-top: 1.9rem;
+        margin-bottom: 0.7rem;
+        color: var(--global-theme-color);
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+      }
+
+      .content ul,
+      .content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.15rem;
+      }
+
+      .content li {
+        margin-bottom: 0.45rem;
+      }
+
+      .content em {
+        color: var(--global-text-color-light);
+      }
+
+      /* Understated teal underline that thickens on hover. */
+      .content a {
+        background-image: linear-gradient(var(--global-theme-color), var(--global-theme-color));
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 1px;
+        transition: background-size 0.2s ease;
+      }
+
+      .content a:hover {
+        background-size: 100% 2px;
+      }
+
+      /* ----- Tables --------------------------------------------------- */
+      .content table {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+      }
+
+      .content table th {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 2px solid var(--global-divider-color);
+      }
+
+      .content table td {
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        vertical-align: top;
+      }
+
+      .content table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .content table tbody tr:hover {
+        background-color: color-mix(in srgb, var(--global-theme-color) 6%, transparent);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      /* ----- Callout blocks ------------------------------------------- */
+      .alert,
+      .note {
+        margin: 1.75rem 0;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+      }
+
+      .alert {
+        border-left: 3px solid var(--global-danger-block);
+        background-color: var(--global-danger-block-bg);
+        color: var(--global-danger-block-text);
+      }
+
+      .alert strong {
+        color: var(--global-danger-block-title);
+      }
+
+      .note {
+        border-left: 3px solid var(--global-warning-block);
+        background-color: var(--global-warning-block-bg);
+        color: var(--global-warning-block-text);
+      }
+
+      .note strong {
+        color: var(--global-warning-block-title);
+      }
+
+      .caution {
+        color: var(--global-highlight-color);
+      }
+
+      /* ----- Diagrams -------------------------------------------------- */
+      .diagram {
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .diagram img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+        background-color: #ffffff;
+      }
+
+      /* ----- Footer ---------------------------------------------------- */
+      footer.site-footer {
+        background-color: var(--global-footer-bg-color);
+        color: var(--global-footer-text-color);
+        font-size: 0.88rem;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      footer.site-footer a {
+        color: var(--global-footer-link-color);
+        text-decoration: underline;
+      }
+
+      footer.site-footer p + p {
+        margin-top: 0.4rem;
+        color: var(--global-footer-text-color);
+        opacity: 0.75;
+      }
+
+      @media (max-width: 600px) {
+        .page-header h1 {
+          font-size: 1.85rem;
         }
         .content {
-            background: white;
-            padding: 2rem;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+          padding: 1.4rem;
         }
-        .content h2 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #12283d;
-            border-bottom: 2px solid #e0e7d4;
-            padding-bottom: 0.5rem;
-        }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #1f4e79;
-        }
-        .content table {
-            width: 100%;
-            margin: 1.5rem 0;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-        .content table th {
-            background: #e8eef4;
-            color: #12283d;
-            padding: 0.75rem;
-            text-align: left;
-            font-weight: 600;
-            border: 1px solid #c6d0d9;
-        }
-        .content table td {
-            padding: 0.75rem;
-            border: 1px solid #e0e7d4;
-        }
-        .content table tr:nth-child(even) { background: #f7f9fc; }
-        .content table tr:hover { background: #eef3fa; }
-        .content p {
-            margin-bottom: 1rem;
-        }
-        .content ul, .content ol {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-        .content li {
-            margin-bottom: 0.5rem;
-        }
-        .content strong { color: #12283d; }
-        .content em { color: #4a5b6b; }
-        .diagram {
-            margin: 2rem 0;
-            text-align: center;
-        }
-        .diagram img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #c6d0d9;
-            text-align: center;
-            color: #7b8794;
-            font-size: 0.9rem;
-        }
-        .alert {
-            background: #f9e3e3;
-            border-left: 4px solid #c25a5a;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 3px;
-            color: #8f3a3a;
-        }
-        .note {
-            background: #f7efd8;
-            border-left: 4px solid #c99a3c;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 3px;
-            color: #8a6a1e;
-        }
-        code {
-            background: #f2f5ec;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-family: "Courier New", monospace;
-            color: #2f6a95;
-        }
-        a {
-            color: #2e75b6;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(46, 117, 182, 0.3);
-        }
-        a:hover { border-bottom-color: #2e75b6; }
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Multifunction Solar on Utah's Public Waters and Working Lands</h1>
-        <p>A research-first strategy for power generation paired with water conservation, dust suppression, and ecosystem enhancement</p>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="navbar__brand" href="https://dmhenke.github.io/davidhenke2.github.io/">David Henke</a>
+      <div class="navbar__links">
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/">about</a>
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/projects/">projects</a>
+        <a href="https://github.com/dmhenke/multifunction-solar-utah">repository</a>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle light, dark, or system colour theme"
+          title="Toggle theme"
+        >
+          <span id="theme-icon" aria-hidden="true">&#9788;</span>
+        </button>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <span class="page-header__eyebrow">Pre-feasibility study</span>
+      <h1>Multifunction Solar on Utah's Public Waters and Working Lands</h1>
+      <p>
+        A research-first strategy for power generation paired with water conservation, dust suppression, and ecosystem
+        enhancement.
+      </p>
     </header>
 
     <div class="container">
-        <div class="tabs">
-            <button class="tab-button active" data-tab="overview">Overview</button>
-            <button class="tab-button" data-tab="little-dell">Little Dell Reservoir</button>
-            <button class="tab-button" data-tab="great-salt-lake">Great Salt Lake</button>
+      <div class="tabs" role="tablist">
+        <button class="tab-button active" data-tab="overview" role="tab" aria-selected="true" aria-controls="overview">
+          Overview
+        </button>
+        <button class="tab-button" data-tab="little-dell" role="tab" aria-selected="false" aria-controls="little-dell">
+          Little Dell Reservoir
+        </button>
+        <button
+          class="tab-button"
+          data-tab="great-salt-lake"
+          role="tab"
+          aria-selected="false"
+          aria-controls="great-salt-lake"
+        >
+          Great Salt Lake
+        </button>
+      </div>
+
+      <div id="overview" class="tab-content active" role="tabpanel">
+        <div class="content">
+          <h2>Strategy Overview</h2>
+          <p>
+            <strong>Grand goal:</strong> Involve in solarizing public spaces where solar has more than one function —
+            power generation paired with water conservation, dust suppression, or ecosystem enhancement.
+          </p>
+
+          <h3>The Correct Framing</h3>
+          <p>
+            Utah faces two simultaneous constraints: a ~2 GW-scale load growth problem (Operation Gigawatt), and a
+            terminal-lake water crisis where agriculture accounts for the dominant share of consumptive depletion.
+            Conventional solutions treat these as separate problems.
+          </p>
+          <p>
+            <strong>Multifunction solar</strong> — floating PV on engineered water bodies and agrivoltaics on irrigated
+            cropland — is a class of infrastructure that produces both electrons and consumptively-saved water from the
+            same capital investment.
+          </p>
+          <p>
+            The correct question:
+            <strong>
+              What is the marginal cost of a saved acre-foot and a delivered megawatt-hour, jointly, across the
+              portfolio of candidate deployments — and which sites clear that bar?
+            </strong>
+          </p>
+
+          <h3>Why This Framing Works</h3>
+          <ul>
+            <li><strong>Site-agnostic:</strong> You can never be dismissed as a promoter of one bad site</li>
+            <li><strong>Quantitative:</strong> It survives contact with engineers</li>
+            <li>
+              <strong>Coalition-friendly:</strong> It puts you on the same side as the Governor's energy office AND the
+              Great Salt Lake Commissioner simultaneously
+            </li>
+          </ul>
+
+          <h3>The Uncomfortable Truth You Must Build In First</h3>
+          <p>
+            <strong>
+              Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than floating solar on
+              the Great Salt Lake itself.
+            </strong>
+          </p>
+          <ul>
+            <li>Shading irrigated crops reduces crop evapotranspiration by 20–50% in arid climates</li>
+            <li>That is a reduction in <em>consumptive</em> use — water legally dedicable instream</li>
+            <li>Utah has a functioning legal channel: water-leasing and change-application framework</li>
+          </ul>
+          <p>
+            If you lead with "agrivoltaics is a water-generation technology for the Great Salt Lake," you have a
+            genuinely novel, defensible, fundable thesis that nobody in Utah is currently owning.
+          </p>
+
+          <h3>Phased Approach</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th>Timeline</th>
+                  <th>Objective</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0</strong></td>
+                  <td>Months 0–3</td>
+                  <td>Literature synthesis, university partnership, model validation</td>
+                </tr>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Months 3–12</td>
+                  <td>Policy insertion (CMP update), instrument existing projects, publish workshop</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Months 12–30</td>
+                  <td>Funded demonstration on non-culinary site + agrivoltaics + publish results</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Months 24–42</td>
+                  <td>Structure the venture (advisory, institute, or development company)</td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>Year 3+</td>
+                  <td>Scale to named sites (Little Dell + Great Salt Lake)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Two Candidate Sites</h3>
+          <p>
+            <strong>Little Dell Reservoir</strong> (drinking water, single municipal decision-maker). Demonstration +
+            scaling. Strategy: pilot on SLCDPU's own non-culinary surfaces first, then approach Little Dell with their
+            own operating data.
+          </p>
+          <p>
+            <strong>Great Salt Lake</strong> (sovereign lands, extreme technical and ecological complexity). Not a
+            near-term project. Playa ground-mount with research FPV module. Governance principle: no infrastructure that
+            opposes lake recovery.
+          </p>
+
+          <p>
+            <strong>Full documents:</strong> <a href="docs/00-strategy-playbook.md">Strategy playbook</a> ·
+            <a href="docs/01-little-dell-full.md">Little Dell site plan</a> ·
+            <a href="docs/02-great-salt-lake-full.md">Great Salt Lake site plan</a>
+          </p>
+
+          <div class="note">
+            <strong>Immediate action:</strong> Engage the Great Salt Lake Comprehensive Management Plan update
+            (currently under revision as of August 2026). Argue for renewable energy to be an explicitly defined use
+            category on sovereign lands, subject to a tiered evidence standard scaled to ecological risk. This is the
+            highest-leverage single engagement available.
+          </div>
         </div>
+      </div>
 
-        <div id="overview" class="tab-content active">
-            <div class="content">
-                <h2>Strategy Overview</h2>
-                <p><strong>Grand goal:</strong> Involve in solarizing public spaces where solar has more than one function — power generation paired with water conservation, dust suppression, or ecosystem enhancement.</p>
-                
-                <h3>The Correct Framing</h3>
-                <p>Utah faces two simultaneous constraints: a ~2 GW-scale load growth problem (Operation Gigawatt), and a terminal-lake water crisis where agriculture accounts for the dominant share of consumptive depletion. Conventional solutions treat these as separate problems.</p>
-                <p><strong>Multifunction solar</strong> — floating PV on engineered water bodies and agrivoltaics on irrigated cropland — is a class of infrastructure that produces both electrons and consumptively-saved water from the same capital investment.</p>
-                <p>The correct question: <strong>What is the marginal cost of a saved acre-foot and a delivered megawatt-hour, jointly, across the portfolio of candidate deployments — and which sites clear that bar?</strong></p>
+      <div id="little-dell" class="tab-content" role="tabpanel">
+        <div class="content">
+          <h2>Little Dell Reservoir — Floating PV Pre-Feasibility Site Plan</h2>
+          <p>
+            <strong>Site:</strong> Parleys Canyon, Salt Lake County, Utah | <strong>Owner:</strong> Salt Lake City
+            Department of Public Utilities (SLCDPU)
+          </p>
 
-                <h3>Why This Framing Works</h3>
-                <ul>
-                    <li><strong>Site-agnostic:</strong> You can never be dismissed as a promoter of one bad site</li>
-                    <li><strong>Quantitative:</strong> It survives contact with engineers</li>
-                    <li><strong>Coalition-friendly:</strong> It puts you on the same side as the Governor's energy office AND the Great Salt Lake Commissioner simultaneously</li>
-                </ul>
+          <h3>Key Parameters</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Storage capacity</td>
+                  <td>20,500 acre-feet</td>
+                </tr>
+                <tr>
+                  <td>Full-pool surface area</td>
+                  <td>≈249 acres</td>
+                </tr>
+                <tr>
+                  <td>Mean depth</td>
+                  <td>82 ft</td>
+                </tr>
+                <tr>
+                  <td>Purpose</td>
+                  <td>Culinary supply, flood control, wildlife habitat</td>
+                </tr>
+                <tr>
+                  <td>Watershed status</td>
+                  <td>Parleys Canyon Protected Watershed; ≈25% of service-area culinary supply</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                <h3>The Uncomfortable Truth You Must Build In First</h3>
-                <p><strong>Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than floating solar on the Great Salt Lake itself.</strong></p>
-                <ul>
-                    <li>Shading irrigated crops reduces crop evapotranspiration by 20–50% in arid climates</li>
-                    <li>That is a reduction in <em>consumptive</em> use — water legally dedicable instream</li>
-                    <li>Utah has a functioning legal channel: water-leasing and change-application framework</li>
-                </ul>
-                <p>If you lead with "agrivoltaics is a water-generation technology for the Great Salt Lake," you have a genuinely novel, defensible, fundable thesis that nobody in Utah is currently owning.</p>
+          <h3>Proposed Configuration</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Zone</th>
+                  <th>Phase</th>
+                  <th>Acres</th>
+                  <th>Coverage</th>
+                  <th>MW<sub>dc</sub></th>
+                  <th>MWh/yr</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A (demo)</td>
+                  <td>1</td>
+                  <td>12.45</td>
+                  <td>5.0%</td>
+                  <td>4.98</td>
+                  <td>≈8,200</td>
+                </tr>
+                <tr>
+                  <td>B</td>
+                  <td>2</td>
+                  <td>30.00</td>
+                  <td>12.1%</td>
+                  <td>12.00</td>
+                  <td>≈19,800</td>
+                </tr>
+                <tr>
+                  <td>C</td>
+                  <td>3</td>
+                  <td>20.00</td>
+                  <td>8.0%</td>
+                  <td>8.00</td>
+                  <td>≈13,200</td>
+                </tr>
+                <tr>
+                  <td><strong>TOTAL</strong></td>
+                  <td></td>
+                  <td><strong>62.45</strong></td>
+                  <td><strong>25.1%</strong></td>
+                  <td><strong>24.98</strong></td>
+                  <td><strong>≈41,200</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                <h3>Phased Approach</h3>
-                <table>
-                    <tr>
-                        <th>Phase</th>
-                        <th>Timeline</th>
-                        <th>Objective</th>
-                    </tr>
-                    <tr>
-                        <td><strong>0</strong></td>
-                        <td>Months 0–3</td>
-                        <td>Literature synthesis, university partnership, model validation</td>
-                    </tr>
-                    <tr>
-                        <td><strong>1</strong></td>
-                        <td>Months 3–12</td>
-                        <td>Policy insertion (CMP update), instrument existing projects, publish workshop</td>
-                    </tr>
-                    <tr>
-                        <td><strong>2</strong></td>
-                        <td>Months 12–30</td>
-                        <td>Funded demonstration on non-culinary site + agrivoltaics + publish results</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3</strong></td>
-                        <td>Months 24–42</td>
-                        <td>Structure the venture (advisory, institute, or development company)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>4</strong></td>
-                        <td>Year 3+</td>
-                        <td>Scale to named sites (Little Dell + Great Salt Lake)</td>
-                    </tr>
-                </table>
+          <div class="diagram">
+            <img src="assets/little-dell-fpv-site-plan.svg" alt="Little Dell Reservoir site plan" />
+          </div>
 
-                <h3>Two Candidate Sites</h3>
-                <p><strong>Little Dell Reservoir</strong> (drinking water, single municipal decision-maker). Demonstration + scaling. Strategy: pilot on SLCDPU's own non-culinary surfaces first, then approach Little Dell with their own operating data.</p>
-                <p><strong>Great Salt Lake</strong> (sovereign lands, extreme technical and ecological complexity). Not a near-term project. Playa ground-mount with research FPV module. Governance principle: no infrastructure that opposes lake recovery.</p>
+          <h3>The Water Story — Read This First</h3>
+          <p>
+            Full build-out saves approximately <strong>150 acre-feet per year</strong> — about 0.02% of SLCDPU's
+            service-area annual supply.
+          </p>
+          <p>
+            <strong class="caution">Do not sell Little Dell as a water conservation project.</strong> The case for the
+            project is:
+          </p>
+          <ol>
+            <li>
+              <strong>Distributed generation near load</strong> — existing access, existing land control, proximity to
+              demand
+            </li>
+            <li>
+              <strong>Water-quality intervention</strong> — reduced solar radiation at the surface suppresses algal
+              production and may reduce disinfection-byproduct precursor loading
+            </li>
+            <li>
+              <strong>Best-instrumented FPV research site in the Intermountain West</strong> — generate local evidence
+              base
+            </li>
+          </ol>
 
-                <p><strong>Full documents:</strong> <a href="docs/00-strategy-playbook.md">Strategy playbook</a> · <a href="docs/01-little-dell-full.md">Little Dell site plan</a> · <a href="docs/02-great-salt-lake-full.md">Great Salt Lake site plan</a></p>
+          <h3>Critical Design Constraints</h3>
+          <ol>
+            <li>
+              <strong>Culinary source:</strong> No submerged polymer backsheets, no galvanized zinc, no antifouling
+              coatings. Glass-glass modules only.
+            </li>
+            <li>
+              <strong>Winter ice:</strong> Sheet-ice formation and movement is an unresolved mooring risk at this
+              elevation.
+            </li>
+            <li>
+              <strong>Seasonal drawdown:</strong> Mooring must accommodate full stage range without grounding the array.
+            </li>
+            <li>
+              <strong>Bonneville cutthroat brood stock:</strong> Statewide significance — littoral and tributary zones
+              excluded; telemetry monitoring required.
+            </li>
+            <li>
+              <strong>Removability is a requirement:</strong> Decommissioning bond and pre-agreed removal triggers
+              written into approval.
+            </li>
+          </ol>
 
-                <div class="note">
-                    <strong>Immediate action:</strong> Engage the Great Salt Lake Comprehensive Management Plan update (currently under revision as of August 2026). Argue for renewable energy to be an explicitly defined use category on sovereign lands, subject to a tiered evidence standard scaled to ecological risk. This is the highest-leverage single engagement available.
-                </div>
-            </div>
+          <h3>Recommended Strategy</h3>
+          <p><strong>Full document:</strong> <a href="docs/01-little-dell-full.md">Little Dell pre-feasibility site plan</a></p>
+
+          <div class="note">
+            <strong>Phase 4 site in the overall plan.</strong> Little Dell is deliberately NOT a first mover. The
+            culinary-source framing that makes it attractive is the same framing that makes SLCDPU maximally
+            risk-averse.
+            <br /><br />
+            <strong>Optimal approach:</strong> Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant
+            basins, backwash ponds, reclaimed-water storage). Then return to Little Dell in 3 years with SLCDPU's own
+            operating data. This converts the hardest conversation into the easiest one.
+          </div>
         </div>
+      </div>
 
-        <div id="little-dell" class="tab-content">
-            <div class="content">
-                <h2>Little Dell Reservoir — Floating PV Pre-Feasibility Site Plan</h2>
-                <p><strong>Site:</strong> Parleys Canyon, Salt Lake County, Utah | <strong>Owner:</strong> Salt Lake City Department of Public Utilities (SLCDPU)</p>
+      <div id="great-salt-lake" class="tab-content" role="tabpanel">
+        <div class="content">
+          <h2>Great Salt Lake — Multifunction Solar Pre-Feasibility Site Plan</h2>
+          <p>
+            <strong>Site:</strong> South-shore Gilbert Bay corridor | <strong>Jurisdiction:</strong> Sovereign lands,
+            Utah FFSL | <strong>Stage (2026):</strong> ≈4,191.6 ft (6.4 ft below 4,198 ft healthy target)
+          </p>
 
-                <h3>Key Parameters</h3>
-                <table>
-                    <tr><th>Parameter</th><th>Value</th></tr>
-                    <tr><td>Storage capacity</td><td>20,500 acre-feet</td></tr>
-                    <tr><td>Full-pool surface area</td><td>≈249 acres</td></tr>
-                    <tr><td>Mean depth</td><td>82 ft</td></tr>
-                    <tr><td>Purpose</td><td>Culinary supply, flood control, wildlife habitat</td></tr>
-                    <tr><td>Watershed status</td><td>Parleys Canyon Protected Watershed; ≈25% of service-area culinary supply</td></tr>
-                </table>
+          <div class="alert">
+            <strong>Finding:</strong> Large-scale floating photovoltaics on the open water of Great Salt Lake is not a
+            viable proposition. Four independent constraints each individually defeat it: hydrodynamics (shallow,
+            high-fetch basin), materials (0.6 mm/yr steel corrosion in brine), ecology (unquantified shading effects on
+            food web), and public trust (a use with ecosystem risk is a poor candidate for trustee approval).
+          </div>
 
-                <h3>Proposed Configuration</h3>
-                <table>
-                    <tr><th>Zone</th><th>Phase</th><th>Acres</th><th>Coverage</th><th>MW_dc</th><th>MWh/yr</th></tr>
-                    <tr><td>A (demo)</td><td>1</td><td>12.45</td><td>5.0%</td><td>4.98</td><td>≈8,200</td></tr>
-                    <tr><td>B</td><td>2</td><td>30.00</td><td>12.1%</td><td>12.00</td><td>≈19,800</td></tr>
-                    <tr><td>C</td><td>3</td><td>20.00</td><td>8.0%</td><td>8.00</td><td>≈13,200</td></tr>
-                    <tr><td><strong>TOTAL</strong></td><td></td><td><strong>62.45</strong></td><td><strong>25.1%</strong></td><td><strong>24.98</strong></td><td><strong>≈41,200</strong></td></tr>
-                </table>
+          <h3>Recommended Strategy: Tiered Site Assessment</h3>
+          <p>Rather than open-water FPV, this plan proposes a two-part configuration:</p>
+          <ul>
+            <li>
+              <strong>Playa ground-mount array above the 4,200 ft contour</strong> as the primary generation asset
+            </li>
+            <li>
+              <strong>Small paired near-shore FPV research module</strong> at research scale to answer brine-service and
+              ecological questions
+            </li>
+          </ul>
 
-                <div class="diagram">
-                    <img src="assets/little-dell-fpv-site-plan.svg" alt="Little Dell Reservoir site plan">
-                </div>
+          <h3>Governing Design Principle</h3>
+          <div class="alert">
+            <strong>
+              No infrastructure sited at Great Salt Lake may create an economic interest opposed to raising the lake.
+            </strong>
+            <br /><br />
+            A solar lessee holding a long-term interest in dry lakebed acquires a financial motive to oppose lake
+            recovery. That is catastrophic. All development must be sited above the 4,200 ft contour (lake recovery
+            reserve). Lease instrument must explicitly subordinate to elevation management and waive all inundation
+            claims.
+          </div>
 
-                <h3>The Water Story — Read This First</h3>
-                <p>Full build-out saves approximately <strong>150 acre-feet per year</strong> — about 0.02% of SLCDPU's service-area annual supply.</p>
-                <p><strong style="color: #8f3a3a;">Do not sell Little Dell as a water conservation project.</strong> The case for the project is:</p>
-                <ol>
-                    <li><strong>Distributed generation near load</strong> — existing access, existing land control, proximity to demand</li>
-                    <li><strong>Water-quality intervention</strong> — reduced solar radiation at the surface suppresses algal production and may reduce disinfection-byproduct precursor loading</li>
-                    <li><strong>Best-instrumented FPV research site in the Intermountain West</strong> — generate local evidence base</li>
-                </ol>
+          <h3>Schedule of Areas</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Zone</th>
+                  <th>Type</th>
+                  <th>Phase</th>
+                  <th>Acres</th>
+                  <th>MW<sub>dc</sub></th>
+                  <th>MWh/yr</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>P1</td>
+                  <td>Playa ground-mount</td>
+                  <td>1</td>
+                  <td>400</td>
+                  <td>100</td>
+                  <td>≈185,000</td>
+                </tr>
+                <tr>
+                  <td>P2</td>
+                  <td>Playa ground-mount</td>
+                  <td>2</td>
+                  <td>1,200</td>
+                  <td>300</td>
+                  <td>≈555,000</td>
+                </tr>
+                <tr>
+                  <td>F1</td>
+                  <td>Near-shore FPV research</td>
+                  <td>1</td>
+                  <td>5</td>
+                  <td>2</td>
+                  <td>≈3,300</td>
+                </tr>
+                <tr>
+                  <td><strong>TOTAL</strong></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>1,605</strong></td>
+                  <td><strong>402</strong></td>
+                  <td><strong>≈743,300</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                <h3>Critical Design Constraints</h3>
-                <ol>
-                    <li><strong>Culinary source:</strong> No submerged polymer backsheets, no galvanized zinc, no antifouling coatings. Glass-glass modules only.</li>
-                    <li><strong>Winter ice:</strong> Sheet-ice formation and movement is an unresolved mooring risk at this elevation.</li>
-                    <li><strong>Seasonal drawdown:</strong> Mooring must accommodate full stage range without grounding the array.</li>
-                    <li><strong>Bonneville cutthroat brood stock:</strong> Statewide significance — littoral and tributary zones excluded; telemetry monitoring required.</li>
-                    <li><strong>Removability is a requirement:</strong> Decommissioning bond and pre-agreed removal triggers written into approval.</li>
-                </ol>
+          <p>Full build-out equals roughly <strong>82,600 Utah households</strong> annually.</p>
 
-                <h3>Recommended Strategy</h3>
-                <p><strong>Full document:</strong> <a href="docs/01-little-dell-full.md">Little Dell pre-feasibility site plan</a></p>
+          <div class="diagram">
+            <img src="assets/great-salt-lake-solar-site-plan.svg" alt="Great Salt Lake site plan" />
+          </div>
 
-                <div class="note">
-                    <strong>Phase 4 site in the overall plan.</strong> Little Dell is deliberately NOT a first mover. The culinary-source framing that makes it attractive is the same framing that makes SLCDPU maximally risk-averse.
-                    <br><br>
-                    <strong>Optimal approach:</strong> Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant basins, backwash ponds, reclaimed-water storage). Then return to Little Dell in 3 years with SLCDPU's own operating data. This converts the hardest conversation into the easiest one.
-                </div>
-            </div>
+          <h3>The Water Story — Read This First</h3>
+          <p>
+            F1 suppresses approximately <strong>16 acre-feet per year</strong> of evaporation. Great Salt Lake
+            evaporation is order <strong>10⁶ acre-feet per year</strong>. F1 therefore addresses
+            <strong>0.0005%</strong> of lake evaporation.
+          </p>
+          <p>
+            <strong class="caution">F1 is an experiment. It is not a water-conservation measure.</strong> Do not
+            oversell the water benefit. F1's purpose is to generate brine-service durability and ecological data that
+            any future FPV proposal in this system would require.
+          </p>
+
+          <h3>Critical Design Constraints</h3>
+          <ol>
+            <li>
+              <strong>Nothing may oppose lake recovery.</strong> No structure below 4,200 ft. Lake-elevation management
+              takes precedence over lessee interest.
+            </li>
+            <li>
+              <strong>Avian risk.</strong> Polarized-light "lake effect" attraction on the flyway is the governing
+              ecological question for playa arrays.
+            </li>
+            <li>
+              <strong>Saline materials.</strong> Corrosion exceeds 0.6 mm/yr in some steels. All hardware requires
+              saline-service specification.
+            </li>
+            <li><strong>Public trust primacy.</strong> Any sovereign-lands instrument is revocable to fulfil trust duties.</li>
+            <li>
+              <strong>Interconnection is the hard gate.</strong> Verify transmission capacity on the I-80 corridor
+              before layout is fixed.
+            </li>
+          </ol>
+
+          <h3>Recommended Sequencing</h3>
+          <ol>
+            <li><strong>NOW:</strong> Engage the Comprehensive Management Plan update (currently under revision)</li>
+            <li><strong>Months 0–12:</strong> Publish the tiered site-class assessment as peer-reviewed research</li>
+            <li>
+              <strong>Months 6–18:</strong> Build F1 first, at research scale, funded as research (FFSL Great Salt Lake
+              Research Grants)
+            </li>
+            <li><strong>Months 12–30:</strong> Verify interconnection capacity; run avian and glare studies for P1</li>
+            <li><strong>Year 2–3:</strong> Apply for P1 with studies complete and §4 covenants offered</li>
+            <li><strong>Year 4+:</strong> P2 only if P1 monitoring record supports it</li>
+          </ol>
+
+          <p>
+            <strong>Full document:</strong>
+            <a href="docs/02-great-salt-lake-full.md">Great Salt Lake pre-feasibility site plan</a>
+          </p>
         </div>
-
-        <div id="great-salt-lake" class="tab-content">
-            <div class="content">
-                <h2>Great Salt Lake — Multifunction Solar Pre-Feasibility Site Plan</h2>
-                <p><strong>Site:</strong> South-shore Gilbert Bay corridor | <strong>Jurisdiction:</strong> Sovereign lands, Utah FFSL | <strong>Stage (2026):</strong> ≈4,191.6 ft (6.4 ft below 4,198 ft healthy target)</p>
-
-                <div class="alert">
-                    <strong>Finding:</strong> Large-scale floating photovoltaics on the open water of Great Salt Lake is not a viable proposition. Four independent constraints each individually defeat it: hydrodynamics (shallow, high-fetch basin), materials (0.6 mm/yr steel corrosion in brine), ecology (unquantified shading effects on food web), and public trust (a use with ecosystem risk is a poor candidate for trustee approval).
-                </div>
-
-                <h3>Recommended Strategy: Tiered Site Assessment</h3>
-                <p>Rather than open-water FPV, this plan proposes a two-part configuration:</p>
-                <ul>
-                    <li><strong>Playa ground-mount array above the 4,200 ft contour</strong> as the primary generation asset</li>
-                    <li><strong>Small paired near-shore FPV research module</strong> at research scale to answer brine-service and ecological questions</li>
-                </ul>
-
-                <h3>Governing Design Principle</h3>
-                <div class="alert">
-                    <strong>No infrastructure sited at Great Salt Lake may create an economic interest opposed to raising the lake.</strong>
-                    <br><br>
-                    A solar lessee holding a long-term interest in dry lakebed acquires a financial motive to oppose lake recovery. That is catastrophic. All development must be sited above the 4,200 ft contour (lake recovery reserve). Lease instrument must explicitly subordinate to elevation management and waive all inundation claims.
-                </div>
-
-                <h3>Schedule of Areas</h3>
-                <table>
-                    <tr><th>Zone</th><th>Type</th><th>Phase</th><th>Acres</th><th>MW_dc</th><th>MWh/yr</th></tr>
-                    <tr><td>P1</td><td>Playa ground-mount</td><td>1</td><td>400</td><td>100</td><td>≈185,000</td></tr>
-                    <tr><td>P2</td><td>Playa ground-mount</td><td>2</td><td>1,200</td><td>300</td><td>≈555,000</td></tr>
-                    <tr><td>F1</td><td>Near-shore FPV research</td><td>1</td><td>5</td><td>2</td><td>≈3,300</td></tr>
-                    <tr><td><strong>TOTAL</strong></td><td></td><td></td><td><strong>1,605</strong></td><td><strong>402</strong></td><td><strong>≈743,300</strong></td></tr>
-                </table>
-
-                <p>Full build-out equals roughly <strong>82,600 Utah households</strong> annually.</p>
-
-                <div class="diagram">
-                    <img src="assets/great-salt-lake-solar-site-plan.svg" alt="Great Salt Lake site plan">
-                </div>
-
-                <h3>The Water Story — Read This First</h3>
-                <p>F1 suppresses approximately <strong>16 acre-feet per year</strong> of evaporation. Great Salt Lake evaporation is order <strong>10⁶ acre-feet per year</strong>. F1 therefore addresses <strong>0.0005%</strong> of lake evaporation.</p>
-                <p><strong style="color: #8f3a3a;">F1 is an experiment. It is not a water-conservation measure.</strong> Do not oversell the water benefit. F1's purpose is to generate brine-service durability and ecological data that any future FPV proposal in this system would require.</p>
-
-                <h3>Critical Design Constraints</h3>
-                <ol>
-                    <li><strong>Nothing may oppose lake recovery.</strong> No structure below 4,200 ft. Lake-elevation management takes precedence over lessee interest.</li>
-                    <li><strong>Avian risk.</strong> Polarized-light "lake effect" attraction on the flyway is the governing ecological question for playa arrays.</li>
-                    <li><strong>Saline materials.</strong> Corrosion exceeds 0.6 mm/yr in some steels. All hardware requires saline-service specification.</li>
-                    <li><strong>Public trust primacy.</strong> Any sovereign-lands instrument is revocable to fulfil trust duties.</li>
-                    <li><strong>Interconnection is the hard gate.</strong> Verify transmission capacity on the I-80 corridor before layout is fixed.</li>
-                </ol>
-
-                <h3>Recommended Sequencing</h3>
-                <ol>
-                    <li><strong>NOW:</strong> Engage the Comprehensive Management Plan update (currently under revision)</li>
-                    <li><strong>Months 0–12:</strong> Publish the tiered site-class assessment as peer-reviewed research</li>
-                    <li><strong>Months 6–18:</strong> Build F1 first, at research scale, funded as research (FFSL Great Salt Lake Research Grants)</li>
-                    <li><strong>Months 12–30:</strong> Verify interconnection capacity; run avian and glare studies for P1</li>
-                    <li><strong>Year 2–3:</strong> Apply for P1 with studies complete and §4 covenants offered</li>
-                    <li><strong>Year 4+:</strong> P2 only if P1 monitoring record supports it</li>
-                </ol>
-
-                <p><strong>Full document:</strong> <a href="docs/02-great-salt-lake-full.md">Great Salt Lake pre-feasibility site plan</a></p>
-            </div>
-        </div>
-
-        <footer>
-            <p>Prepared for Isha Gupta, MD | August 17, 2026 | Class 5 pre-feasibility documentation</p>
-            <p>All site plans are conceptual and schematic. Geometry must be replaced with LiDAR, survey, and cadastral data before any permitting.</p>
-        </footer>
+      </div>
     </div>
 
+    <footer class="site-footer">
+      <p>Prepared for Isha Gupta, MD | August 17, 2026 | Class 5 pre-feasibility documentation</p>
+      <p>
+        All site plans are conceptual and schematic. Geometry must be replaced with LiDAR, survey, and cadastral data
+        before any permitting.
+      </p>
+    </footer>
+
     <script>
-        document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const tabName = e.target.getAttribute('data-tab');
-                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                document.getElementById(tabName).classList.add('active');
-                e.target.classList.add('active');
-            });
+      // ----- Tabs -----------------------------------------------------
+      document.querySelectorAll(".tab-button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var tabName = btn.getAttribute("data-tab");
+          document.querySelectorAll(".tab-content").forEach(function (tab) {
+            tab.classList.remove("active");
+          });
+          document.querySelectorAll(".tab-button").forEach(function (b) {
+            b.classList.remove("active");
+            b.setAttribute("aria-selected", "false");
+          });
+          document.getElementById(tabName).classList.add("active");
+          btn.classList.add("active");
+          btn.setAttribute("aria-selected", "true");
         });
+      });
+
+      // ----- Theme toggle: system -> light -> dark, matching al-folio ---
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        var icon = document.getElementById("theme-icon");
+        var media = window.matchMedia("(prefers-color-scheme: dark)");
+        var ICONS = { system: "◑", light: "☀", dark: "☽" };
+
+        function read() {
+          try {
+            return localStorage.getItem("theme-setting") || "system";
+          } catch (e) {
+            return "system";
+          }
+        }
+
+        function apply(setting) {
+          var resolved = setting === "system" ? (media.matches ? "dark" : "light") : setting;
+          root.setAttribute("data-theme", resolved);
+          root.setAttribute("data-theme-setting", setting);
+          icon.textContent = ICONS[setting];
+          toggle.title = "Theme: " + setting;
+        }
+
+        apply(read());
+
+        toggle.addEventListener("click", function () {
+          var order = ["system", "light", "dark"];
+          var next = order[(order.indexOf(read()) + 1) % order.length];
+          try {
+            localStorage.setItem("theme-setting", next);
+          } catch (e) {
+            /* storage unavailable — theme still applies for this page view */
+          }
+          apply(next);
+        });
+
+        media.addEventListener("change", function () {
+          if (read() === "system") apply("system");
+        });
+      })();
     </script>
-</body>
+  </body>
 </html>

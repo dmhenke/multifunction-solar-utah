@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1320" width="1160" height="1320" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <pattern id="gExcl" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#f9e3e3"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#c25a5a" stroke-width="1.6"/>
+    </pattern>
+    <pattern id="gBuf" width="8" height="8" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#f8efd6"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#c99a3c" stroke-width="1.4"/>
+    </pattern>
+    <pattern id="gMin" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#dfe6ea"/>
+      <line x1="0" y1="10" x2="10" y2="0" stroke="#7d94a3" stroke-width="1.3"/>
+    </pattern>
+    <pattern id="gWet" width="12" height="9" patternUnits="userSpaceOnUse">
+      <rect width="12" height="9" fill="#dfeadd"/>
+      <path d="M1,6 q2,-3 4,0 M7,3 q2,-3 4,0" fill="none" stroke="#5d8a5e" stroke-width="1.2"/>
+    </pattern>
+    <marker id="gArw" markerWidth="10" markerHeight="10" refX="8" refY="3.4" orient="auto">
+      <path d="M0,0 L8,3.4 L0,6.8 Z" fill="#2f6a95"/>
+    </marker>
+    <marker id="gArwK" markerWidth="10" markerHeight="10" refX="8" refY="3.4" orient="auto">
+      <path d="M0,0 L8,3.4 L0,6.8 Z" fill="#3d4b57"/>
+    </marker>
+  </defs>
+
+  <rect width="1160" height="1320" fill="#ffffff"/>
+
+  <!-- ===== TITLE ===== -->
+  <text x="40" y="46" font-size="25" font-weight="700" fill="#12283d">Great Salt Lake — Multifunction Solar Pre-Feasibility Site Plan</text>
+  <text x="40" y="72" font-size="14" fill="#4a5b6b">South-shore Gilbert Bay corridor · Sovereign lands (Utah FFSL) · Playa ground-mount lead + paired near-shore FPV research module</text>
+  <text x="40" y="93" font-size="12.5" font-weight="600" fill="#9a4b2f">CONCEPTUAL — NOT FOR CONSTRUCTION. Contours, shoreline, ownership and infrastructure are schematic; replace with LiDAR, cadastral and survey data.</text>
+  <line x1="40" y1="108" x2="1120" y2="108" stroke="#12283d" stroke-width="1.6"/>
+
+  <!-- ===== BASE: developable upland ===== -->
+  <rect x="40" y="130" width="720" height="1140" fill="#efeee2"/>
+
+  <!-- ===== OPEN WATER (Gilbert Bay) ===== -->
+  <path d="M40,130 L760,130 L760,428 C700,432 660,422 650,428 C540,442 440,416 340,432 C240,448 140,424 40,438 Z"
+        fill="#cfe3f0" stroke="none"/>
+  <text x="220" y="180" font-size="17" font-weight="700" fill="#2f6a95">GILBERT BAY</text>
+  <text x="220" y="200" font-size="12" fill="#3f7fb0">Great Salt Lake, south arm</text>
+  <text x="220" y="216" font-size="12" fill="#3f7fb0">surface elev. ≈4,191.6 ft (2026)</text>
+
+  <!-- ===== LAKE RECOVERY RESERVE (4,191.6 – 4,198) ===== -->
+  <path d="M40,438 C140,424 240,448 340,432 C440,416 540,442 650,428 C700,422 740,432 760,428
+           L760,556 C745,560 710,550 660,556 C550,570 450,544 350,560 C250,578 140,552 40,566 Z"
+        fill="url(#gExcl)" stroke="#c25a5a" stroke-width="1.6"/>
+  <text x="400" y="486" font-size="14" font-weight="700" fill="#8f2f2f" text-anchor="middle">LAKE RECOVERY RESERVE — NO DEVELOPMENT</text>
+  <text x="400" y="506" font-size="11.5" fill="#8f2f2f" text-anchor="middle">exposed lakebed between current stage (4,191.6 ft) and the 4,198 ft healthy-elevation target</text>
+  <text x="400" y="523" font-size="11.5" fill="#8f2f2f" text-anchor="middle">this surface must be available for the lake to reclaim</text>
+
+  <!-- ===== FREEBOARD BUFFER (4,198 – 4,200) ===== -->
+  <path d="M40,566 C140,552 250,578 350,560 C450,544 550,570 660,556 C710,550 745,560 760,556
+           L760,622 C745,626 710,616 660,622 C550,636 450,610 350,626 C250,644 140,618 40,632 Z"
+        fill="url(#gBuf)" stroke="#c99a3c" stroke-width="1.5"/>
+  <text x="400" y="600" font-size="11.5" font-weight="700" fill="#8a6a1e" text-anchor="middle">WAVE RUN-UP / FREEBOARD BUFFER (4,198 – 4,200 ft) — NO DEVELOPMENT</text>
+
+  <!-- contour labels -->
+  <text x="470" y="418" font-size="10.5" font-weight="600" fill="#2f6a95">4,191.6 ft — current shoreline</text>
+  <text x="52" y="562" font-size="10.5" font-weight="600" fill="#8f2f2f">4,198 ft — healthy-elevation target</text>
+  <text x="52" y="646" font-size="10.5" font-weight="700" fill="#1d5c34">4,200 ft — DEVELOPMENT LIMIT</text>
+  <path d="M40,632 C140,618 250,644 350,626 C450,610 550,636 660,622 C710,616 745,626 760,622"
+        fill="none" stroke="#1d5c34" stroke-width="2.8"/>
+
+  <!-- ===== ANTELOPE ISLAND ===== -->
+  <path d="M540,130 C600,140 660,132 720,146 C752,154 760,168 760,190 C724,214 668,226 612,214 C566,204 538,180 540,130 Z"
+        fill="#ddd8c2" stroke="#9a9276" stroke-width="1.6"/>
+  <text x="648" y="180" font-size="12" font-weight="700" fill="#6d6650" text-anchor="middle">ANTELOPE ISLAND</text>
+  <text x="648" y="196" font-size="10.5" fill="#6d6650" text-anchor="middle">State Park — viewshed constraint</text>
+
+  <!-- ===== MINERAL LEASE BLOCK ===== -->
+  <rect x="62" y="248" width="150" height="150" fill="url(#gMin)" stroke="#7d94a3" stroke-width="1.5"/>
+  <text x="137" y="312" font-size="11" font-weight="700" fill="#4e6472" text-anchor="middle">MINERAL</text>
+  <text x="137" y="327" font-size="11" font-weight="700" fill="#4e6472" text-anchor="middle">EXTRACTION</text>
+  <text x="137" y="342" font-size="11" font-weight="700" fill="#4e6472" text-anchor="middle">LEASE</text>
+  <text x="137" y="358" font-size="9.5" fill="#5f7583" text-anchor="middle">(illustrative extent)</text>
+
+  <!-- ===== FPV RESEARCH MODULE F1 ===== -->
+  <rect x="298" y="366" width="52" height="26" rx="3" fill="#1f4e79" stroke="#0d2c48" stroke-width="2.4"/>
+  <g stroke="#8fbde6" stroke-width="0.9" opacity="0.85">
+    <line x1="298" y1="374" x2="350" y2="374"/><line x1="298" y1="384" x2="350" y2="384"/>
+  </g>
+  <line x1="352" y1="368" x2="424" y2="318" stroke="#0d2c48" stroke-width="1.3"/>
+  <text x="430" y="308" font-size="12" font-weight="700" fill="#0d2c48">F1 — FPV RESEARCH MODULE</text>
+  <text x="430" y="323" font-size="10.5" fill="#1b3d5c">5 ac · 2.0 MW_dc · brine-service experiment</text>
+  <text x="430" y="337" font-size="10.5" fill="#1b3d5c">shown enlarged — not to scale</text>
+  <text x="430" y="351" font-size="10.5" font-style="italic" fill="#8f2f2f">saves ≈16 af/yr — see note 3</text>
+
+  <!-- ===== ZONE P1 ===== -->
+  <rect x="150" y="668" width="250" height="100" rx="4" fill="#e0a94a" stroke="#8a6118" stroke-width="2.4"/>
+  <g stroke="#8a6118" stroke-width="0.9" opacity="0.55">
+    <line x1="150" y1="686" x2="400" y2="686"/><line x1="150" y1="704" x2="400" y2="704"/>
+    <line x1="150" y1="732" x2="400" y2="732"/><line x1="150" y1="750" x2="400" y2="750"/>
+  </g>
+  <text x="275" y="712" font-size="15" font-weight="700" fill="#3d2a05" text-anchor="middle">ZONE P1 — PLAYA</text>
+  <text x="275" y="730" font-size="11.5" fill="#3d2a05" text-anchor="middle">400 ac · 100 MW_dc · Phase 1</text>
+
+  <!-- ===== ZONE P2 ===== -->
+  <rect x="150" y="806" width="375" height="200" rx="4" fill="#f0d49a" stroke="#a8802c" stroke-width="2.4" stroke-dasharray="9 5"/>
+  <g stroke="#a8802c" stroke-width="0.9" opacity="0.5">
+    <line x1="150" y1="828" x2="525" y2="828"/><line x1="150" y1="856" x2="525" y2="856"/>
+    <line x1="150" y1="884" x2="525" y2="884"/><line x1="150" y1="956" x2="525" y2="956"/>
+    <line x1="150" y1="984" x2="525" y2="984"/>
+  </g>
+  <text x="337" y="906" font-size="15" font-weight="700" fill="#4a3608" text-anchor="middle">ZONE P2 — PLAYA</text>
+  <text x="337" y="924" font-size="11.5" fill="#4a3608" text-anchor="middle">1,200 ac · 300 MW_dc · Phase 2</text>
+  <text x="337" y="940" font-size="10.5" fill="#6b5117" text-anchor="middle">contingent on Phase 1 avian + dust monitoring</text>
+
+  <!-- ===== WETLAND / SPRING EXCLUSION ===== -->
+  <path d="M566,652 C620,644 690,656 742,650 L748,802 C700,824 640,830 592,816 C566,808 558,780 560,748 Z"
+        fill="url(#gWet)" stroke="#5d8a5e" stroke-width="1.6"/>
+  <text x="654" y="716" font-size="11.5" font-weight="700" fill="#3f6b41" text-anchor="middle">WETLAND / SPRING</text>
+  <text x="654" y="732" font-size="11.5" font-weight="700" fill="#3f6b41" text-anchor="middle">COMPLEX</text>
+  <text x="654" y="748" font-size="10" fill="#4f7b51" text-anchor="middle">shorebird foraging —</text>
+  <text x="654" y="761" font-size="10" fill="#4f7b51" text-anchor="middle">excluded, 300 ft buffer</text>
+
+  <!-- ===== MONITORING ===== -->
+  <circle cx="112" cy="900" r="9" fill="#ffffff" stroke="#c2402f" stroke-width="2.4"/>
+  <text x="112" y="904" font-size="9" font-weight="700" fill="#c2402f" text-anchor="middle">D1</text>
+  <text x="112" y="924" font-size="9.5" fill="#a2331f" text-anchor="middle">PM10 upwind</text>
+  <circle cx="688" cy="884" r="9" fill="#ffffff" stroke="#c2402f" stroke-width="2.4"/>
+  <text x="688" y="888" font-size="9" font-weight="700" fill="#c2402f" text-anchor="middle">D2</text>
+  <text x="688" y="908" font-size="9.5" fill="#a2331f" text-anchor="middle">PM10 downwind</text>
+  <circle cx="606" cy="996" r="9" fill="#ffffff" stroke="#2b7a4b" stroke-width="2.4"/>
+  <text x="606" y="1000" font-size="9" font-weight="700" fill="#2b7a4b" text-anchor="middle">A1</text>
+  <text x="606" y="1018" font-size="9.5" fill="#2b7a4b" text-anchor="middle">avian radar +</text>
+  <text x="606" y="1030" font-size="9.5" fill="#2b7a4b" text-anchor="middle">carcass survey</text>
+  <circle cx="372" cy="1054" r="9" fill="#ffffff" stroke="#3d4b57" stroke-width="2.4"/>
+  <text x="372" y="1058" font-size="9" font-weight="700" fill="#3d4b57" text-anchor="middle">M1</text>
+  <text x="372" y="1076" font-size="9.5" fill="#3d4b57" text-anchor="middle">met + albedo</text>
+
+  <!-- ===== CABLE ROUTE ===== -->
+  <path d="M324,394 L352,500 L392,600 L430,700 L462,830 L490,1058" fill="none" stroke="#c2402f" stroke-width="2.6" stroke-dasharray="10 5"/>
+
+  <!-- ===== SUBSTATION / POI ===== -->
+  <rect x="466" y="1058" width="66" height="36" rx="3" fill="#e0d6c8" stroke="#7a6a58" stroke-width="1.8"/>
+  <text x="499" y="1074" font-size="9.5" font-weight="700" fill="#4d4034" text-anchor="middle">COLLECTOR</text>
+  <text x="499" y="1086" font-size="9.5" fill="#4d4034" text-anchor="middle">SUB · POI</text>
+
+  <!-- ===== I-80 ===== -->
+  <path d="M40,1128 C160,1120 300,1130 440,1122 C560,1116 660,1126 760,1120"
+        fill="none" stroke="#b9a887" stroke-width="13" stroke-linecap="round"/>
+  <path d="M40,1128 C160,1120 300,1130 440,1122 C560,1116 660,1126 760,1120"
+        fill="none" stroke="#7d6f4e" stroke-width="1.6" stroke-dasharray="10 8"/>
+  <text x="112" y="1150" font-size="12.5" font-weight="700" fill="#6d5f3c">INTERSTATE 80</text>
+
+  <!-- ===== TRANSMISSION ===== -->
+  <line x1="40" y1="1188" x2="760" y2="1182" stroke="#3d4b57" stroke-width="2"/>
+  <g fill="#3d4b57">
+    <rect x="120" y="1176" width="3" height="18"/><rect x="280" y="1175" width="3" height="18"/>
+    <rect x="440" y="1174" width="3" height="18"/><rect x="600" y="1173" width="3" height="18"/>
+  </g>
+  <line x1="500" y1="1094" x2="500" y2="1184" stroke="#3d4b57" stroke-width="2"/>
+  <text x="112" y="1212" font-size="11.5" font-weight="600" fill="#3d4b57">existing transmission corridor (capacity to be verified)</text>
+
+  <!-- ===== AIRPORT / GLARE ===== -->
+  <line x1="694" y1="964" x2="752" y2="964" stroke="#3d4b57" stroke-width="2.2" marker-end="url(#gArwK)"/>
+  <text x="688" y="948" font-size="10.5" font-weight="600" fill="#3d4b57" text-anchor="end">SLC Intl ≈8 mi E</text>
+  <text x="688" y="961" font-size="10" fill="#3d4b57" text-anchor="end">FAA glint/glare study required</text>
+
+  <!-- ===== MARINA / SALTAIR ===== -->
+  <circle cx="70" cy="424" r="5" fill="#5d94c2" stroke="#2f6a95" stroke-width="1.4"/>
+  <text x="82" y="428" font-size="10" fill="#2f6a95">GSL Marina / State Park</text>
+  <rect x="214" y="646" width="26" height="14" rx="2" fill="#e0d6c8" stroke="#7a6a58" stroke-width="1.3"/>
+  <text x="246" y="657" font-size="10" fill="#5f5240">Saltair</text>
+
+  <!-- ===== PREVAILING WIND ===== -->
+  <g transform="translate(96,1244)">
+    <line x1="-26" y1="18" x2="22" y2="-16" stroke="#5d4785" stroke-width="2.6" marker-end="url(#gArwK)"/>
+    <text x="-32" y="34" font-size="10" font-weight="600" fill="#5d4785">prevailing wind (SW→NE)</text>
+  </g>
+
+  <!-- ===== NORTH ARROW ===== -->
+  <g transform="translate(718,1226)">
+    <path d="M0,-28 L10,15 L0,6 L-10,15 Z" fill="#12283d"/>
+    <text x="0" y="33" font-size="13" font-weight="700" fill="#12283d" text-anchor="middle">N</text>
+  </g>
+
+  <!-- ===== SCALE BAR ===== -->
+  <g transform="translate(340,1240)">
+    <rect x="0" y="0" width="100" height="8" fill="#12283d"/>
+    <rect x="100" y="0" width="100" height="8" fill="#ffffff" stroke="#12283d" stroke-width="1.2"/>
+    <text x="0" y="-6" font-size="10.5" fill="#12283d">0</text>
+    <text x="100" y="-6" font-size="10.5" fill="#12283d" text-anchor="middle">0.5</text>
+    <text x="200" y="-6" font-size="10.5" fill="#12283d" text-anchor="middle">1 mile</text>
+    <text x="0" y="24" font-size="9.5" fill="#7b8794">approximate — schematic geometry</text>
+  </g>
+
+  <!-- ===== LEGEND PANEL ===== -->
+  <rect x="780" y="130" width="340" height="1140" rx="6" fill="#fafbfc" stroke="#c6d0d9" stroke-width="1.6"/>
+  <text x="800" y="160" font-size="15.5" font-weight="700" fill="#12283d">LEGEND</text>
+  <line x1="800" y1="170" x2="1100" y2="170" stroke="#c6d0d9" stroke-width="1.3"/>
+
+  <g font-size="11" fill="#25384a">
+    <rect x="800" y="184" width="20" height="13" fill="#e0a94a" stroke="#8a6118" stroke-width="1.5"/>
+    <text x="828" y="195">Zone P1 — playa ground-mount (Phase 1)</text>
+    <rect x="800" y="206" width="20" height="13" fill="#f0d49a" stroke="#a8802c" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="828" y="217">Zone P2 — playa ground-mount (Phase 2)</text>
+    <rect x="800" y="228" width="20" height="13" fill="#1f4e79" stroke="#0d2c48" stroke-width="1.5"/>
+    <text x="828" y="239">F1 — near-shore FPV research module</text>
+
+    <rect x="800" y="254" width="20" height="13" fill="url(#gExcl)" stroke="#c25a5a" stroke-width="1.2"/>
+    <text x="828" y="265">Lake recovery reserve — no development</text>
+    <rect x="800" y="276" width="20" height="13" fill="url(#gBuf)" stroke="#c99a3c" stroke-width="1.2"/>
+    <text x="828" y="287">Wave run-up / freeboard buffer</text>
+    <rect x="800" y="298" width="20" height="13" fill="url(#gWet)" stroke="#5d8a5e" stroke-width="1.2"/>
+    <text x="828" y="309">Wetland / spring complex — excluded</text>
+    <rect x="800" y="320" width="20" height="13" fill="url(#gMin)" stroke="#7d94a3" stroke-width="1.2"/>
+    <text x="828" y="331">Mineral extraction lease — excluded</text>
+
+    <rect x="800" y="346" width="20" height="13" fill="#cfe3f0" stroke="#5d94c2" stroke-width="1.5"/>
+    <text x="828" y="357">Gilbert Bay open water (4,191.6 ft)</text>
+    <line x1="800" y1="376" x2="820" y2="376" stroke="#1d5c34" stroke-width="2.8"/>
+    <text x="828" y="380">4,200 ft development limit</text>
+    <line x1="800" y1="398" x2="820" y2="398" stroke="#c2402f" stroke-width="2.6" stroke-dasharray="9 5"/>
+    <text x="828" y="402">Collection cable (bored beneath reserve)</text>
+    <circle cx="810" cy="420" r="7" fill="#ffffff" stroke="#c2402f" stroke-width="2.2"/>
+    <text x="828" y="424">Dust (PM10) monitoring — D</text>
+    <circle cx="810" cy="442" r="7" fill="#ffffff" stroke="#2b7a4b" stroke-width="2.2"/>
+    <text x="828" y="446">Avian monitoring — A</text>
+    <circle cx="810" cy="464" r="7" fill="#ffffff" stroke="#3d4b57" stroke-width="2.2"/>
+    <text x="828" y="468">Meteorology / albedo — M</text>
+  </g>
+
+  <line x1="800" y1="488" x2="1100" y2="488" stroke="#c6d0d9" stroke-width="1.3"/>
+  <text x="800" y="512" font-size="14" font-weight="700" fill="#12283d">SCHEDULE OF AREAS</text>
+  <g font-size="11" fill="#25384a">
+    <rect x="800" y="524" width="300" height="21" fill="#e8eef4"/>
+    <text x="807" y="539" font-weight="700">Zone</text>
+    <text x="880" y="539" font-weight="700">Acres</text>
+    <text x="948" y="539" font-weight="700">MW_dc</text>
+    <text x="1028" y="539" font-weight="700">MWh/yr</text>
+    <text x="807" y="562">P1 playa</text><text x="880" y="562">400</text><text x="948" y="562">100</text><text x="1028" y="562">185,000</text>
+    <text x="807" y="583">P2 playa</text><text x="880" y="583">1,200</text><text x="948" y="583">300</text><text x="1028" y="583">555,000</text>
+    <text x="807" y="604">F1 FPV</text><text x="880" y="604">5</text><text x="948" y="604">2</text><text x="1028" y="604">3,300</text>
+    <line x1="800" y1="614" x2="1100" y2="614" stroke="#8fa2b3" stroke-width="1.1"/>
+    <text x="807" y="633" font-weight="700">TOTAL</text><text x="880" y="633" font-weight="700">1,605</text><text x="948" y="633" font-weight="700">402</text><text x="1028" y="633" font-weight="700">743,300</text>
+  </g>
+
+  <line x1="800" y1="652" x2="1100" y2="652" stroke="#c6d0d9" stroke-width="1.3"/>
+  <text x="800" y="676" font-size="14" font-weight="700" fill="#12283d">DESIGN BASIS</text>
+  <g font-size="11" fill="#25384a">
+    <text x="800" y="697">Lake stage (south arm, 2026)</text><text x="1100" y="697" text-anchor="end">≈4,191.6 ft</text>
+    <text x="800" y="716">Healthy-elevation target</text><text x="1100" y="716" text-anchor="end">4,198 ft</text>
+    <text x="800" y="735">Record low (Nov 2022)</text><text x="1100" y="735" text-anchor="end">4,188 ft</text>
+    <text x="800" y="754">Development limit adopted</text><text x="1100" y="754" text-anchor="end">4,200 ft</text>
+    <text x="800" y="773">Playa power density</text><text x="1100" y="773" text-anchor="end">0.25 MW_dc/acre</text>
+    <text x="800" y="792">Playa specific yield</text><text x="1100" y="792" text-anchor="end">1,850 MWh/MW·yr</text>
+    <text x="800" y="811">FPV power density</text><text x="1100" y="811" text-anchor="end">0.40 MW_dc/acre</text>
+    <text x="800" y="830">FPV specific yield</text><text x="1100" y="830" text-anchor="end">1,650 MWh/MW·yr</text>
+    <text x="800" y="849">Households equivalent</text><text x="1100" y="849" text-anchor="end">≈82,600</text>
+    <text x="800" y="868">Indicative capital cost</text><text x="1100" y="868" text-anchor="end">≈$444 M</text>
+  </g>
+
+  <line x1="800" y1="888" x2="1100" y2="888" stroke="#c6d0d9" stroke-width="1.3"/>
+  <text x="800" y="912" font-size="14" font-weight="700" fill="#8f3a3a">CRITICAL DESIGN CONSTRAINTS</text>
+  <g font-size="11" fill="#3d2c2c">
+    <text x="800" y="934" font-weight="700">1. Nothing may oppose lake recovery.</text>
+    <text x="812" y="950">No structure below 4,200 ft. Leases must</text>
+    <text x="812" y="965">subordinate to elevation management and</text>
+    <text x="812" y="980">waive all claims arising from inundation.</text>
+
+    <text x="800" y="1006" font-weight="700">2. Avian risk replaces shading risk.</text>
+    <text x="812" y="1022">Polarized-light “lake effect” attraction on a</text>
+    <text x="812" y="1037">flyway carrying ~12 M birds is the governing</text>
+    <text x="812" y="1052">ecological question for playa arrays.</text>
+
+    <text x="800" y="1078" font-weight="700">3. Do not oversell the water benefit.</text>
+    <text x="812" y="1094">F1 saves ≈16 af/yr against lake evaporation</text>
+    <text x="812" y="1109">of order 10⁶ af/yr. F1 is an experiment, not</text>
+    <text x="812" y="1124">a water-conservation measure.</text>
+
+    <text x="800" y="1150" font-weight="700">4. Saline soils and brine service.</text>
+    <text x="812" y="1166">Corrosion of steel in this environment can</text>
+    <text x="812" y="1181">exceed 0.6 mm/yr. Foundations and all</text>
+    <text x="812" y="1196">hardware require a saline-service spec.</text>
+
+    <text x="800" y="1222" font-weight="700">5. Public trust primacy.</text>
+    <text x="812" y="1238">Any sovereign-lands instrument is revocable</text>
+    <text x="812" y="1253">to fulfil trust duties. Design for that.</text>
+  </g>
+
+  <text x="40" y="1300" font-size="10.5" fill="#7b8794">Prepared for I. Gupta · 17 Aug 2026 · Class 5 pre-feasibility (accuracy −30% / +50%) · Companion to “Multifunction Solar on Utah’s Public Waters and Working Lands”</text>
+</svg>

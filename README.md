@@ -10,10 +10,12 @@ Pre-feasibility site plans and strategy for solar development on Utah's public w
 
 Two Class 5 pre-feasibility site plans (AACE International; expected accuracy −30% / +50%) and the strategy that connects them.
 
+**Design basis for any array over water:** modules on racks several feet above the water, carried on piles fixed in the bed. Nothing rests on the water surface. The open water beneath stays in contact with air and wind.
+
 | Site | Configuration | Capacity | Annual energy |
 |---|---|---|---|
-| **Little Dell Reservoir** | Floating PV, 3 zones, 25.1% coverage | 24.98 MW_dc | ≈41,200 MWh |
-| **Great Salt Lake** | Playa ground-mount + near-shore FPV research module | 402 MW_dc | ≈743,300 MWh |
+| **Little Dell Reservoir** | Elevated, pile-mounted over-water PV, 3 zones, 25.1% coverage | 24.98 MW_dc | ≈41,200 MWh |
+| **Great Salt Lake** | Playa ground-mount + elevated near-shore research module | 402 MW_dc | ≈743,300 MWh |
 
 All geometry is **schematic**. Contours, shorelines, bathymetry and infrastructure positions must be replaced with LiDAR, survey and cadastral data before any permitting use.
 
@@ -27,7 +29,7 @@ multifunction-solar-utah/
 ├── .nojekyll                           Serve files as-is on GitHub Pages
 ├── README.md
 ├── assets/
-│   ├── little-dell-fpv-site-plan.svg
+│   ├── little-dell-site-plan.svg
 │   └── great-salt-lake-solar-site-plan.svg
 └── docs/
     ├── 00-overview.md                  Strategy summary
@@ -57,10 +59,11 @@ The operative question is not "should we cover a lake" but **what is the margina
 
 ### Little Dell Reservoir
 
-- 20,500 acre-feet, ≈249 surface acres, mean depth 82 ft
+- 20,500 acre-feet, ≈249 surface acres, mean depth 82 ft (maximum ≈200 ft)
 - Zone A demonstration: 12.45 ac, 4.98 MW_dc, ≈8,200 MWh/yr
 - Full build-out: 62.45 ac (25.1%), 24.98 MW_dc, ≈41,200 MWh/yr
-- Evaporation saved at full build-out: **≈111 acre-feet/yr (95% UI 56–180) — about 0.13% of SLCDPU's annual water delivery**
+- Evaporation saved at full build-out: **≈71 acre-feet/yr (95% UI 31–122) — about 0.08% of SLCDPU's annual water delivery**
+- **Depth decides feasibility.** Every large pile-mounted over-water array stands in shallow water (the 1 GW HG14 array in Shandong: 1–4 m). Piles are planned only where full-pool depth is ≲ 40 ft; deep-basin siting would need 120–250+ ft piles and is not recommended. A bathymetric survey comes first.
 
 **Do not present Little Dell as water conservation.** The defensible case is distributed generation near load, algal and DBP-precursor suppression, and research value. The governing constraint is that this is a culinary source: the materials protocol, not the economics, decides the project.
 
@@ -68,11 +71,11 @@ The operative question is not "should we cover a lake" but **what is the margina
 
 ### Great Salt Lake
 
-Large-scale open-water floating PV is **not viable**, defeated independently by hydrodynamics (shallow, high-fetch basin), materials (>0.6 mm/yr steel corrosion in brine, no multi-year operating record anywhere), ecology (unquantified shading effects on the food web supporting ~12 million birds), and public trust doctrine.
+A large open-water array is **not viable**, whether floating or elevated. The shallow lake suits piles, but it is defeated by its ~24 ft stage range (racks must clear the highest design stage, and every pile sits in the surface the lake must reclaim), materials (>0.6 mm/yr steel corrosion in brine, no multi-year operating record anywhere), ecology (unquantified shading effects on the food web supporting ~12 million birds), and public trust doctrine.
 
 Proposed instead:
 - **Playa ground-mount above the 4,200 ft contour** — 1,600 ac, 400 MW_dc, ≈740,000 MWh/yr, with dust suppression as the co-benefit
-- **5-acre near-shore FPV research module** — 2 MW_dc, answering brine-service durability and ecological questions at a scale where failure is informative
+- **5-acre near-shore research module (F1)** — 2 MW_dc on piles, rack underside at ≈4,204 ft (above the 4,200 ft limit), answering brine-service durability and ecological questions at a scale where failure is informative; removed if the lake reaches 4,198 ft
 
 **Governing principle:** *No infrastructure sited at Great Salt Lake may create an economic interest opposed to raising the lake.* Enforced by a 4,200 ft development limit, lease subordination to elevation management, inundation waiver, removal bond, and a political-activity covenant.
 
@@ -82,26 +85,27 @@ The governing ecological question for playa arrays is **avian attraction and col
 
 Each site carries a screening-level ecological impact report covering **wind, water, flora and fauna**, with an impact matrix (direction, magnitude, confidence, mitigation) and a monitoring plan.
 
-- **Little Dell:** effects are local and reversible at demonstration scale. The material risks at build-out are lower dissolved oxygen beneath the array and bird guano entering a culinary source. The largest hazard is invasive quagga/zebra mussel introduction on construction equipment — fully preventable, and treated as a hard gate.
+- **Little Dell:** effects are local and reversible at demonstration scale. Elevating the array keeps the water surface open, so the oxygen penalty is roughly a third of the floating case. The material risks are bird guano entering a culinary source and pile installation (sediment disturbance, underwater noise). The largest hazard is invasive quagga/zebra mussel introduction on construction equipment — fully preventable, and treated as a hard gate.
 - **Great Salt Lake:** covering no open water removes the shading risk; avian collision, polarised-light attraction and loss of open-playa nesting habitat become the governing question. Extrapolating published PV fatality rates gives roughly 720–1,000 birds/yr at full build-out, probably an underestimate for this flyway — which is why Phase 2 is gated on a pre-registered Phase 1 avian study. The dust co-benefit is likely modest because the corridor lies outside the principal dust hotspots.
 
 ### Quantitative projections (95% uncertainty intervals)
 
-Monte Carlo propagation (100,000 draws) of literature-based input distributions, graded A (deterministic), B (field-measured or validated inputs) or C (analogue or structural prior). Intervals are uncertainty intervals, not sampling-based confidence intervals — no site data exist yet.
+Monte Carlo propagation (100,000 draws) of literature-based input distributions, graded A (deterministic) or C (analogue or structural prior); with the elevated design no projection rests wholly on field measurements of that design, so none is graded B. Intervals are uncertainty intervals, not sampling-based confidence intervals — no site data exist yet.
 
 | Projection | Median [95% UI] |
 |---|---|
-| Little Dell water saved, full build-out | 111 [56, 180] acre-ft/yr |
-| Little Dell dissolved-oxygen deficit under array | 1.2 [0.5, 2.0] mg/L |
-| GSL F1 water saved | 8.9 [4.5, 14] acre-ft/yr |
-| FPV area needed to offset 1 ft of GSL decline per decade | 33,700 [20,800, 66,600] acres (≈5% of the lake) |
-| GSL avian fatalities, full build-out | ≈910 [180, 4,600] birds/yr |
+| Little Dell water saved, full build-out | 71 [31, 122] acre-ft/yr |
+| Little Dell dissolved-oxygen deficit under array | 0.41 [0.09, 0.87] mg/L |
+| Little Dell piles, full build-out | ≈1,550 [540, 3,250] |
+| GSL F1 water saved | 5.6 [2.5, 9.7] acre-ft/yr |
+| Over-water PV area needed to offset 1 ft of GSL decline per decade | ≈53,000 [31,000, 120,000] acres (≈8.5% of the lake) |
+| GSL avian fatalities, full build-out | ≈900 [180, 4,600] birds/yr |
 
-Evaporation suppression beneath panels was revised from an assumed 80% to a field-based ≈55% (one full-scale measurement: 44%), lowering the earlier water-saving figures by roughly a quarter to a half. The Little Dell share of supply was also corrected from 0.02% to ≈0.13% of SLCDPU's annual delivery.
+Evaporation suppression is set at ≈40% for an elevated, open-sided canopy — below the 44% measured under a full-scale floating array, because wind still passes beneath elevated panels. No lake measurement for elevated arrays exists, so all water figures are grade C. The Little Dell share of supply was also corrected from an early 0.02% to ≈0.08% of SLCDPU's annual delivery.
 
 ### The strongest thesis in the portfolio
 
-**Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than floating solar on the Great Salt Lake itself.** Shading irrigated crops cuts crop ET 20–50% in arid climates — a reduction in *consumptive* use, acting on the dominant lever, with an existing legal channel to dedicate the saved water instream.
+**Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than solar over the Great Salt Lake itself.** Shading irrigated crops cuts crop ET 20–50% in arid climates — a reduction in *consumptive* use, acting on the dominant lever, with an existing legal channel to dedicate the saved water instream.
 
 ---
 

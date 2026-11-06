@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -665,7 +721,8 @@
 <p><strong>Prepared for:</strong> Isha Gupta, MD / computational biologist — Salt Lake City, UT (84108)
 <strong>Date:</strong> 16 August 2026
 <strong>Strategic posture chosen:</strong> Hybrid — establish scientific credibility through a funded feasibility and monitoring program, then convert findings into a development vehicle or public-private partnership.
-<strong>Site posture chosen:</strong> Staged — pilot on low-controversy water bodies, then scale toward Little Dell Reservoir and Great Salt Lake.</p>
+<strong>Site posture chosen:</strong> Staged — pilot on low-controversy water bodies, then scale toward Little Dell Reservoir and Great Salt Lake.
+<strong>Design basis (revised November 2026):</strong> over-water arrays are <strong>elevated</strong> — modules on racks several feet above the water, carried on piles fixed in the bed. Nothing rests on the water surface. This replaces the floating basis of earlier drafts and is itself a differentiator: the proposals already before the Legislature are for <em>floating</em> arrays. An elevated design takes floats out of contact with drinking water, keeps the water surface open to the air (a much smaller oxygen penalty), and is unaffected by drawdown. The costs are higher capital cost, foundations in the bed, and a practical limit to shallow water — every large precedent, including the 1 GW HG14 array in Shandong, stands in 1–4 m of water.</p>
 <hr />
 <h2>0. Read This First: The One Judgment That Determines Whether You Succeed</h2>
 <p>You are entering a policy space that is <em>already occupied and already moving</em>. In January 2026 a Utah-based developer, Water Wise Solar Solutions, presented floating photovoltaics (FPV) to the Legislative Water Development Commission with Rep. Hoang Nguyen (D–Salt Lake City), naming Great Salt Lake and Utah Lake as their "biggest targets." A small array is already operating at Signal Hill Pond near Park City. No legislation has been introduced, but bipartisan interest exists.</p>
@@ -675,7 +732,7 @@
 <p><strong>The "someone should do this" argument is already made.</strong> Repeating it adds nothing. Your differentiating contribution is <em>rigor</em> — the site-specific, quantitative, peer-reviewable evidence that developers cannot credibly produce about their own projects and that agencies do not yet have.</p>
 </li>
 <li>
-<p><strong>The single greatest risk to this idea in Utah is not opposition — it is overclaiming.</strong> The Great Salt Lake science community (USU, University of Utah, the GSL Strike Team, the Salinity Advisory Committee) is unusually sophisticated, politically influential, and has been burned before by promoters. If your first public position is "floating solar will save the Great Salt Lake," you will be dismissed by exactly the people whose endorsement you need, permanently. If your first public position is "here is what FPV can and cannot do, quantified, with the failure modes named first," you become the trusted broker.</p>
+<p><strong>The single greatest risk to this idea in Utah is not opposition — it is overclaiming.</strong> The Great Salt Lake science community (USU, University of Utah, the GSL Strike Team, the Salinity Advisory Committee) is unusually sophisticated, politically influential, and has been burned before by promoters. If your first public position is "solar over the water will save the Great Salt Lake," you will be dismissed by exactly the people whose endorsement you need, permanently. If your first public position is "here is what over-water PV can and cannot do, quantified, with the failure modes named first," you become the trusted broker.</p>
 </li>
 </ol>
 <p><strong>Adopt the posture of the honest broker, not the advocate.</strong> It is the only posture that is simultaneously true, scientifically defensible, and strategically optimal here.</p>
@@ -686,11 +743,11 @@
 <p><strong>Weak framing (avoid):</strong> "Cover water bodies with solar to save water and make power."</p>
 <p><strong>Strong framing (adopt):</strong></p>
 <blockquote>
-<p>Utah faces two simultaneous constraints — a ~2 GW-scale load growth problem under Operation Gigawatt, and a terminal-lake water crisis in which agriculture accounts for the large majority of consumptive depletion. Conventional solutions treat these as separate. <strong>Multifunction solar</strong> — floating PV on engineered water bodies and agrivoltaics on irrigated cropland — is a class of infrastructure that produces <em>both</em> electrons and consumptively-saved water from the same capital investment. The correct question is not "should we cover a lake" but "<strong>what is the marginal cost of a saved acre-foot and a delivered megawatt-hour, jointly, across the portfolio of candidate deployments — and which sites clear that bar?</strong>"</p>
+<p>Utah faces two simultaneous constraints — a ~2 GW-scale load growth problem under Operation Gigawatt, and a terminal-lake water crisis in which agriculture accounts for the large majority of consumptive depletion. Conventional solutions treat these as separate. <strong>Multifunction solar</strong> — elevated over-water PV on engineered water bodies and agrivoltaics on irrigated cropland — is a class of infrastructure that produces <em>both</em> electrons and consumptively-saved water from the same capital investment. The correct question is not "should we cover a lake" but "<strong>what is the marginal cost of a saved acre-foot and a delivered megawatt-hour, jointly, across the portfolio of candidate deployments — and which sites clear that bar?</strong>"</p>
 </blockquote>
 <p>That framing does three things: it makes you site-agnostic (so you can never be dismissed as a promoter of one bad site), it is quantitative (so it survives contact with engineers), and it puts you on the same side as the Governor's energy office <em>and</em> the Great Salt Lake Commissioner simultaneously.</p>
 <h3>1.2 The uncomfortable truth you must build into your argument, not hide from</h3>
-<p><strong>Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than floating solar on the Great Salt Lake itself.</strong></p>
+<p><strong>Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than solar over the Great Salt Lake itself.</strong></p>
 <ul>
 <li>Shading irrigated crops reduces crop evapotranspiration by roughly 20–50% in arid climates (NREL and multiple 2025 reviews), and that is a reduction in <em>consumptive</em> use — water that can be legally dedicated instream.</li>
 <li>Utah has a functioning legal channel for converting saved agricultural depletion into lake inflow: the Great Salt Lake Watershed Enhancement Trust and the state's water-leasing and change-application framework.</li>
@@ -738,11 +795,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Realistic technical envelope.</strong> At 249 acres, a 20–30% coverage array is roughly 50–75 acres → on the order of <strong>18–34 MW_dc</strong> at contemporary FPV power densities. That is materially useful.</p>
-<p><strong>But be precise about the water claim.</strong> Gross annual lake evaporation at this elevation is on the order of 2.5–3.5 ft. Total reservoir evaporation is therefore roughly <strong>600–870 acre-feet per year</strong>. A 25% array saves roughly <strong>111 acre-feet per year (95% uncertainty interval 56–180)</strong> — about 0.13% of SLCDPU's annual water delivery. <em>(Revised November 2026: the original 80% suppression assumption was replaced by a field-based ≈55%, and the supply share corrected; see <a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>.)</em> <em>Do not sell Little Dell as a water conservation project.</em> Sell it as (a) distributed generation close to load, (b) a water-quality intervention (reduced solar radiation suppresses algal growth and can reduce disinfection-byproduct precursors), and (c) the best-instrumented FPV research site in the Intermountain West.</p>
+<p><strong>Realistic technical envelope.</strong> At 249 acres, a 20–30% coverage array is roughly 50–75 acres → on the order of <strong>18–34 MW_dc</strong> at the assumed over-water power density (0.40 MW_dc/acre). Pile foundations are practical only where the water is shallow, and Little Dell averages 82 ft deep — so the real envelope is set by how much of the reservoir is ≲ 40 ft deep, which only a bathymetric survey can answer. That is materially useful.</p>
+<p><strong>But be precise about the water claim.</strong> Gross annual lake evaporation at this elevation is on the order of 2.5–3.5 ft. Total reservoir evaporation is therefore roughly <strong>600–870 acre-feet per year</strong>. A 25% elevated array saves roughly <strong>71 acre-feet per year (95% uncertainty interval 31–122)</strong> — about 0.08% of SLCDPU's annual water delivery. <em>(Revised November 2026: suppression re-based for an elevated, open-sided canopy, ≈40%; supply share corrected; see <a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>.)</em> <em>Do not sell Little Dell as a water conservation project.</em> Sell it as (a) distributed generation close to load, (b) a water-quality intervention (reduced solar radiation suppresses algal growth and can reduce disinfection-byproduct precursors), and (c) the best-instrumented over-water PV research site in the Intermountain West.</p>
 <p><strong>Honest barriers.</strong></p>
 <ul>
-<li>SLCDPU's institutional risk calculus is dominated by a single question: <em>does this introduce any contamination pathway into a culinary source?</em> Floats, anchors, cabling, transformer dielectric fluid, anti-fouling coatings, and construction access are all contamination vectors in their frame. Your evidence package must be built primarily around this question — materials leachate testing (NSF/ANSI 61 analogues), spill containment, and failure modes — not around energy economics.</li>
+<li>SLCDPU's institutional risk calculus is dominated by a single question: <em>does this introduce any contamination pathway into a culinary source?</em> Pile materials and coatings, pile installation (sediment disturbance), cabling, transformer dielectric fluid, and construction access are all contamination vectors in their frame. The elevated design removes floats from contact with the water, which helps. Your evidence package must be built primarily around this question — materials leachate testing (NSF/ANSI 61 analogues), spill containment, and failure modes — not around energy economics.</li>
 <li>Highly visible, cherished viewshed (Little Mountain Pass; adjacent Little Dell Station, National Register of Historic Places, listed 1971). Expect a significant aesthetic/recreation constituency.</li>
 <li>Substantial seasonal drawdown → variable water surface elevation complicates mooring design and slope anchoring.</li>
 <li>Winter access closure and Wasatch snow/ice loading.</li>
@@ -789,11 +846,11 @@
 </table>
 <p><strong>Honest barriers — these are severe and you must name them before your critics do.</strong></p>
 <ol>
-<li><strong>Anchoring and bathymetry.</strong> GSL is extremely shallow with an enormous wind fetch and a soft, unconsolidated lakebed. Wind-driven seiche and wave loading on a large-fetch shallow basin is a genuinely unsolved engineering problem at scale for FPV. This is a first-order feasibility question, not a detail.</li>
-<li><strong>Brine chemistry.</strong> Hypersaline, high-density, high-sulfate brine is aggressively corrosive and will attack fasteners, electrical connections, and polymer floats far faster than freshwater service. Expect materially shorter design life and higher O&amp;M. There is essentially no long-duration FPV field data in comparable brine.</li>
+<li><strong>Foundations and stage range.</strong> GSL's shallowness suits piles — that is how the largest over-water arrays elsewhere are built. But the lake has ranged over roughly 24 ft (4,188 ft in 2022 to about 4,212 ft in the mid-1980s), its bed is soft and unconsolidated, and every pile in open water sits inside the surface the lake must be free to reclaim. Racks must clear the highest design stage, which makes them tall structures over today's shallows.</li>
+<li><strong>Brine chemistry.</strong> Hypersaline, high-density, high-sulfate brine is aggressively corrosive and will attack piles, fasteners and electrical connections far faster than freshwater service. Expect materially shorter design life and higher O&amp;M. There is essentially no long-duration over-water PV field data — floating or pile-mounted — in comparable brine.</li>
 <li><strong>Habitat and food-web risk.</strong> Shading reduces photosynthetically active radiation to the phytoplankton and benthic microbialite communities that support brine shrimp and brine flies — the base of the food web for those 12 million birds. Structures also create novel perching and nesting substrate, which may benefit some species and create predator subsidies that harm others. This is the argument that will define the debate.</li>
 <li><strong>Salinity coupling.</strong> Evaporation is the mechanism that concentrates GSL's salt. Reducing evaporation while inflow is fixed raises elevation and lowers salinity — currently a desirable direction — but the response is nonlinear and bay-specific, and it interacts with the UPRR causeway berm management already under active regulatory control. Any credible proposal must be run through the GSL hydrodynamic/salinity models, not asserted.</li>
-<li><strong>Competing property interests.</strong> Large areas are encumbered by mineral extraction leases (Compass Minerals, US Magnesium and others). Note carefully: the industrial evaporation ponds are the <em>last</em> place to propose FPV, since suppressing evaporation there destroys the lessee's process.</li>
+<li><strong>Competing property interests.</strong> Large areas are encumbered by mineral extraction leases (Compass Minerals, US Magnesium and others). Note carefully: the industrial evaporation ponds are the <em>last</em> place to propose over-water PV, since suppressing evaporation there destroys the lessee's process.</li>
 <li><strong>Political optics.</strong> "Utah is covering the Great Salt Lake with solar panels" is a headline that writes itself, and it is the kind of headline that can foreclose the entire multifunction-solar policy space for a decade.</li>
 </ol>
 <p><strong>Verdict:</strong> Not a viable near-term project. It is, however, a viable near-term <em>policy engagement</em> — see §4, Phase 1. <strong>The single highest-leverage action available to you right now is participating in the ongoing Comprehensive Management Plan and Mineral Leasing Plan update</strong> to ensure renewable energy is treated as a defined, evidence-gated use category rather than being either silently foreclosed or carelessly permitted.</p>
@@ -812,13 +869,13 @@
 <p><strong>Layer 1 — The problem is real and jointly framed.</strong>
 Utah is simultaneously short of firm generation capacity and short of water. Present both constraints with state-official sources (Operation Gigawatt; the Great Salt Lake Strategic Plan and its 4,198 ft healthy-elevation target). Never present one without the other; the joint framing is what makes multifunction solar the natural answer rather than a novelty.</p>
 <p><strong>Layer 2 — The technology class is mature, and here is exactly how mature.</strong>
-Distinguish sharply between what is proven (FPV on small engineered freshwater ponds; agrivoltaics on multiple crop systems) and what is not (large-array FPV on shallow high-fetch natural lakes; any FPV in hypersaline brine). Your credibility comes from drawing this line yourself.</p>
+Distinguish sharply between what is proven (floating PV on small engineered freshwater ponds; pile-mounted arrays over shallow aquaculture ponds and coastal flats; agrivoltaics on multiple crop systems) and what is not (large over-water arrays on high-fetch natural lakes; pile-mounted arrays in deep reservoirs; any over-water PV in hypersaline brine). Your credibility comes from drawing this line yourself.</p>
 <p><strong>Layer 3 — Quantified, site-specific performance.</strong>
 Energy yield, evaporation savings, water-quality effects, and cost — computed per site with stated uncertainty. This is the layer nobody else has. See §7 for the screening model.</p>
 <p><strong>Layer 4 — Risks named first, mitigations second.</strong>
 For each site: ecological, water-quality, engineering, aesthetic, and legal risk, each with a proposed monitoring or mitigation response and an explicit "we do not yet know" list. Agencies grant permits to applicants who have already identified the agency's objections.</p>
 <p><strong>Layer 5 — The decision is gated, reversible, and staged.</strong>
-Never ask a decision-maker for a big irreversible yes. Ask for a small, monitored, time-limited, removable yes with pre-registered success criteria and a defined off-ramp. Removability is FPV's strongest structural advantage over almost every other infrastructure class — floats and anchors come out. Lead with it.</p>
+Never ask a decision-maker for a big irreversible yes. Ask for a small, monitored, time-limited, removable yes with pre-registered success criteria and a defined off-ramp. Removability is one of over-water PV's strongest structural advantages over almost every other infrastructure class — racks lift off and piles can be extracted or cut at the bed. Lead with it.</p>
 <hr />
 <h2>4. The Phased Plan</h2>
 <h3>Phase 0 — Foundation (Months 0–3)</h3>
@@ -826,7 +883,7 @@ Never ask a decision-maker for a big irreversible yes. Ask for a small, monitore
 <ul>
 <li>Complete a systematic literature synthesis. Non-negotiable core: the OSU/USGS multi-reservoir thermal and habitat modeling study (<em>Limnologica</em>, 2025); the <em>Water Resources Research</em> (2025) hydrodynamic/mixing study; the <em>Frontiers in Water</em> (2025) algal-biomass study; the <em>Solar Energy</em> geospatial assessment of FPV potential on US federally controlled reservoirs; the NREL agrivoltaics water-use literature. Write it as a formal review — this becomes your first publication and your credential.</li>
 <li>Secure a university affiliation or formal collaboration. USU (Utah Water Research Laboratory, Utah Climate Center), University of Utah (Wilkes Center; S.J. Quinney College of Law's GSL work), BYU, UVU. Water Wise Solar Solutions has stated it is already in contact with USU, BYU, and UVU — engage as a peer, not a competitor.</li>
-<li>Build the screening model (§7) and validate it against published FPV installations before you apply it to Utah sites.</li>
+<li>Build the screening model (§7) and validate it against published over-water PV installations (floating and pile-mounted) before you apply it to Utah sites.</li>
 <li>Identify and interview 8–12 people privately, on a listening basis only, before you advocate anything. See §5.</li>
 </ul>
 <p><strong>Deliverable:</strong> A literature synthesis and a validated screening model. <strong>Publish nothing advocacy-flavored in this phase.</strong></p>
@@ -834,7 +891,7 @@ Never ask a decision-maker for a big irreversible yes. Ask for a small, monitore
 <p><strong>Objective:</strong> Get into the formal record and generate the first Utah-specific data.</p>
 <ul>
 <li><strong>Comprehensive Management Plan update — submit formal comments.</strong> This is time-critical and the highest-leverage single action in this plan. Position: renewable energy should be an explicitly defined use category on sovereign lands, subject to a tiered evidence standard scaled to ecological risk, with open-water GSL deployment gated behind demonstrated performance in analogous saline conditions. You are asking the state to <em>neither foreclose nor rush</em>. That is a position a public trustee can accept.</li>
-<li><strong>Instrument Signal Hill.</strong> Approach the operator and Park City for access. Deploy a modest monitoring package: under-panel vs. control evaporation (floating pans or eddy covariance), water temperature profiles, dissolved oxygen, PAR attenuation, chlorophyll-a, and module temperature/output. Cost is modest; the resulting dataset is unique in Utah.</li>
+<li><strong>Instrument Signal Hill.</strong> Approach the operator and Park City for access. Signal Hill is a floating array, which makes it the natural comparison case for the elevated design. Deploy a modest monitoring package: under-panel vs. control evaporation (evaporation pans or eddy covariance), water temperature profiles, dissolved oxygen, PAR attenuation, chlorophyll-a, and module temperature/output. Cost is modest; the resulting dataset is unique in Utah.</li>
 <li><strong>Brief agencies privately</strong> before any public position: FFSL sovereign lands staff, the Great Salt Lake Commissioner's office, Utah Division of Water Resources, Utah Office of Energy Development, SLCDPU watershed staff.</li>
 <li><strong>Request placement on the Legislative Water Development Commission interim agenda</strong> as a scientific rather than commercial presenter. This is the venue that has already shown receptivity.</li>
 <li><strong>Convene a technical workshop</strong> — half a day, 25–35 people, chaired jointly with a university. Agenda: what we know, what we don't, what a Utah research agenda should be. Convening is how you become the center of the network rather than one node in it.</li>
@@ -860,7 +917,7 @@ Never ask a decision-maker for a big irreversible yes. Ask for a small, monitore
 <h3>Phase 4 — Scale to the Named Sites (Year 3+)</h3>
 <ul>
 <li><strong>Little Dell:</strong> approach SLCDPU only with a materials-safety and water-quality evidence package built on Phase 2 data, and propose a small, removable, heavily monitored array with a defined removal trigger. Anticipate a multi-year engagement including the SLC Council and the recreation constituency.</li>
-<li><strong>Great Salt Lake:</strong> approach only if (a) the updated CMP contemplates the use, (b) brine-service durability data exists from somewhere in the world, (c) shallow-water high-fetch mooring is demonstrated, and (d) GSL hydrodynamic and food-web modeling supports a bounded near-shore deployment. If those conditions are not met, say so publicly. That statement will be worth more to you than a project.</li>
+<li><strong>Great Salt Lake:</strong> approach only if (a) the updated CMP contemplates the use, (b) brine-service durability data exists from somewhere in the world, (c) brine-resistant pile foundations have a multi-year record, and racks can clear the lake's full stage range, and (d) GSL hydrodynamic and food-web modeling supports a bounded near-shore deployment. If those conditions are not met, say so publicly. That statement will be worth more to you than a project.</li>
 </ul>
 <hr />
 <h2>5. Stakeholder Map — Whom to See, in What Order</h2>
@@ -903,7 +960,7 @@ Never ask a decision-maker for a big irreversible yes. Ask for a small, monitore
 Legislative Water Development Commission members (including Rep. Hoang Nguyen, already engaged on this issue); Great Salt Lake Advisory Council; GSL Technical Team; Rocky Mountain Power resource planning and interconnection; the water conservancy districts (Jordan Valley, Central Utah, Weber Basin); Water Wise Solar Solutions.</p>
 <p><strong>Tier 3 — coalition, engage once you have data:</strong>
 Utah Clean Energy; Utah Farm Bureau and USU Extension (essential for the agrivoltaics track); FRIENDS of Great Salt Lake and Audubon (the ecological constituency — better as an early consulted party than a late-arriving opponent); Great Salt Lake Watershed Enhancement Trust; brine shrimp and mineral industry representatives; municipal utilities.</p>
-<p><strong>Predictable opposition to plan for:</strong> recreation and viewshed constituencies at Little Dell; conservation groups on GSL open-water deployment; mineral lessees; anglers; and — quietly but importantly — utility resource planners who may view distributed FPV as an interconnection burden rather than an asset.</p>
+<p><strong>Predictable opposition to plan for:</strong> recreation and viewshed constituencies at Little Dell; conservation groups on GSL open-water deployment; mineral lessees; anglers; and — quietly but importantly — utility resource planners who may view distributed over-water PV as an interconnection burden rather than an asset.</p>
 <hr />
 <h2>6. Counterarguments and Prepared Responses</h2>
 <table>
@@ -931,12 +988,12 @@ Utah Clean Energy; Utah Farm Bureau and USU Extension (essential for the agrivol
 <td>Yes — typically 10–25% higher capital cost. The counter is total value: avoided land acquisition and land-use conflict, proximity to existing interconnection at water infrastructure, a 5–10% yield uplift from module cooling, and monetized water. Argue on total value per site, never on $/W alone.</td>
 </tr>
 <tr>
-<td>"Utah has plenty of land — why float?"</td>
+<td>"Utah has plenty of land — why build over water?"</td>
 <td>Land is abundant; <em>interconnected, undisputed, near-load</em> land is not. Water infrastructure already has electrical service, existing rights-of-way, and no competing agricultural or habitat use.</td>
 </tr>
 <tr>
 <td>"This is a distraction from real Great Salt Lake solutions."</td>
-<td>Agree explicitly. State that upstream agricultural depletion is the dominant lever and that FPV on the lake is at most marginal — then pivot to agrivoltaics as a <em>depletion-reduction</em> technology that acts directly on the dominant lever. This turns your strongest critic's premise into your thesis.</td>
+<td>Agree explicitly. State that upstream agricultural depletion is the dominant lever and that over-water PV on the lake is at most marginal — then pivot to agrivoltaics as a <em>depletion-reduction</em> technology that acts directly on the dominant lever. This turns your strongest critic's premise into your thesis.</td>
 </tr>
 <tr>
 <td>"Who pays, and who captures the value?"</td>
@@ -958,11 +1015,11 @@ fpv_screen &lt;- function(site,
                        surface_acres,          # full-pool water surface area
                        coverage_frac,          # fraction of surface covered by array
                        gross_evap_ft,          # gross annual lake evaporation depth
-                       evap_supp_frac = 0.80,  # evaporation suppression under array
+                       evap_supp_frac = 0.80,  # floating basis; use ~0.40 for an elevated canopy
                        density_mwdc_acre = 0.40,
                        specific_yield = 1750,  # MWh per MW_dc per yr (SLC-region, tilt-dependent)
                        cooling_uplift = 0.06,  # module-cooling yield gain over land-based
-                       capex_per_wdc = 1.55,   # $/W_dc installed (FPV premium included)
+                       capex_per_wdc = 1.55,   # floating basis; use ~2.10 for elevated, shallow-water piles
                        opex_per_kwdc_yr = 22,  # $/kW_dc/yr
                        disc_rate = 0.06,
                        life_yr = 25,
@@ -1021,7 +1078,7 @@ sites$net_cost_per_af &lt;- vapply(seq_len(nrow(sites)),
 print(sites, row.names = FALSE)
 </code></pre>
 <blockquote>
-<p><strong>Note (November 2026):</strong> the default <code>evap_supp_frac = 0.80</code> below overstates suppression. The only full-scale field measurement found reports 44%; the Monte Carlo projections in <a href="../analysis/ecological_projections.R">analysis/ecological_projections.R</a> use Beta(mean 0.55, SD 0.13). The water figures in this section are therefore upper-end illustrations.</p>
+<p><strong>Note (November 2026):</strong> the defaults in this screening model reflect the earlier <em>floating</em> basis. For the elevated, pile-mounted design use <code>evap_supp_frac</code> ≈ 0.40 (the Monte Carlo projections in <a href="../analysis/ecological_projections.R">analysis/ecological_projections.R</a> use Beta(mean 0.40, SD 0.12)) and <code>capex_per_wdc</code> ≈ 2.10 for shallow-water piles. That roughly halves the water saved and raises LCOE to about $105/MWh. The figures in this section are therefore upper-end illustrations.</p>
 </blockquote>
 <p><strong>What the default assumptions actually produce (verified numerically):</strong> Little Dell at 25% coverage → ≈62 array acres, ≈24.9 MW_dc, ≈46,200 MWh/yr, ≈149 acre-feet/yr saved. Utah Lake at 5% coverage → ≈1,920 MW_dc, which independently reproduces the ~2 GW figure Water Wise Solar Solutions presented to the Legislature — a useful cross-check that their arithmetic is sound. LCOE lands near <strong>$81/MWh</strong>, and the residual cost charged to water is roughly <strong>$7,500–10,600 per acre-foot</strong>.</p>
 <p><strong>Interpret that last number carefully, because it is the crux of the whole argument.</strong> At a $45/MWh power value the project does not pay for itself on electrons alone, so a large residual falls on the water — a price far above what any Utah water buyer pays. Two structural conclusions follow:</p>
@@ -1030,7 +1087,7 @@ print(sites, row.names = FALSE)
 <li><strong>Do not build the public case on cost-per-acre-foot.</strong> You will lose it. Build it on avoided land conflict, interconnection proximity, and generation added without new land or new water — with evaporation savings presented as a real but secondary co-benefit.</li>
 </ol>
 <p>Note also that LCOE is invariant to coverage fraction by construction here; only the cost-per-acre-foot varies across sites, and it varies solely with local evaporation depth. If a future version needs coverage-dependent economics, add scale effects to <code>capex_per_wdc</code>.</p>
-<p><strong>Sensitivity analysis you must run before citing any output:</strong> <code>evap_supp_frac</code> (the literature range is wide and coverage-geometry dependent), <code>gross_evap_ft</code> (use site-specific pan or eddy-covariance data, not regional averages), <code>capex_per_wdc</code> (the FPV premium in brine service is essentially unknown), <code>power_value_usd_mwh</code> (dominant term — vary from wholesale to retail), and <code>life_yr</code> (assume materially shorter in saline service). Report intervals, not point estimates.</p>
+<p><strong>Sensitivity analysis you must run before citing any output:</strong> <code>evap_supp_frac</code> (the literature range is wide and coverage-geometry dependent), <code>gross_evap_ft</code> (use site-specific pan or eddy-covariance data, not regional averages), <code>capex_per_wdc</code> (the over-water premium in brine service is essentially unknown), <code>power_value_usd_mwh</code> (dominant term — vary from wholesale to retail), and <code>life_yr</code> (assume materially shorter in saline service). Report intervals, not point estimates.</p>
 <hr />
 <h2>8. Funding Pathways</h2>
 <table>
@@ -1059,7 +1116,7 @@ print(sites, row.names = FALSE)
 </tr>
 <tr>
 <td>DOE Solar Energy Technologies Office</td>
-<td>FPV performance, reliability, and ecological co-benefit research</td>
+<td>Over-water PV performance, reliability, and ecological co-benefit research</td>
 <td>Verify current solicitation status — federal solar research funding has been volatile through 2025–26</td>
 </tr>
 <tr>
@@ -1101,7 +1158,7 @@ print(sites, row.names = FALSE)
 </tr>
 <tr>
 <td>1–4</td>
-<td>Assemble and read the core literature (§4, Phase 0). Build the screening model and validate it against two published FPV installations with reported output.</td>
+<td>Assemble and read the core literature (§4, Phase 0). Build the screening model and validate it against two published over-water PV installations with reported output.</td>
 </tr>
 <tr>
 <td>3–6</td>
@@ -1132,9 +1189,9 @@ print(sites, row.names = FALSE)
 <li>USACE's current legal interest in Little Dell given the federal cost-share and original authorization. This determines whether a federal approval pathway exists.</li>
 <li>Independent verification of the ~3 MAF/yr Great Salt Lake evaporation figure and the ~1 MAF/yr statewide reservoir figure against USGS and Utah Division of Water Resources water-balance products. Both figures currently trace to a developer's legislative presentation.</li>
 <li>Post-<em>Sackett</em> CWA §404 jurisdictional status over Great Salt Lake and over the specific water bodies in your first-mover list.</li>
-<li>Whether any FPV installation anywhere has multi-year operating data in brine above ~100 g/L. If none exists, that fact is itself a publishable and strategically important finding.</li>
+<li>Whether any over-water PV installation — floating or pile-mounted — has multi-year operating data in brine above ~100 g/L. If none exists, that fact is itself a publishable and strategically important finding.</li>
 <li>Utah's current tax treatment of commercial solar — reporting suggests changes in the 2025–26 period that would affect project economics. Confirm with the Utah State Tax Commission.</li>
-<li>Rocky Mountain Power's current interconnection queue timelines and whether FPV at existing water infrastructure can use existing service points.</li>
+<li>Rocky Mountain Power's current interconnection queue timelines and whether over-water PV at existing water infrastructure can use existing service points.</li>
 </ol>
 <hr />
 <h2>Sources</h2>

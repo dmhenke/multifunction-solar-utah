@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -661,24 +717,27 @@
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
 <h1>Great Salt Lake — Multifunction Solar Pre-Feasibility Site Plan</h1>
+<blockquote>
+<p><strong>Design basis for any over-water element:</strong> modules on racks several feet above the water, carried on piles fixed in the lakebed. Nothing rests on the water surface. This replaces the floating basis used in earlier drafts. The playa arrays are conventional ground-mount on land and are unaffected.</p>
+</blockquote>
 <p><strong>Site:</strong> South-shore Gilbert Bay corridor, Great Salt Lake, Utah
 <strong>Jurisdiction:</strong> Sovereign lands below the meander line — Utah Division of Forestry, Fire &amp; State Lands (FFSL), under the Public Trust Doctrine
 <strong>Date:</strong> 17 August 2026
-<strong>Companion drawing:</strong> <code>assets/great-salt-lake-solar-site-plan.svg</code></p>
+<strong>Companion drawing:</strong> <a href="../assets/great-salt-lake-solar-site-plan.svg">assets/great-salt-lake-solar-site-plan.svg</a></p>
 <hr />
 <h2>1. The Finding That Shapes This Entire Document</h2>
-<p><strong>Large-scale floating photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.</strong></p>
-<p>Four independent constraints each individually defeat it:</p>
+<p><strong>Large-scale over-water photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.</strong></p>
+<p>Mounting the panels on piles above the water instead of floating them changes the engineering picture but not the conclusion. The lake's shallowness actually suits piles — the 1 GW HG14 array in Shandong stands on fixed piles in 1–4 m of water. Four constraints still defeat a large open-water array:</p>
 <ol>
-<li><strong>Hydrodynamics.</strong> The lake is extremely shallow with an enormous wind fetch. At the current south-arm stage of ≈4,191.6 ft, much of Gilbert Bay is a few metres deep. Large-array mooring in a shallow, high-fetch, soft-bedded basin subject to wind-driven seiche is not a solved engineering problem at scale.</li>
-<li><strong>Materials.</strong> Corrosion of steel in this class of brine can exceed 0.6 mm/yr. There is no multi-year FPV operating record anywhere in the world in comparable hypersaline service. Design life and O&amp;M cost are therefore unknown, not merely uncertain.</li>
+<li><strong>Lake-level range.</strong> The lake has stood anywhere from 4,188 ft (2022) to about 4,212 ft (mid-1980s). Racks must clear the highest design stage with freeboard, so piles over today's shallows become tall structures, and every one of them sits in the Lake Recovery Reserve (§4).</li>
+<li><strong>Materials.</strong> Corrosion of steel in this class of brine can exceed 0.6 mm/yr, and a pile array puts thousands of foundations permanently in it. There is no multi-year over-water PV operating record anywhere in comparable hypersaline service. Design life and O&amp;M cost are therefore unknown, not merely uncertain.</li>
 <li><strong>Ecology.</strong> Shading reduces photosynthetically active radiation reaching the phytoplankton and microbialite communities that support brine shrimp and brine flies — the food base for roughly 12 million birds annually. The magnitude of that effect at scale is unquantified.</li>
 <li><strong>Public trust.</strong> FFSL holds these lands in trust, with navigation, commerce and fishing having primacy. Any lease is revocable to fulfil trust duties. A use with unquantified ecosystem risk is a poor candidate for a trustee's approval, and correctly so.</li>
 </ol>
-<p><strong>What this plan proposes instead</strong> is a two-part configuration that delivers substantially more energy than open-water FPV would, carries far lower ecological risk, and generates the specific data any future FPV proposal would need:</p>
+<p><strong>What this plan proposes instead</strong> is a two-part configuration that delivers substantially more energy than an open-water array would, carries far lower ecological risk, and generates the specific data any future over-water proposal would need:</p>
 <ul>
 <li><strong>A playa ground-mount array above the 4,200 ft contour</strong> as the primary generation asset, sited so it never occupies surface the lake needs to reclaim.</li>
-<li><strong>A small paired near-shore FPV research module</strong> whose purpose is to answer brine-service and ecological questions, not to generate meaningful power.</li>
+<li><strong>A small paired near-shore research module (F1), elevated on piles above the water,</strong> whose purpose is to answer brine-service and ecological questions, not to generate meaningful power.</li>
 </ul>
 <p>Class 5 pre-feasibility (AACE International; expected accuracy −30% / +50%). Contours, shoreline, ownership and infrastructure on the drawing are <strong>schematic</strong> and must be replaced with LiDAR, cadastral and survey data.</p>
 <hr />
@@ -767,8 +826,8 @@
 <tbody>
 <tr>
 <td><strong>SC-1</strong></td>
-<td>Open-water Gilbert Bay FPV, large array</td>
-<td>Very poor</td>
+<td>Open-water Gilbert Bay over-water PV (elevated, pile-mounted), large array</td>
+<td>Moderate (shallow suits piles; stage range and brine do not)</td>
 <td>Very high</td>
 <td>Very poor</td>
 <td>High</td>
@@ -777,8 +836,8 @@
 </tr>
 <tr>
 <td><strong>SC-2</strong></td>
-<td>Near-shore FPV, small, disturbed south-shore corridor</td>
-<td>Poor–moderate</td>
+<td>Near-shore elevated PV, small, disturbed south-shore corridor</td>
+<td>Moderate</td>
 <td>Moderate</td>
 <td>Moderate</td>
 <td>Negligible</td>
@@ -830,10 +889,10 @@
 <p><strong>Recommended lead: SC-3 (playa ground-mount) with a co-located SC-2 research module.</strong></p>
 <h3>Why this configuration is the right answer</h3>
 <ul>
-<li>Generates <strong>~740,000 MWh/yr at full build-out</strong> — a material Operation Gigawatt contribution, roughly two orders of magnitude more than any defensible near-shore FPV footprint.</li>
+<li>Generates <strong>~740,000 MWh/yr at full build-out</strong> — a material Operation Gigawatt contribution, roughly two orders of magnitude more than any defensible near-shore over-water footprint.</li>
 <li><strong>Covers no water</strong>, so the shading objection that defeats SC-1 does not apply.</li>
 <li>Addresses the actual public-health problem at Great Salt Lake — <strong>windblown dust from exposed lakebed</strong> — rather than the problem people assume solar should address.</li>
-<li>The research module generates brine-service durability and ecological data that any future FPV proposal would require, at a scale where failure is informative rather than damaging.</li>
+<li>The research module generates brine-service durability and ecological data that any future over-water proposal would require, at a scale where failure is informative rather than damaging.</li>
 </ul>
 <hr />
 <h2>4. The Governing Design Principle</h2>
@@ -883,7 +942,7 @@
 </tr>
 <tr>
 <td><strong>F1</strong></td>
-<td>Near-shore FPV research module</td>
+<td>Near-shore elevated PV research module (pile-mounted)</td>
 <td>1 (concurrent)</td>
 <td>5</td>
 <td>2</td>
@@ -907,11 +966,11 @@
 <li><strong>Upward:</strong> salt-crust playa has unusually high albedo (roughly 0.3–0.5 versus ~0.2 for desert soil), materially increasing bifacial rear-side gain. A genuine and under-appreciated advantage of the site.</li>
 <li><strong>Downward:</strong> a saline, dusty playa produces high soiling losses, and washing with fresh water is both costly and counterproductive in a basin defined by water scarcity.</li>
 <li>Both must be measured at station M1 (§8), not assumed. The albedo measurement alone may be publishable.</li>
-<li><strong>FPV specific yield 1,650 MWh/MW_dc·yr</strong> — consistent with the Little Dell basis (low tilt for wind loading, netted against module-cooling gain).</li>
+<li><strong>F1 specific yield 1,650 MWh/MW_dc·yr</strong> — consistent with the Little Dell basis (low tilt for wind loading, netted against module-cooling gain).</li>
 </ul>
 <h3>5.2 The water number — read this before using it</h3>
-<p>Zone F1 suppresses roughly <strong>9 acre-feet per year (95% UI 4.5–14)</strong> of evaporation, revised from ≈16 after evaporation suppression was re-based on field measurement (see <a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>). Great Salt Lake evaporation is of order <strong>10⁶ acre-feet per year</strong>. F1 therefore addresses approximately <strong>0.0004%</strong> of lake evaporation.</p>
-<p><strong>F1 is an experiment. It is not a water-conservation measure, and it must never be presented as one.</strong> Any FPV footprint large enough to meaningfully affect the lake's water balance would be large enough to trigger every objection in §1. This is the central honest limitation of floating solar on Great Salt Lake, and stating it first is what makes the rest of the proposal credible.</p>
+<p>Zone F1 suppresses roughly <strong>5.6 acre-feet per year (95% UI 2.5–9.7)</strong> of evaporation. An elevated canopy suppresses less than a floating cover because wind still passes beneath it (see <a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>). Great Salt Lake evaporation is of order <strong>10⁶ acre-feet per year</strong>. F1 therefore addresses approximately <strong>0.0002%</strong> of lake evaporation.</p>
+<p><strong>F1 is an experiment. It is not a water-conservation measure, and it must never be presented as one.</strong> Offsetting even 1 ft of lake decline per decade would take roughly 53,000 acres of over-water arrays — about 8.5% of the lake — which would trigger every objection in §1. This is the central honest limitation of solar over Great Salt Lake, and stating it first is what makes the rest of the proposal credible.</p>
 <p><em>(Note: the frequently-cited ~3 million acre-feet/yr GSL evaporation figure traces to a developer's presentation to the Legislative Water Development Commission in January 2026 and has not been independently verified here. Confirm against USGS and Utah Division of Water Resources water-balance products before citing it in any submission.)</em></p>
 <hr />
 <h2>6. Siting Constraints Inventory</h2>
@@ -983,7 +1042,7 @@
 </table>
 <hr />
 <h2>7. The Governing Ecological Question: Avian Risk</h2>
-<p>For open-water FPV, the governing ecological question is shading. <strong>For playa ground-mount on the Great Salt Lake flyway, it is avian attraction and collision.</strong></p>
+<p>For an open-water array, the governing ecological question is shading. <strong>For playa ground-mount on the Great Salt Lake flyway, it is avian attraction and collision.</strong></p>
 <p><strong>The mechanism.</strong> Photovoltaic arrays reflect horizontally polarized light in a manner that some birds — particularly waterbirds and aquatic insects — may perceive as a water surface. This is the "lake effect" hypothesis. In a landscape where roughly 12 million birds are actively searching for water, in a basin whose actual water is receding, siting a large polarized-reflective surface is a serious hypothesis to test, not a formality to check off.</p>
 <p><strong>The state of the evidence is genuinely mixed.</strong> Some studies report meaningful mortality at desert PV sites; others find low rates and attribute observations to sampling artefact. There is no consensus, and essentially no data from a site of this flyway significance.</p>
 <p><strong>How to handle it — the whole strategy in miniature:</strong></p>
@@ -1058,7 +1117,7 @@
 </tr>
 <tr>
 <td>Structural (F1)</td>
-<td>Mooring load cells; wave and stage gauge; ice observation</td>
+<td>Strain gauges and corrosion monitoring on piles; scour survey; wave and stage gauge; ice observation</td>
 <td>F1</td>
 </tr>
 </tbody>
@@ -1082,8 +1141,11 @@
 <p><strong>Avoid concrete pier foundations:</strong> curing water demand and permanence both conflict with the project's own premises.</p>
 <p><strong>Salt-crust disturbance is a first-order design driver, not a construction detail.</strong> Breaking the crust during construction creates exactly the dust the project claims to reduce. Specify construction-phase dust control at least as rigorously as operations.</p>
 <h3>9.2 F1 near-shore module</h3>
+<p><img alt="Cross-section of an elevated, pile-mounted over-water PV array" src="../assets/elevated-over-water-pv-section.svg" /></p>
 <ul>
-<li>Very shallow water at current stage — design for <strong>partial grounding and full desiccation</strong> as normal operating states, not failure modes.</li>
+<li><strong>Elevated on piles in very shallow water.</strong> Rack underside at or above <strong>≈4,204 ft</strong> — at least 4 ft above the 4,200 ft development limit, and about 12 ft above today's water — so the module never obstructs a recovering lake. The racks stand over dry lakebed when the lake is low; that is a normal operating state, not a failure.</li>
+<li><strong>Piles:</strong> ≈124 [43, 260] (95% uncertainty interval, span-dependent), in duplex stainless steel, fibre-reinforced composite or sulfate-resistant precast concrete. Pile corrosion and scour are measured alongside the coupon programme.</li>
+<li><strong>Removal trigger:</strong> sustained stage ≥ 4,198 ft, or the end of the 5-year term, whichever comes first. F1 is the one structure permitted inside the Lake Recovery Reserve, and only as a time-limited, bonded research exception.</li>
 <li>The material coupon program is the primary deliverable; the array itself is instrumentation.</li>
 <li>Fully removable, bonded, 5-year initial term.</li>
 <li>Sited in an already-disturbed corridor, away from brine shrimp harvest areas and known bird concentrations.</li>
@@ -1107,9 +1169,9 @@
 <td>$440 M</td>
 </tr>
 <tr>
-<td>F1 FPV at ≈$1.90/W_dc (brine premium)</td>
-<td>$3.8 M</td>
-<td>$3.8 M</td>
+<td>F1 elevated pile-mounted at ≈$2.40/W_dc (brine-resistant piles)</td>
+<td>$4.8 M</td>
+<td>$4.8 M</td>
 </tr>
 <tr>
 <td>Monitoring (baseline + 3 yr)</td>
@@ -1133,8 +1195,8 @@
 </tr>
 <tr>
 <td><strong>Indicative subtotal (excl. interconnection)</strong></td>
-<td><strong>≈$118 – 122 M</strong></td>
-<td><strong>≈$451 – 456 M</strong></td>
+<td><strong>≈$119 – 123 M</strong></td>
+<td><strong>≈$452 – 457 M</strong></td>
 </tr>
 </tbody>
 </table>
@@ -1304,7 +1366,7 @@
 <h2>13. Sequencing Recommendation</h2>
 <p><strong>Do not submit a lease application first.</strong> The sequence that works:</p>
 <ol>
-<li><strong>Now — engage the Comprehensive Management Plan and Mineral Leasing Plan update.</strong> Argue for renewable energy as a defined use category with a tiered evidence standard scaled to ecological risk, and for open-water FPV to be gated behind demonstrated performance in analogous saline conditions. You are asking the state neither to foreclose nor to rush. A trustee can accept that position.</li>
+<li><strong>Now — engage the Comprehensive Management Plan and Mineral Leasing Plan update.</strong> Argue for renewable energy as a defined use category with a tiered evidence standard scaled to ecological risk, and for open-water arrays to be gated behind demonstrated performance in analogous saline conditions. You are asking the state neither to foreclose nor to rush. A trustee can accept that position.</li>
 <li><strong>Months 0–12 — publish the tiered site-class assessment</strong> in §3 as a peer-reviewed paper. It is a genuine contribution and establishes you as the analyst rather than the applicant.</li>
 <li><strong>Months 6–18 — build F1 first, at research scale, funded as research</strong> (FFSL Great Salt Lake Research Grants are directly relevant). F1 is cheap, small, reversible, and answers questions the state wants answered.</li>
 <li><strong>Months 12–30 — verify interconnection capacity</strong> and, in parallel, run the avian and glare studies for P1.</li>
@@ -1320,7 +1382,7 @@
 <li><strong>Transmission capacity</strong> on the I-80 corridor and current interconnection queue position.</li>
 <li><strong>Playa albedo and soiling rates</strong> — measured, not assumed.</li>
 <li><strong>Geotechnical characterization</strong> of playa bearing capacity and soil corrosivity.</li>
-<li><strong>Whether any FPV installation anywhere has multi-year operating data above ~100 g/L salinity.</strong> If none exists, that absence is itself a publishable and strategically important finding.</li>
+<li><strong>Whether any over-water PV installation — floating or pile-mounted — has multi-year operating data above ~100 g/L salinity.</strong> If none exists, that absence is itself a publishable and strategically important finding.</li>
 <li><strong>Post-<em>Sackett</em> CWA §404 jurisdictional status</strong> over Great Salt Lake.</li>
 <li><strong>Bird-use survey data</strong> for the specific corridor, from Utah DWR, Audubon, and existing GSL monitoring programs.</li>
 </ol>

@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -660,17 +716,20 @@
     </nav>
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
-<h1>Little Dell Reservoir — Floating Photovoltaic Pre-Feasibility Site Plan</h1>
+<h1>Little Dell Reservoir — Elevated Over-Water Photovoltaic Pre-Feasibility Site Plan</h1>
+<blockquote>
+<p><strong>Design basis:</strong> modules are mounted on racks several feet above the water, carried on piles fixed in the reservoir bed. Nothing rests on the water surface. This replaces the floating-array basis used in earlier drafts.</p>
+</blockquote>
 <p><strong>Site:</strong> Little Dell Reservoir, Parleys Canyon, Salt Lake County, Utah
 <strong>Owner/operator:</strong> Salt Lake City Department of Public Utilities (SLCDPU)
 <strong>Prepared for:</strong> Isha Gupta, MD
 <strong>Date:</strong> 17 August 2026
-<strong>Companion drawing:</strong> <code>little-dell-fpv-site-plan.svg</code>
+<strong>Companion drawings:</strong> <a href="../assets/little-dell-site-plan.svg">assets/little-dell-site-plan.svg</a> (plan) · <a href="../assets/elevated-over-water-pv-section.svg">assets/elevated-over-water-pv-section.svg</a> (cross-section)
 <strong>Companion strategy document:</strong> <em>Multifunction Solar on Utah's Public Waters and Working Lands</em></p>
 <hr />
 <h2>1. Status, Purpose and Limitations</h2>
 <p>This is a <strong>Class 5 pre-feasibility site plan</strong> (AACE International classification; expected accuracy −30% / +50%). It exists to make a specific, quantified proposition discussable with SLCDPU, not to support permitting or construction.</p>
-<p><strong>What this document is not:</strong> it is not based on survey, bathymetry, geotechnical, or metocean data. Shoreline geometry, bathymetric contours, mooring depths, and the positions of the intake tower, spillway, access road, and any existing electrical service are <strong>schematic</strong>. Every one of them must be replaced with as-built and survey data before this advances.</p>
+<p><strong>What this document is not:</strong> it is not based on survey, bathymetry, geotechnical, or metocean data. Shoreline geometry, bathymetric contours, pile lengths, and the positions of the intake tower, spillway, access road, and any existing electrical service are <strong>schematic</strong>. Every one of them must be replaced with as-built and survey data before this advances.</p>
 <p><strong>Where Little Dell sits in the overall strategy.</strong> Little Dell is a <strong>Phase 4</strong> site in the companion strategy document — deliberately <em>not</em> a first mover. The reason is structural: the drinking-water framing that makes the site attractive is the same framing that makes its owner maximally risk-averse. This site plan should be used as a credibility artifact and a conversation opener with SLCDPU, and as the target that Phase 2 demonstration data is designed to unlock. Section 14 identifies the site that should be built first.</p>
 <hr />
 <h2>2. Site Parameters</h2>
@@ -767,9 +826,14 @@
 <td><strong>The weakest number in this plan.</strong> A cold, deep, canyon-shaded, high-elevation reservoir plausibly evaporates 2.2–3.0 ft/yr. Regional pan data is not adequate.</td>
 </tr>
 <tr>
-<td>Seasonal stage range</td>
+<td>Seasonal stage range and flood-control pool</td>
 <td>Not established</td>
-<td>Drives the entire mooring design. Non-negotiable data need.</td>
+<td>Sets the rack height (underside ≥ 6 ft above the maximum design water surface) and the exposed pile length at minimum pool. Non-negotiable data need.</td>
+</tr>
+<tr>
+<td>Bathymetry</td>
+<td>Not established</td>
+<td><strong>Decides where piles are feasible at all</strong> (§5.2).</td>
 </tr>
 <tr>
 <td>Ice-cover duration and thickness</td>
@@ -805,7 +869,7 @@
 <td>C-1</td>
 <td><strong>Dam safety exclusion</strong></td>
 <td>Embankment protection, spillway approach hydraulics, intake-tower access, emergency drawdown</td>
-<td>500 ft standoff from the dam axis; no anchoring, no array, no cable crossing within the zone</td>
+<td>500 ft standoff from the dam axis; no piles, no array, no cable crossing within the zone</td>
 </tr>
 <tr>
 <td>C-2</td>
@@ -815,9 +879,15 @@
 </tr>
 <tr>
 <td>C-3</td>
-<td><strong>Littoral shelf exclusion</strong></td>
+<td><strong>Littoral shelf — re-scoped</strong></td>
 <td>Bonneville cutthroat and brook/brown trout littoral habitat; macrophyte zone; drawdown-exposed bench</td>
-<td>Continuous perimeter band excluded; no array within the band at <em>minimum</em> pool, not just full pool</td>
+<td>The floating plan excluded the whole band, partly because floats would ground at drawdown. Piles remove that reason. The remaining reason is habitat: no piles or canopy over spawning areas or dense macrophyte beds identified with Utah DWR; elsewhere, wider row spacing to admit light.</td>
+</tr>
+<tr>
+<td>C-8</td>
+<td><strong>Water-depth limit (pile feasibility)</strong></td>
+<td>Precedent over-water pile arrays stand in ≈3–13 ft of water; cost rises steeply with depth</td>
+<td>Arrays limited to full-pool depth ≲ 40 ft pending geotechnical work (§5.2)</td>
 </tr>
 <tr>
 <td>C-4</td>
@@ -868,7 +938,7 @@
 <td>5.0%</td>
 <td>4.98</td>
 <td>≈8,200</td>
-<td>≈22</td>
+<td>≈14</td>
 </tr>
 <tr>
 <td><strong>B</strong></td>
@@ -877,7 +947,7 @@
 <td>12.1%</td>
 <td>12.00</td>
 <td>≈19,800</td>
-<td>≈53</td>
+<td>≈34</td>
 </tr>
 <tr>
 <td><strong>C</strong></td>
@@ -886,7 +956,7 @@
 <td>8.0%</td>
 <td>8.00</td>
 <td>≈13,200</td>
-<td>≈36</td>
+<td>≈23</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
@@ -895,50 +965,81 @@
 <td><strong>25.1%</strong></td>
 <td><strong>24.98</strong></td>
 <td><strong>≈41,200</strong></td>
-<td><strong>≈111</strong> (95% UI 56–180)</td>
+<td><strong>≈71</strong> (95% UI 31–122)</td>
 </tr>
 </tbody>
 </table>
 <h3>4.2 Basis of the numbers</h3>
 <ul>
-<li><strong>Power density 0.40 MW_dc/acre.</strong> Typical for tilted FPV including inter-row spacing and maintenance walkways.</li>
-<li><strong>Specific yield 1,650 MWh/MW_dc·yr.</strong> This is <em>lower</em> than the 1,750 figure used in the companion strategy document's generic screening, and deliberately so: FPV is normally installed at 10–15° tilt for wind-load reasons rather than the ≈30° latitude-optimal tilt, which costs roughly 5–8% of annual yield. The ≈6% gain from module cooling over water is netted against that penalty. At 5,790 ft with meaningful winter snow, low tilt also sheds snow poorly — see §6.5.</li>
-<li><strong>Evaporation suppression ≈55% under the array footprint (95% UI ≈30–80%),</strong> revised from the 80% originally assumed after the only full-scale field measurement found reported 44%; a downwind-sheltering bonus is added for uncovered water. Values in the table are medians with 95% uncertainty intervals from the Monte Carlo projections (<a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>). Note that whole-reservoir suppression is <em>not</em> simply suppression × coverage: an array alters wind field and surface temperature beyond its own footprint, in both directions. The number above should be read as an upper bound pending measurement.</li>
+<li><strong>Power density 0.40 MW_dc/acre.</strong> Carried over from the earlier low-tilt basis. Elevated arrays spaced more widely to let light reach the water would carry less capacity per acre — a trade-off to settle with Utah DWR (C-3).</li>
+<li><strong>Specific yield 1,650 MWh/MW_dc·yr.</strong> This is <em>lower</em> than the 1,750 figure used in the companion strategy document's generic screening, and deliberately so: over-water arrays are normally installed at 10–15° tilt for wind-load reasons rather than the ≈30° latitude-optimal tilt, which costs roughly 5–8% of annual yield. A gain of several percent from module cooling over water is netted against that penalty. At 5,790 ft with meaningful winter snow, low tilt also sheds snow poorly — see §6.5.</li>
+<li><strong>Evaporation suppression ≈40% beneath the elevated canopy (95% UI ≈18–64%).</strong> No lake measurement exists for elevated arrays. Floating arrays measure 44% at full scale and canal-top studies assume 44–90% for fully covered canals; an open-sided canopy blocks radiation but lets wind pass beneath, so suppression is set lower than both. A small downwind-sheltering bonus is added. Values in the table are medians with 95% uncertainty intervals from the Monte Carlo projections (<a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>). Note that whole-reservoir suppression is <em>not</em> simply suppression × coverage: an array alters wind field and surface temperature beyond its own footprint, in both directions. The number above should be read as an upper bound pending measurement.</li>
 <li><strong>Module count:</strong> ≈8,300 modules at 600 W for Zone A; ≈41,600 at full build-out.</li>
 </ul>
 <h3>4.3 Context for the energy number</h3>
 <p>Full build-out (≈41,200 MWh/yr) is roughly the annual consumption of <strong>4,500–5,000 Utah households</strong>, or a meaningful fraction of SLCDPU's own pumping and treatment load. Zone A alone (≈8,200 MWh/yr) is a real, non-token quantity.</p>
 <h3>4.4 Context for the water number — read this before using it</h3>
-<p>Full build-out saves about <strong>111 acre-feet per year (95% UI 56–180)</strong>, which is approximately <strong>0.13% (0.06–0.21%) of SLCDPU's annual water delivery</strong> (≈80,000–97,000 acre-ft/yr). This is a genuinely small number.</p>
+<p>Full build-out saves about <strong>71 acre-feet per year (95% UI 31–122)</strong>, which is approximately <strong>0.08% (0.04–0.14%) of SLCDPU's annual water delivery</strong> (≈80,000–97,000 acre-ft/yr). This is a genuinely small number.</p>
 <p><strong>Do not present Little Dell as a water conservation project.</strong> The evaporation benefit is real, measurable, and worth quantifying — but it is not the case for the project and will not survive a competent engineer's scrutiny as such. The case for Little Dell is:</p>
 <ol>
 <li>Distributed generation at a site with existing access, existing land control, and proximity to load;</li>
 <li>A water-quality intervention — reduced solar radiation at the surface suppresses algal production and may reduce disinfection-byproduct precursor loading, which is a direct benefit to SLCDPU's treatment obligation;</li>
-<li>The best-instrumented FPV research site in the Intermountain West.</li>
+<li>The best-instrumented over-water PV research site in the Intermountain West.</li>
 </ol>
 <hr />
-<h2>5. Floating Structure and Mooring</h2>
-<h3>5.1 Float system</h3>
+<h2>5. Elevated Structure and Pile Foundations</h2>
+<p><img alt="Cross-section of an elevated, pile-mounted over-water PV array" src="../assets/elevated-over-water-pv-section.svg" /></p>
+<h3>5.1 Design concept</h3>
+<p><strong>Nothing rests on the water.</strong> Modules sit on fixed racks whose underside is at least <strong>6 ft above the maximum design water surface</strong>, carried on piles driven or drilled into the reservoir bed. Because Little Dell is a flood-control reservoir, the design water surface is the top of the flood-control pool plus surcharge, wave run-up and ice — <strong>not</strong> normal full pool. Those elevations must be obtained from SLCDPU and USACE (§15).</p>
 <ul>
-<li><strong>Modular HDPE pontoon</strong> float system, virgin resin, carbon-black UV stabilized, <strong>NSF/ANSI 61 certified</strong> for potable-water contact.</li>
-<li><strong>10–15° fixed tilt</strong>, rows oriented east–west, azimuth due south, with continuous maintenance walkways at a maximum spacing of 4 rows.</li>
-<li><strong>No ballast water, no hydraulic actuation, no tracking.</strong> Every moving part and every fluid reservoir on the water is an unnecessary risk in a culinary source.</li>
-<li><strong>Maintenance access by non-motorized or electric craft only,</strong> consistent with the existing no-motorized-craft restriction. This is a design constraint, not an operating preference.</li>
+<li><strong>10–15° fixed tilt</strong>, rows oriented east–west, azimuth due south. Rows spaced so that a share of direct and diffuse light still reaches the water (§9 monitors the result).</li>
+<li><strong>Maintenance from walkways on the rack structure</strong>, not from boats on the water wherever practicable; any boat access by non-motorized or electric craft only, consistent with the existing restriction.</li>
+<li><strong>No hydraulic actuation, no tracking, no fluids on the structure.</strong></li>
+<li><strong>What the change from floating removes:</strong> floats in contact with drinking water, mooring lines and anchors that move with the stage, the risk of the array grounding on the shelf at drawdown, and ice sheets bearing directly on the array. The water surface beneath stays open to air and wind, which is why the projected oxygen penalty is roughly a third of the floating case (§9, <a href="05-quantitative-ecological-projections.html">05-quantitative-ecological-projections</a>).</li>
+<li><strong>What it adds:</strong> foundations in the reservoir bed, pile installation noise and sediment disturbance, ice loads on piles, and a taller visual profile.</li>
 </ul>
-<h3>5.2 Mooring</h3>
-<p>At a mean depth of 82 ft with a large and currently unquantified drawdown range, shore-anchored slope mooring is not viable across the full stage range.</p>
+<h3>5.2 The depth constraint — the decisive finding for this site</h3>
+<p>Every large pile-mounted over-water array found stands in <strong>shallow water</strong>. The 1 GW HG14 offshore array in Shandong (commissioned December 2025) uses fixed piles in <strong>1–4 m (≈3–13 ft)</strong> of water; Chinese aquaculture and reservoir arrays are similar. Little Dell has a <strong>mean depth of 82 ft and a maximum of about 200 ft</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Where</th>
+<th>Pile length (water + embedment)</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Shallow-margin siting</strong></td>
+<td>Upper basin and perimeter areas with full-pool depth ≲ 40 ft</td>
+<td>≈60–90 ft</td>
+<td>Buildable with conventional marine piling. Overlaps the littoral shelf that the floating plan excluded — see C-3.</td>
+</tr>
+<tr>
+<td><strong>2. Deep-basin siting</strong></td>
+<td>Central basin as drawn in the floating layout (≈80–200 ft deep)</td>
+<td>≈120–250+ ft</td>
+<td>Offshore-scale foundations in a drinking-water reservoir, with pile-installation vibration near an earthfill dam. <strong>Not recommended.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation: Option 1, at demonstration scale (Zone A) only, pending a bathymetric survey.</strong> The zone positions on the site-plan drawing are schematic and must be moved to the shallowest qualifying water once bathymetry exists. The ≲ 40 ft limit is a planning assumption, not a design value; the geotechnical investigation sets the real one.</p>
+<h3>5.3 Piles</h3>
 <ul>
-<li><strong>Bottom-anchored, compliant catenary mooring.</strong> Precast concrete deadweight anchors (inert, no grouting chemicals, no injected resins, no galvanic material introduced to the water column) with chain-plus-synthetic-tether risers sized to accommodate the full stage range.</li>
-<li><strong>Preliminary anchor count:</strong> ≈1 anchor per 300 m² of array → <strong>≈170 anchors for Zone A</strong> (12.45 ac = 50,383 m²). Anchor mass to be set by wind/wave and ice analysis.</li>
-<li><strong>Screw/helical anchors are the alternative</strong> if geotechnical investigation shows adequate bearing, and are preferable on sediment-disturbance grounds — but they require confirmation that installation does not mobilize reservoir sediment into the water column near the intake.</li>
-<li><strong>No anchoring within the dam safety exclusion zone</strong> under any configuration.</li>
+<li><strong>Count:</strong> a projected <strong>≈310 [110, 650]</strong> piles for Zone A and <strong>≈1,550 [540, 3,250]</strong> at full build-out (95% uncertainty intervals), depending mainly on span. Large-span truss platforms need far fewer piles than short-span pond racks.</li>
+<li><strong>Bed footprint:</strong> ≈160 m² [40, 540] for Zone A — under 0.1% of the zone's water surface.</li>
+<li><strong>Material (culinary source):</strong> precast, fully cured prestressed-concrete piles, or stainless/duplex steel. <strong>No zinc galvanizing, no coal-tar or biocidal coatings, no in-situ grouting below water.</strong></li>
+<li><strong>Installation:</strong> drilled or vibratory installation preferred over impact driving, to limit underwater noise and vibration transmitted toward the dam; silt curtains around each work area; installation outside cutthroat spawning windows.</li>
+<li><strong>No piles within the dam safety exclusion zone</strong> under any configuration.</li>
 </ul>
-<h3>5.3 What must be modelled before this is credible</h3>
+<h3>5.4 What must be modelled before this is credible</h3>
 <ol>
-<li>Fetch-limited wave analysis using site-specific wind data, including canyon channelling.</li>
-<li>Ice load analysis — static sheet load, thermal expansion load, and ice-drift impact.</li>
-<li>Mooring excursion envelope over the full stage range, confirming the array cannot ground on the littoral shelf at minimum pool.</li>
-<li>Anchor drag and sediment-mobilization assessment relative to the intake tower.</li>
+<li>Bathymetric survey and the resulting area with full-pool depth ≲ 40 ft outside the dam-safety and delta exclusions.</li>
+<li>Design water surface: top of flood-control pool, surcharge, wave run-up and ice.</li>
+<li>Ice loads on piles — sheet-ice thrust, and <strong>ice-jacking</strong> (ice frozen to piles lifting them as the stage rises).</li>
+<li>Geotechnical capacity and embedment of reservoir-bed sediments; scour around piles.</li>
+<li>Vibration transmission from pile installation toward the embankment, reviewed by dam-safety engineers.</li>
 </ol>
 <hr />
 <h2>6. Drinking-Water Materials and Contamination-Control Protocol</h2>
@@ -996,8 +1097,12 @@
 <td><strong>Glass–glass, frameless or anodized-aluminium-framed, no polymer backsheet.</strong> Chosen for leachate control and durability — the bifacial gain over water is small (water albedo ≈5–8%) and is not the justification.</td>
 </tr>
 <tr>
-<td>Floats</td>
-<td>Virgin HDPE, NSF/ANSI 61 certified, batch-traceable</td>
+<td>Piles</td>
+<td>Precast, fully cured prestressed concrete or stainless/duplex steel; leachate-tested; no zinc, coal-tar or biocidal coatings</td>
+</tr>
+<tr>
+<td>Racks</td>
+<td>316 stainless or anodized aluminium; all components above the design water surface</td>
 </tr>
 <tr>
 <td>Fasteners and hardware</td>
@@ -1008,12 +1113,12 @@
 <td>Double-insulated, halogen-free, within continuous HDPE conduit; no jointed splices below water</td>
 </tr>
 <tr>
-<td>Anchors</td>
-<td>Precast concrete, fully cured and leachate-tested before placement; no in-situ grouting</td>
+<td>Pile installation</td>
+<td>Drilled or vibratory; silt curtains; no in-situ grouting below water</td>
 </tr>
 <tr>
 <td>Power electronics</td>
-<td><strong>All inverters, transformers, switchgear and metering onshore.</strong> DC only on the water.</td>
+<td><strong>All inverters, transformers, switchgear and metering onshore.</strong> DC only on the structure.</td>
 </tr>
 <tr>
 <td>Transformer</td>
@@ -1025,18 +1130,18 @@
 </tr>
 <tr>
 <td>Construction</td>
-<td>Barge-based erection with deployed spill boom; refuelling and any hydraulic maintenance strictly onshore</td>
+<td>Pile installation from a barge or from the shore at drawdown, with deployed spill boom; refuelling and any hydraulic maintenance strictly onshore</td>
 </tr>
 </tbody>
 </table>
 <h3>6.3 Verification programme</h3>
 <ul>
 <li>Pre-installation leachate testing of every water-contacting material under site-representative temperature and pH.</li>
-<li>Baseline water-quality monitoring for a <strong>minimum of 12 months before installation</strong> — this is what makes any subsequent claim defensible, and it is the single most common omission in FPV proposals.</li>
+<li>Baseline water-quality monitoring for a <strong>minimum of 12 months before installation</strong> — this is what makes any subsequent claim defensible, and it is the single most common omission in over-water PV proposals.</li>
 <li>Post-installation monitoring on the schedule in §9, with pre-registered thresholds and an agreed removal trigger (§11).</li>
 </ul>
 <h3>6.4 Ice — the unresolved risk</h3>
-<p>At ≈5,790 ft, sheet ice will form. Ice statics, thermal expansion loading, and drift impact on floats and mooring are the least-resolved engineering questions at this site, and there is limited comparable operating experience. Options are (a) design the mooring and floats to accept ice loads, (b) install a bubbler/de-icing system around the array — which introduces its own equipment and energy burden — or (c) seasonally remove the array, which is likely uneconomic. <strong>This must be resolved analytically before Zone A is proposed to SLCDPU</strong>, because it will otherwise be the first question a dam-safety engineer asks.</p>
+<p>At ≈5,790 ft, sheet ice will form. Elevating the array keeps ice off the modules, but the piles must carry <strong>sheet-ice thrust</strong> and resist <strong>ice-jacking</strong> — ice frozen to a pile lifting it as the stage rises, a known failure mode for piles in freezing reservoirs. Options are (a) embed piles deep enough to resist uplift and size them for thrust, (b) fit low-adhesion sleeves or ice collars at the waterline band, or (c) a bubbler system around pile groups, which adds equipment and energy demand. <strong>This must be resolved analytically before Zone A is proposed to SLCDPU</strong>, because it will otherwise be the first question a dam-safety engineer asks.</p>
 <h3>6.5 Snow</h3>
 <p>Low tilt (10–15°) sheds snow poorly. Expect material winter production losses and specify structural snow loading accordingly. Do not model this site with a flat annual capacity factor.</p>
 <hr />
@@ -1056,9 +1161,9 @@
 <hr />
 <h2>8. Construction Access and Staging</h2>
 <ul>
-<li><strong>Access:</strong> existing paved switchback road from the SR-65 gate to the water. Confirm load rating; the road was built for recreation traffic, not module and float deliveries.</li>
-<li><strong>Staging and assembly:</strong> the existing day-use area is the only realistic flat ground. Assess whether float-string assembly and launch can be executed there without expanding the disturbed footprint. If not, off-site pre-assembly with barge tow is the alternative.</li>
-<li><strong>Launch:</strong> the existing hand-launch ramp is inadequate for array deployment. A temporary launch and recovery arrangement will be required and must be fully restorable.</li>
+<li><strong>Access:</strong> existing paved switchback road from the SR-65 gate to the water. Confirm load rating; the road was built for recreation traffic, not pile, rack and module deliveries.</li>
+<li><strong>Staging and assembly:</strong> the existing day-use area is the only realistic flat ground for pile and rack laydown. Assess whether it suffices without expanding the disturbed footprint.</li>
+<li><strong>Pile installation:</strong> from a small barge, or — for shallow-margin piles — from the exposed bed during drawdown, which avoids in-water work and turbidity altogether. Any barge launch arrangement must be temporary and fully restorable.</li>
 <li><strong>Season:</strong> construction window constrained by winter access closure and ice. Assume a single summer–autumn season for Zone A.</li>
 <li><strong>Sediment and runoff control</strong> throughout, per R309-605 obligations, with the recognition that any turbidity event in a culinary source is a reportable and reputationally costly incident.</li>
 </ul>
@@ -1079,7 +1184,7 @@
 <tbody>
 <tr>
 <td>Evaporation</td>
-<td>Floating evaporation pans plus an eddy-covariance mast; independent estimate via energy-balance closure</td>
+<td>Evaporation pans beneath the canopy and in open water, plus an eddy-covariance mast; independent estimate via energy-balance closure</td>
 <td>T1, C1</td>
 </tr>
 <tr>
@@ -1143,8 +1248,8 @@
 <td>Array</td>
 </tr>
 <tr>
-<td>Mooring integrity</td>
-<td>Load cells on representative tethers; annual dive/ROV inspection</td>
+<td>Pile and rack integrity</td>
+<td>Strain gauges on representative piles; ice-load and uplift monitoring; annual dive/ROV inspection of pile bases and scour</td>
 <td>Array</td>
 </tr>
 </tbody>
@@ -1169,9 +1274,9 @@
 </thead>
 <tbody>
 <tr>
-<td>FPV system installed, at $1.55/W_dc</td>
-<td>$7.7 M</td>
-<td>$38.7 M</td>
+<td>Elevated pile-mounted system, shallow-water piles, at ≈$2.10/W_dc</td>
+<td>$10.5 M</td>
+<td>$52.5 M</td>
 </tr>
 <tr>
 <td>Monitoring programme (baseline + 3 yr operation)</td>
@@ -1190,20 +1295,20 @@
 </tr>
 <tr>
 <td><strong>Indicative total</strong></td>
-<td><strong>$8.7 – 9.5 M</strong></td>
-<td><strong>$40.7 – 42.0 M</strong></td>
+<td><strong>$11.5 – 12.3 M</strong></td>
+<td><strong>$54.5 – 55.8 M</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Caveat:</strong> the $1.55/W_dc figure carries an FPV premium over land-based solar but does <strong>not</strong> include an ice-hardening premium, because no basis exists to price one. Treat the capital cost as the least certain number in this plan after the evaporation rate.</p>
-<p>Levelized cost lands near <strong>$81/MWh</strong> on the companion model's assumptions. At wholesale power values this does not pay for itself on electrons alone — which is precisely why §7 option 1 (retail-rate load offset) is the pivotal commercial question.</p>
+<p><strong>Caveat:</strong> ≈$2.10/W_dc is an assumption for shallow-water piles; no US price data for pile-mounted over-water PV were found. It excludes ice-hardening, and it does <strong>not</strong> apply to deep-basin siting (Option 2, §5.2), which is unpriced and would cost several times more. Treat capital cost as the least certain number in this plan.</p>
+<p>Levelized cost lands near <strong>$105/MWh</strong> when the companion model's $81/MWh (at $1.55/W) is scaled to $2.10/W. At wholesale power values this does not pay for itself on electrons alone — which is precisely why §7 option 1 (retail-rate load offset) is the pivotal commercial question.</p>
 <hr />
 <h2>11. Removal and Reversibility</h2>
 <p>Removability is the single strongest structural argument available for this project, and it should be written into the approval rather than merely asserted.</p>
 <ul>
-<li><strong>Complete removal capability:</strong> floats, modules, cabling, and anchors all recoverable. Anchors either fully retrievable or, if left, demonstrably inert.</li>
+<li><strong>Complete removal capability:</strong> modules, racks and cabling recoverable; piles extracted, or cut at the bed and the stubs shown to be inert.</li>
 <li><strong>Decommissioning bond</strong> posted before installation, sized to full removal and site restoration at third-party rates.</li>
-<li><strong>Pre-agreed removal triggers,</strong> written into the agreement, e.g. any confirmed exceedance of a pre-registered water-quality threshold attributable to the array; any dam-safety finding; any mooring failure event; failure to meet H3/H4 equivalence bounds at the 3-year review.</li>
+<li><strong>Pre-agreed removal triggers,</strong> written into the agreement, e.g. any confirmed exceedance of a pre-registered water-quality threshold attributable to the array; any dam-safety finding; any structural failure event; failure to meet H3/H4 equivalence bounds at the 3-year review.</li>
 <li><strong>Time-limited initial term</strong> for Zone A (suggest 5 years) with renewal contingent on the monitoring record.</li>
 </ul>
 <p>An owner who can revoke cheaply approves more readily than one who cannot. Design for that.</p>
@@ -1271,7 +1376,7 @@
 <td>9</td>
 <td>USACE Regulatory</td>
 <td>CWA §404 applicability</td>
-<td>Jurisdictional status post-<em>Sackett</em> to be confirmed; anchors may or may not constitute discharge of fill</td>
+<td>Jurisdictional status post-<em>Sackett</em> to be confirmed; pile placement may constitute a discharge of fill</td>
 </tr>
 <tr>
 <td>10</td>
@@ -1315,10 +1420,10 @@
 </tr>
 <tr>
 <td>R-2</td>
-<td>Ice damage to floats or mooring</td>
+<td>Ice thrust or ice-jacking damage to piles</td>
 <td><strong>High</strong></td>
 <td>Structural failure, debris in a culinary source</td>
-<td>Ice analysis before proposing; ice-capable design or de-icing; §11 removal trigger</td>
+<td>Ice analysis before proposing; embedment, low-adhesion sleeves or bubblers; §11 removal trigger</td>
 </tr>
 <tr>
 <td>R-3</td>
@@ -1357,10 +1462,10 @@
 </tr>
 <tr>
 <td>R-8</td>
-<td>Mooring failure and array drift toward intake or spillway</td>
+<td>Pile or rack failure dropping debris near the intake or spillway</td>
 <td>Low</td>
 <td>Severe — dam safety and supply interruption</td>
-<td>Conservative mooring design, load monitoring, dam-safety exclusion zone, removal trigger</td>
+<td>Conservative pile design, strain monitoring, dam-safety exclusion zone, removal trigger</td>
 </tr>
 <tr>
 <td>R-9</td>
@@ -1368,6 +1473,20 @@
 <td>Medium-high</td>
 <td>Project uneconomic</td>
 <td>Price the ice solution before committing; treat current capex as unpriced in this respect</td>
+</tr>
+<tr>
+<td>R-10</td>
+<td>Too little water ≲ 40 ft deep outside exclusions</td>
+<td>Medium-high</td>
+<td>Demonstration cannot be sited</td>
+<td>Bathymetric survey first; fall back to SLCDPU non-culinary basins (§14)</td>
+</tr>
+<tr>
+<td>R-11</td>
+<td>Pile installation noise or vibration</td>
+<td>Medium</td>
+<td>Fish injury; dam-safety concern</td>
+<td>Drilled or vibratory installation; seasonal timing; vibration monitoring at the embankment</td>
 </tr>
 </tbody>
 </table>
@@ -1383,12 +1502,14 @@
 <li>Stage–area–capacity table and current operating rule curve.</li>
 <li>Historical daily or monthly water surface elevation record (10+ years).</li>
 <li>Any existing meteorological, evaporation, or water-quality monitoring at or near the reservoir.</li>
-<li>Bathymetric survey, if one exists post-construction.</li>
+<li>Bathymetric survey, if one exists post-construction — <strong>the first item that decides whether pile-mounting is feasible here.</strong></li>
 <li>Ice-cover observations or records.</li>
 <li>Location, capacity, and metering arrangement of any existing electrical service at the dam or recreation area.</li>
 <li>Current Drinking Water Source Protection Plan for the Little Dell / Parleys source.</li>
 <li>Confirmation of USACE's current real-property and dam-safety interest.</li>
 <li>Any prior study of solar, hydropower, or other energy development at SLCDPU watershed facilities.</li>
+<li>Flood-control pool, surcharge and spillway-design water-surface elevations (with USACE) — these set the rack height.</li>
+<li>Any geotechnical data on reservoir-bed sediments from dam construction.</li>
 </ol>
 <hr />
 <p><em>Class 5 pre-feasibility. Not for construction. All geometry schematic pending survey.</em></p>

@@ -1,6 +1,6 @@
 # Great Salt Lake — Ecological Impact Report
 
-**Scope:** Playa ground-mount Zones P1 (400 ac) and P2 (1,200 ac) above the 4,200 ft contour, plus the 5-acre near-shore FPV research module F1, in the south-shore Gilbert Bay corridor.
+**Scope:** Playa ground-mount Zones P1 (400 ac) and P2 (1,200 ac) above the 4,200 ft contour, plus the 5-acre near-shore research module F1 — elevated on piles, rack underside at ≈4,204 ft, nothing resting on the water — in the south-shore Gilbert Bay corridor.
 
 **Companion site plan:** `docs/02-great-salt-lake-full.md`
 
@@ -10,7 +10,7 @@
 
 ## Summary
 
-Covering no open water at scale removes the shading risk that defeats lake-scale floating PV. That leaves avian interaction — collision, polarised-light attraction, and loss or degradation of open-playa nesting habitat — as the governing ecological question.
+Covering no open water at scale removes the shading risk that defeats a lake-scale over-water array. That leaves avian interaction — collision, polarised-light attraction, and loss or degradation of open-playa nesting habitat — as the governing ecological question.
 
 The dust co-benefit is real but probably modest at this corridor. University of Utah playa surveys place the principal dust hotspots in Farmington Bay, northern Bear River Bay, the northwest corner and Carrington Bay; the south-shore corridor does not appear among them. The hotspots are also largely below 4,198 ft or in the highest-value bird habitat, so relocating to chase dust benefit would trade against the lake-recovery principle and the flyway.
 
@@ -27,8 +27,8 @@ Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are 
 | Wind | Dust emission from array footprint | Beneficial | Low–Moderate | Low | Verify with paired PM10 monitors |
 | Wind | Crust disturbance during construction | Adverse | Moderate, short-term | High | Ballasted foundations; traffic routing |
 | Water | Lake volume and recovery | Neutral | — | High | Lake Recovery Reserve below 4,200 ft |
-| Water | F1 evaporation saving | Beneficial | Negligible (≈9 af/yr) | High | Present as research only |
-| Water | F1 brine shading | Adverse | Negligible at lake scale | Moderate | 5-acre cap; removal bond |
+| Water | F1 evaporation saving | Beneficial | Negligible (≈6 af/yr) | High | Present as research only |
+| Water | F1 brine shading | Adverse | Negligible at lake scale | Moderate | 5-acre cap; removal at 4,198 ft; bond |
 | Water | Drip-line runoff and rill erosion | Adverse | Low | Moderate | Gravel drip strips |
 | Water | Freshwater panel washing | Adverse | Low–Moderate if allowed | Moderate | Prohibit; dry/robotic cleaning |
 | Water | Springs and groundwater | Neutral | Low | Moderate | 300 ft buffers |
@@ -67,16 +67,16 @@ Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are 
 
 **Baseline.** Lake at ≈4,191.6 ft, 6.4 ft below the 4,198 ft healthy target. Fringe springs and groundwater-dependent wetlands along the south shore. Hypersaline brine in Gilbert Bay.
 
-**Mechanism.** P1 and P2 cover no water and sit above the Lake Recovery Reserve. F1 is the only structure on water. Effects therefore operate mainly through runoff, groundwater and the small F1 footprint.
+**Mechanism.** P1 and P2 cover no water and sit above the Lake Recovery Reserve. F1 is the only structure over water, and it stands on piles above the surface. Effects therefore operate mainly through runoff, groundwater and the small F1 footprint.
 
 **Expected effects**
 
 - Lake volume and recovery: not impeded — the reserve between current stage and 4,200 ft keeps all recoverable surface free of structures (neutral, high confidence).
-- F1 evaporation saving ≈9 (4.5–14) acre-ft/yr, roughly 0.0004% of lake evaporation (beneficial, negligible).
+- F1 evaporation saving ≈5.6 (2.5–9.7) acre-ft/yr, roughly 0.0002% of lake evaporation (beneficial, negligible).
 - F1 shading reduces light to brine phytoplankton beneath 5 acres (adverse, negligible at lake scale).
 - Runoff concentrates at panel drip lines, causing rill erosion and local salt redistribution on the playa (adverse, low).
 - Panel washing with fresh water would add a consumptive demand in a water-scarce basin (adverse if permitted; avoidable).
-- Corrosion products from F1 hardware enter brine locally (adverse, negligible; quantified by the coupon programme).
+- Corrosion products from F1 piles and hardware enter brine locally (adverse, negligible; quantified by the coupon programme).
 
 **Mitigation.** No freshwater panel washing — dry or robotic cleaning only. Drip-line erosion control with gravel strips. 300 ft buffers on springs and wetlands. Cable crossings of the reserve by directional bore only.
 
@@ -98,7 +98,7 @@ Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are 
 - Shade and drip-line moisture beneath panels may allow vegetation to establish. Native halophytes would aid dust control; Phragmites or other invasives would not (mixed).
 - F1 reduces light to phytoplankton and any microbialites beneath it (adverse, negligible at lake scale).
 
-**Mitigation.** Avoid vegetated margins in final layout. Active invasive-species management under arrays, with Phragmites control as an explicit operations obligation. Trial native halophyte establishment under a subset of panels as a dust-control experiment.
+**Mitigation.** Avoid vegetated margins in final layout, and site F1 piles clear of microbialite structures. Active invasive-species management under arrays, with Phragmites control as an explicit operations obligation. Trial native halophyte establishment under a subset of panels as a dust-control experiment.
 
 **Monitoring.** Annual vegetation cover and species composition under array versus control; crust integrity by repeat photogrammetry; benthic survey beneath F1.
 

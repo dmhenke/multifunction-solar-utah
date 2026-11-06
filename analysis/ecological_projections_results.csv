@@ -1,46 +1,51 @@
-"site","quantity","scenario","unit","median","lo95","hi95","grade","note"
-"Little Dell","Evaporation saved","Zone A (5%)","acre-ft/yr",22.22,11.22,35.73,"B",""
-"Little Dell","Evaporation saved, share of reservoir evaporation","Zone A (5%)","%",3.416,1.769,5.239,"B",""
-"Little Dell","Evaporation saved, share of storage capacity","Zone A (5%)","%",0.1084,0.05474,0.1743,"B",""
-"Little Dell","Evaporation saved, share of SLCDPU annual delivery","Zone A (5%)","%",0.02509,0.01263,0.04097,"B",""
-"Little Dell","Surface water temp change under array (summer day)","Zone A (5%)","°C",-0.762,-1.725,-0.009619,"B",""
-"Little Dell","Reservoir-mean surface temp change (summer)","Zone A (5%)","°C",-0.02784,-0.07101,-0.000342,"C",""
-"Little Dell","Light (PAR) reduction under array","Zone A (5%)","%",75.44,60.12,87.32,"B",""
-"Little Dell","Chlorophyll-a change under array","Zone A (5%)","%",-25.14,-74.16,23.98,"B","sign uncertain; trophic-state dependent"
-"Little Dell","Reservoir-wide chlorophyll-a change","Zone A (5%)","%",-1.257,-3.708,1.199,"C",""
-"Little Dell","Reservoir-wide primary production change","Zone A (5%)","%",-2.229,-3.524,-1.14,"C",""
-"Little Dell","Dissolved-oxygen deficit under array","Zone A (5%)","mg/L",1.224,0.5061,1.983,"B",""
-"Little Dell","Reservoir-mean DO deficit","Zone A (5%)","mg/L",0.0446,0.01744,0.08401,"C",""
-"Little Dell","Net summer cold-water (trout) habitat change","Zone A (5%)","% of reservoir",-0.003827,-1.938,1.945,"C","structural prior; sign unknown"
-"Little Dell","Aquatic-insect emergence change, reservoir-wide","Zone A (5%)","%",-0.9978,-2.896,0.9009,"C","prior-driven"
-"Little Dell","Open water removed from waterfowl use","Zone A (5%)","acres",12.45,12.45,12.45,"A","deterministic"
-"Little Dell","Evaporation saved","Full build-out (25%)","acre-ft/yr",111.4,56.29,179.2,"B",""
-"Little Dell","Evaporation saved, share of reservoir evaporation","Full build-out (25%)","%",17.14,8.873,26.28,"B",""
-"Little Dell","Evaporation saved, share of storage capacity","Full build-out (25%)","%",0.5436,0.2746,0.8742,"B",""
-"Little Dell","Evaporation saved, share of SLCDPU annual delivery","Full build-out (25%)","%",0.1261,0.06328,0.2056,"B",""
-"Little Dell","Surface water temp change under array (summer day)","Full build-out (25%)","°C",-0.7554,-1.723,-0.00934,"B",""
-"Little Dell","Reservoir-mean surface temp change (summer)","Full build-out (25%)","°C",-0.1386,-0.3556,-0.001637,"C",""
-"Little Dell","Light (PAR) reduction under array","Full build-out (25%)","%",75.44,60.12,87.32,"B",""
-"Little Dell","Chlorophyll-a change under array","Full build-out (25%)","%",-25.07,-74.18,24.3,"B","sign uncertain; trophic-state dependent"
-"Little Dell","Reservoir-wide chlorophyll-a change","Full build-out (25%)","%",-6.288,-18.6,6.094,"C",""
-"Little Dell","Reservoir-wide primary production change","Full build-out (25%)","%",-11.19,-17.65,-5.705,"C",""
-"Little Dell","Dissolved-oxygen deficit under array","Full build-out (25%)","mg/L",1.227,0.506,1.985,"B",""
-"Little Dell","Reservoir-mean DO deficit","Full build-out (25%)","mg/L",0.2243,0.08711,0.4224,"C",""
-"Little Dell","Net summer cold-water (trout) habitat change","Full build-out (25%)","% of reservoir",-0.01323,-9.717,9.728,"C","structural prior; sign unknown"
-"Little Dell","Aquatic-insect emergence change, reservoir-wide","Full build-out (25%)","%",-5.01,-14.56,4.497,"C","prior-driven"
-"Little Dell","Open water removed from waterfowl use","Full build-out (25%)","acres",62.45,62.45,62.45,"A","deterministic"
-"Great Salt Lake","F1 evaporation saved","F1 (5 ac)","acre-ft/yr",8.882,4.484,14.35,"B",""
-"Great Salt Lake","F1 saving, share of lake evaporation","F1 (5 ac)","%",0.0003558,0.0001748,0.0006106,"B",""
-"Great Salt Lake","F1 equivalent lake-level change","F1 (5 ac)","inches/yr",0.0001707,8.541e-05,0.0002814,"B",""
-"Great Salt Lake","FPV area needed to offset 1 ft of decline per decade","hypothetical","acres",33780,20900,66900,"B",""
-"Great Salt Lake","  … as share of current lake surface","hypothetical","%",5.42,3.279,10.81,"B",""
-"Great Salt Lake","F1 lake-scale primary-production change","F1 (5 ac)","%",-0.0006017,-0.0007398,-0.0004663,"B",""
-"Great Salt Lake","Playa soil-water evaporation avoided","P1 (400 ac)","acre-ft/yr",20.62,5.347,59,"C","fate of saved groundwater uncertain"
-"Great Salt Lake","Playa soil-water evaporation avoided","Full build-out (1,600 ac)","acre-ft/yr",82.49,21.39,236,"C","fate of saved groundwater uncertain"
-"Great Salt Lake","Avian fatalities","P1 (100 MW)","birds/yr",225.5,44.51,1142,"C","desert rates × assumed GSL multiplier"
-"Great Salt Lake","  … of which water-associated species","P1 (100 MW)","birds/yr",74.61,12.13,431.5,"C",""
-"Great Salt Lake","  … as share of ~12 M annual lake users","P1 (100 MW)","%",0.001879,0.0003709,0.009518,"C",""
-"Great Salt Lake","Avian fatalities","Full build-out (402 MW)","birds/yr",906.4,178.9,4591,"C","desert rates × assumed GSL multiplier"
-"Great Salt Lake","  … of which water-associated species","Full build-out (402 MW)","birds/yr",299.9,48.77,1734,"C",""
-"Great Salt Lake","  … as share of ~12 M annual lake users","Full build-out (402 MW)","%",0.007553,0.001491,0.03826,"C",""
-"Great Salt Lake","PM10 emission avoided within array footprint","operations","% of footprint emission",49.99,21.47,78.53,"C","corridor emissivity unmeasured"
+site,quantity,scenario,unit,median,lo95,hi95,grade,note
+Little Dell,Evaporation saved,Zone A (5%),acre-ft/yr,14.134,6.26704,24.2449,C,elevated-canopy suppression unmeasured
+Little Dell,"Evaporation saved, share of reservoir evaporation",Zone A (5%),%,2.17286,0.983724,3.56127,C,
+Little Dell,"Evaporation saved, share of storage capacity",Zone A (5%),%,0.0689465,0.0305709,0.118268,C,
+Little Dell,"Evaporation saved, share of SLCDPU annual delivery",Zone A (5%),%,0.0159683,0.00706001,0.0277364,C,
+Little Dell,Surface water temp change under array (summer day),Zone A (5%),°C,-0.532536,-1.28308,0.0407524,C,
+Little Dell,Reservoir-mean surface temp change (summer),Zone A (5%),°C,-0.0194399,-0.0525782,0.00148229,C,
+Little Dell,Light (PAR) reduction under array,Zone A (5%),%,60.3005,39.845,78.6362,C,
+Little Dell,Chlorophyll-a change under array,Zone A (5%),%,-19.8965,-68.9577,28.9941,C,sign uncertain; trophic-state dependent
+Little Dell,Reservoir-wide chlorophyll-a change,Zone A (5%),%,-0.994827,-3.44788,1.44971,C,
+Little Dell,Reservoir-wide primary production change,Zone A (5%),%,-1.75434,-3.03259,-0.828888,C,
+Little Dell,Dissolved-oxygen deficit under array,Zone A (5%),mg/L,0.408105,0.0869564,0.866128,C,surface stays open to air and wind
+Little Dell,Reservoir-mean DO deficit,Zone A (5%),mg/L,0.0149627,0.00307058,0.0358678,C,
+Little Dell,Net summer cold-water (trout) habitat change,Zone A (5%),% of reservoir,-0.000559236,-1.94446,1.94448,C,structural prior; sign unknown
+Little Dell,"Aquatic-insect emergence change, reservoir-wide",Zone A (5%),%,-1.00964,-2.89974,0.900143,C,prior-driven
+Little Dell,Water surface beneath canopy (remains open),Zone A (5%),acres,12.45,12.45,12.45,A,deterministic
+Little Dell,Piles required,Zone A (5%),piles,308.603,108.174,647.683,C,span-dependent
+Little Dell,Reservoir bed occupied by piles,Zone A (5%),m²,163.305,38.765,542.209,C,
+Little Dell,Evaporation saved,Full build-out (25%),acre-ft/yr,70.8972,31.4359,121.614,C,elevated-canopy suppression unmeasured
+Little Dell,"Evaporation saved, share of reservoir evaporation",Full build-out (25%),%,10.8992,4.93442,17.8636,C,
+Little Dell,"Evaporation saved, share of storage capacity",Full build-out (25%),%,0.34584,0.153346,0.593239,C,
+Little Dell,"Evaporation saved, share of SLCDPU annual delivery",Full build-out (25%),%,0.080097,0.0353188,0.139389,C,
+Little Dell,Surface water temp change under array (summer day),Full build-out (25%),°C,-0.532932,-1.28664,0.0399,C,
+Little Dell,Reservoir-mean surface temp change (summer),Full build-out (25%),°C,-0.0975731,-0.264532,0.00732076,C,
+Little Dell,Light (PAR) reduction under array,Full build-out (25%),%,60.3005,39.845,78.6362,C,
+Little Dell,Chlorophyll-a change under array,Full build-out (25%),%,-19.9938,-69.2436,28.9744,C,sign uncertain; trophic-state dependent
+Little Dell,Reservoir-wide chlorophyll-a change,Full build-out (25%),%,-5.0145,-17.3665,7.26688,C,
+Little Dell,Reservoir-wide primary production change,Full build-out (25%),%,-8.76354,-15.245,-4.16661,C,
+Little Dell,Dissolved-oxygen deficit under array,Full build-out (25%),mg/L,0.407971,0.0859728,0.867928,C,surface stays open to air and wind
+Little Dell,Reservoir-mean DO deficit,Full build-out (25%),mg/L,0.0748377,0.0151151,0.17999,C,
+Little Dell,Net summer cold-water (trout) habitat change,Full build-out (25%),% of reservoir,-0.00776616,-9.71779,9.74377,C,structural prior; sign unknown
+Little Dell,"Aquatic-insect emergence change, reservoir-wide",Full build-out (25%),%,-4.98932,-14.5323,4.50859,C,prior-driven
+Little Dell,Water surface beneath canopy (remains open),Full build-out (25%),acres,62.45,62.45,62.45,A,deterministic
+Little Dell,Piles required,Full build-out (25%),piles,1547.97,542.608,3248.82,C,span-dependent
+Little Dell,Reservoir bed occupied by piles,Full build-out (25%),m²,819.147,194.448,2719.76,C,
+Great Salt Lake,F1 evaporation saved,F1 (5 ac),acre-ft/yr,5.64304,2.50178,9.7434,C,elevated-canopy suppression unmeasured
+Great Salt Lake,"F1 saving, share of lake evaporation",F1 (5 ac),%,0.000226213,9.81668e-05,0.000412784,C,
+Great Salt Lake,F1 equivalent lake-level change,F1 (5 ac),inches/yr,0.000108521,4.77029e-05,0.000191067,C,
+Great Salt Lake,Over-water PV area needed to offset 1 ft of decline per decade,hypothetical,acres,53162.8,30790.1,119915,C,
+Great Salt Lake,  … as share of current lake surface,hypothetical,%,8.54547,4.85729,19.4124,C,
+Great Salt Lake,F1 lake-scale primary-production change,F1 (5 ac),%,-0.000481809,-0.000654156,-0.000313689,C,
+Great Salt Lake,F1 piles required,F1 (5 ac),piles,123.937,43.4434,260.114,C,span-dependent
+Great Salt Lake,Playa soil-water evaporation avoided,P1 (400 ac),acre-ft/yr,20.6167,5.35137,59.0248,C,fate of saved groundwater uncertain
+Great Salt Lake,Playa soil-water evaporation avoided,"Full build-out (1,600 ac)",acre-ft/yr,82.4668,21.4055,236.099,C,fate of saved groundwater uncertain
+Great Salt Lake,Avian fatalities,P1 (100 MW),birds/yr,224.89,43.9674,1142.46,C,desert rates × assumed GSL multiplier
+Great Salt Lake,  … of which water-associated species,P1 (100 MW),birds/yr,74.2059,12.0219,428.513,C,
+Great Salt Lake,  … as share of ~12 M annual lake users,P1 (100 MW),%,0.00187409,0.000366395,0.00952054,C,
+Great Salt Lake,Avian fatalities,Full build-out (402 MW),birds/yr,904.059,176.749,4592.71,C,desert rates × assumed GSL multiplier
+Great Salt Lake,  … of which water-associated species,Full build-out (402 MW),birds/yr,298.308,48.3281,1722.62,C,
+Great Salt Lake,  … as share of ~12 M annual lake users,Full build-out (402 MW),%,0.00753383,0.00147291,0.0382726,C,
+Great Salt Lake,PM10 emission avoided within array footprint,operations,% of footprint emission,49.9317,21.4645,78.5479,C,corridor emissivity unmeasured

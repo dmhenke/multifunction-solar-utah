@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -661,8 +717,10 @@
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
 <h1>Quantitative Ecological Projections — Little Dell Reservoir and Great Salt Lake</h1>
-<p><strong>Date:</strong> 5 November 2026<br />
+<p><strong>Date:</strong> 5 November 2026 (revised for the elevated, pile-mounted design)<br />
 <strong>Method:</strong> Monte Carlo uncertainty propagation, 100,000 draws, seed 20261105. Reference implementation in base R: <a href="../analysis/ecological_projections.R">analysis/ecological_projections.R</a>. Results: <a href="../analysis/ecological_projections_results.csv">analysis/ecological_projections_results.csv</a>.</p>
+<h2>Design basis</h2>
+<p>Every array over water is <strong>elevated</strong>: modules on fixed racks several feet above the highest design water level, carried on piles fixed in the bed. Nothing rests on the water surface. Compared with a floating array, the water beneath stays open to air and wind. That preserves reaeration, so the oxygen penalty is far smaller, but it also lets wind keep driving evaporation, so less water is saved.</p>
 <h2>How to read the intervals</h2>
 <p>Each value is a <strong>median with a 95% uncertainty interval (UI)</strong> — the 2.5th and 97.5th percentiles of outputs when every uncertain input is sampled from a distribution set from the literature. No site measurements exist yet, so these are not sampling-based confidence intervals; they express how uncertain the projection is given current knowledge.</p>
 <table>
@@ -679,7 +737,7 @@
 </tr>
 <tr>
 <td>B</td>
-<td>Inputs taken from field measurements or validated models</td>
+<td>Inputs taken from field measurements of the same design — none qualify yet, because no elevated over-water array has been measured over a lake</td>
 </tr>
 <tr>
 <td>C</td>
@@ -687,15 +745,45 @@
 </tr>
 </tbody>
 </table>
-<h2>Correction to earlier figures</h2>
-<p>The site plans assumed 80% evaporation suppression beneath the panels. The only full-scale field measurement found (eddy covariance over an industrial-scale reservoir, May–October 2025) reports <strong>44%</strong> over the covered area, plus a 35% reduction over uncovered water nearby. This analysis uses suppression ~ Beta(mean 0.55, SD 0.13) plus a downwind-sheltering bonus. The resulting water-saving medians are roughly a quarter (Little Dell) to a half (Great Salt Lake F1) lower than the earlier point estimates of ≈30 / ≈150 acre-ft/yr (Little Dell) and ≈16 acre-ft/yr (F1), which these projections supersede.</p>
+<h2>How the water estimates have changed</h2>
+<table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>Suppression beneath panels</th>
+<th>Little Dell full build-out</th>
+<th>GSL F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original site plans (floating, assumed)</td>
+<td>80%</td>
+<td>≈150 acre-ft/yr</td>
+<td>≈16 acre-ft/yr</td>
+</tr>
+<tr>
+<td>Floating, re-based on the one full-scale field measurement (44%)</td>
+<td>≈55%</td>
+<td>≈111 acre-ft/yr</td>
+<td>≈9 acre-ft/yr</td>
+</tr>
+<tr>
+<td><strong>Elevated, pile-mounted (current)</strong></td>
+<td><strong>≈40%</strong></td>
+<td><strong>70.9 [31.4, 122] acre-ft/yr</strong></td>
+<td><strong>5.64 [2.50, 9.74] acre-ft/yr</strong></td>
+</tr>
+</tbody>
+</table>
 <h2>Little Dell Reservoir</h2>
 <h3>Key findings</h3>
 <ul>
-<li>Water saved is about a quarter lower than first estimated. Full build-out saves 111 [56.4, 180] acre-ft/yr — about 17.1% of the reservoir's own evaporation and 0.126 [0.064, 0.205]% of SLCDPU's annual water delivery. Zone A saves 22.2 [11.2, 35.8] acre-ft/yr. The earlier ≈30 and ≈150 acre-ft/yr figures assumed 80% suppression under the panels; the only full-scale field measurement found reports 44%.</li>
-<li>Algae: direction is genuinely uncertain. Light under the panels falls by roughly three-quarters, but measured chlorophyll-a responses at real FPV sites range from an 80% decrease to increases, depending on trophic state and mixing. Reservoir-wide primary production is projected to fall, which means fewer blooms but also less food at the base of the food web.</li>
-<li>Oxygen is the effect to watch. The under-array deficit of about 1.2 mg/L is well supported by field data. Diluted across the reservoir it is small, but it concentrates where the array shelters the surface — exactly where a late-summer hypolimnetic DO trigger is needed.</li>
-<li>Fish and insects: the model cannot tell you the sign. Cooling helps cold-water trout and oxygen loss hurts them; no field study has measured both at a comparable site. The intervals for trout habitat and insect emergence are the assumed ranges, centred near zero, and should be read as "unknown" until monitoring replaces them.</li>
+<li>Water saved is modest, and smaller than a floating cover would give. Full build-out saves 70.9 [31.4, 122] acre-ft/yr — about 10.9% of the reservoir's own evaporation and 0.080 [0.035, 0.139]% of SLCDPU's annual water delivery. Zone A saves 14.1 [6.27, 24.2] acre-ft/yr. Wind still passes beneath an elevated canopy, so suppression (≈40%) sits below the 44% measured under a full-scale floating array. No measurement exists for elevated arrays over a lake, so every water figure is grade C.</li>
+<li>The oxygen penalty is small. With the water surface open to the air, the projected deficit beneath the array is 0.408 [0.086, 0.868] mg/L — about a third of the 1.1–1.7 mg/L measured under floating arrays. Across the whole reservoir it is 0.075 [0.015, 0.180] mg/L. The hypolimnetic DO trigger stays as a precaution.</li>
+<li>Algae: direction is uncertain. Light under the panels falls by about 60% — less than under floats, because diffuse and side light reach the water. Measured chlorophyll-a responses at real over-water sites range from an 80% decrease to increases. Reservoir-wide primary production is projected to change -8.76 [-15.2, -4.17]% — fewer blooms, but less food at the base of the food web.</li>
+<li>Piles are the new footprint. Zone A needs 309 [108, 648] piles; full build-out 1,548 [543, 3,249]. They occupy only 819 [194, 2,720] m² of bed at full build-out, but installing them resuspends sediment and makes underwater noise — managed with drilled or vibratory installation, silt curtains and timing.</li>
+<li>Fish and insects: the model cannot tell you the sign. Cooling helps cold-water trout and oxygen loss hurts them; piles add cover and also concentrate predators. The intervals for trout habitat and insect emergence are the assumed ranges, centred near zero — read them as "unknown" until monitoring replaces them.</li>
 </ul>
 <h3>Projections</h3>
 <h4>Water conservation</h4>
@@ -712,31 +800,31 @@
 <tbody>
 <tr>
 <td>Evaporation saved</td>
-<td>22.2 [11.2, 35.8]</td>
-<td>111 [56.4, 180]</td>
+<td>14.1 [6.27, 24.2]</td>
+<td>70.9 [31.4, 122]</td>
 <td>acre-ft/yr</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Share of reservoir's own evaporation</td>
-<td>3.42 [1.78, 5.25]</td>
-<td>17.1 [8.92, 26.3]</td>
+<td>2.17 [0.984, 3.56]</td>
+<td>10.9 [4.93, 17.9]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Share of storage capacity (20,500 af)</td>
-<td>0.108 [0.055, 0.175]</td>
-<td>0.543 [0.275, 0.877]</td>
+<td>0.069 [0.031, 0.118]</td>
+<td>0.346 [0.153, 0.593]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Share of SLCDPU annual water delivery</td>
-<td>0.025 [0.013, 0.041]</td>
-<td>0.126 [0.064, 0.205]</td>
+<td>0.016 [0.0071, 0.028]</td>
+<td>0.080 [0.035, 0.139]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
@@ -754,43 +842,43 @@
 <tbody>
 <tr>
 <td>Light (PAR) reduction under array</td>
-<td>75.5 [60.2, 87.3]</td>
-<td>75.5 [60.2, 87.3]</td>
+<td>60.3 [39.8, 78.6]</td>
+<td>60.3 [39.8, 78.6]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Surface temperature change under array (summer day)</td>
-<td>-0.757 [-1.72, -0.0068]</td>
-<td>-0.756 [-1.72, -0.0099]</td>
+<td>-0.533 [-1.28, 0.041]</td>
+<td>-0.533 [-1.29, 0.040]</td>
 <td>°C</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Reservoir-mean surface temperature change</td>
-<td>-0.028 [-0.071, -0.00025]</td>
-<td>-0.139 [-0.356, -0.0018]</td>
+<td>-0.019 [-0.053, 0.0015]</td>
+<td>-0.098 [-0.265, 0.0073]</td>
 <td>°C</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Chlorophyll-a change under array</td>
-<td>-25.1 [-74.2, 23.7]</td>
-<td>-25.1 [-74.1, 24.4]</td>
+<td>-19.9 [-69.0, 29.0]</td>
+<td>-20.0 [-69.2, 29.0]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Reservoir-wide chlorophyll-a change</td>
-<td>-1.26 [-3.71, 1.19]</td>
-<td>-6.29 [-18.6, 6.12]</td>
+<td>-0.995 [-3.45, 1.45]</td>
+<td>-5.01 [-17.4, 7.27]</td>
 <td>%</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Reservoir-wide primary production change</td>
-<td>-2.23 [-3.52, -1.14]</td>
-<td>-11.2 [-17.7, -5.72]</td>
+<td>-1.75 [-3.03, -0.829]</td>
+<td>-8.76 [-15.2, -4.17]</td>
 <td>%</td>
 <td>C</td>
 </tr>
@@ -810,34 +898,34 @@
 <tbody>
 <tr>
 <td>Dissolved-oxygen deficit under array</td>
-<td>1.23 [0.504, 1.98]</td>
-<td>1.23 [0.507, 1.98]</td>
+<td>0.408 [0.087, 0.866]</td>
+<td>0.408 [0.086, 0.868]</td>
 <td>mg/L</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Reservoir-mean dissolved-oxygen deficit</td>
-<td>0.045 [0.017, 0.084]</td>
-<td>0.224 [0.088, 0.423]</td>
+<td>0.015 [0.0031, 0.036]</td>
+<td>0.075 [0.015, 0.180]</td>
 <td>mg/L</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Net summer cold-water (trout) habitat change</td>
-<td>0.00017 [-1.94, 1.94]</td>
-<td>-0.0052 [-9.76, 9.74]</td>
+<td>-0.00056 [-1.94, 1.94]</td>
+<td>-0.0078 [-9.72, 9.74]</td>
 <td>% of reservoir</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Aquatic-insect emergence, reservoir-wide</td>
-<td>-0.994 [-2.90, 0.902]</td>
-<td>-5.04 [-14.5, 4.52]</td>
+<td>-1.01 [-2.90, 0.900]</td>
+<td>-4.99 [-14.5, 4.51]</td>
 <td>%</td>
 <td>C</td>
 </tr>
 <tr>
-<td>Open water removed from waterfowl use</td>
+<td>Water surface beneath the canopy (stays open to wildlife)</td>
 <td>12.4 [12.4, 12.4]</td>
 <td>62.5 [62.5, 62.5]</td>
 <td>acres</td>
@@ -845,19 +933,47 @@
 </tr>
 </tbody>
 </table>
+<h4>Structure</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Zone A (5%)</th>
+<th>Full build-out (25%)</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Piles required</td>
+<td>309 [108, 648]</td>
+<td>1,548 [543, 3,249]</td>
+<td>piles</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Reservoir bed occupied by piles</td>
+<td>163 [38.8, 542]</td>
+<td>819 [194, 2,720]</td>
+<td>m²</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
 <h3>Birds and migration</h3>
 <ul>
-<li>Little Dell is not a major migration stopover; open-water loss to waterfowl is the array footprint itself (12.45 acres at Zone A, 62.45 at full build-out).</li>
-<li>The material bird issue is perching: gulls, cormorants and waterfowl on array edges deposit guano — nutrients and faecal indicator bacteria — directly into a culinary source. Perimeter deterrent wire or spikes and coliform monitoring at the intake are the response. No defensible loading estimate exists without site bird counts.</li>
-<li>Shielded, motion-activated lighting only at the onshore compound; no lighting on the water.</li>
+<li>Little Dell is not a major migration stopover. With racks several feet above the water, waterfowl can still use the water beneath the canopy (12.45 acres at Zone A, 62.45 at full build-out), though some will avoid it.</li>
+<li>The material bird issue is perching: gulls and cormorants on rack edges drop guano — nutrients and faecal indicator bacteria — straight into a culinary source. Perimeter deterrent wire or spikes and coliform monitoring at the intake are the response. No defensible loading estimate exists without site bird counts.</li>
+<li>Shielded, motion-activated lighting only at the onshore compound; no lighting on the racks.</li>
 </ul>
-<p><strong>What drives the uncertainty:</strong> for water saved, the under-array evaporation suppression coefficient (Spearman ρ = 0.85) dominates evaporation depth (0.35) and downwind sheltering (0.34). Measuring suppression at Zone A narrows every water number at once.</p>
+<p><strong>What drives the uncertainty:</strong> for water saved, the evaporation-suppression coefficient beneath the elevated canopy (Spearman ρ = 0.93) dominates evaporation depth (0.30) and downwind sheltering (0.14). Measuring suppression at Zone A narrows every water number at once.</p>
 <h2>Great Salt Lake</h2>
 <h3>Key findings</h3>
 <ul>
-<li>Floating solar cannot meaningfully move the lake. F1 saves 8.87 [4.51, 14.4] acre-ft/yr — about 0.00017 inches of lake level per year. Offsetting just 1 ft of decline per decade would take 33,834 [20,848, 66,577] acres of floating PV, or 5.43 [3.28, 10.8]% of the current lake surface — roughly 8–27 GW of panels at FPV power densities. That is the clearest quantitative argument for prioritising upstream water (including agrivoltaics) over covering the lake.</li>
-<li>The playa arrays may save more water than F1 does. Shading the playa reduces evaporation of shallow groundwater: 82.0 [21.3, 236] acre-ft/yr at full build-out, roughly an order of magnitude more than F1. Whether that water reaches the lake is unknown, and the estimate is prior-driven.</li>
-<li>Birds are the governing impact, and the interval is wide. Projected fatalities at full build-out are 911 [179, 4,595] birds/yr. Almost all of that spread comes from one unmeasured number: how much higher fatality rates are beside a major waterbird concentration than at the desert sites the base rates come from (rank correlation 0.84). Phase 1 monitoring exists to measure exactly that.</li>
+<li>Solar over the water cannot meaningfully move the lake. F1 saves 5.64 [2.50, 9.74] acre-ft/yr — about 0.00011 inches of lake level per year. Offsetting just 1 ft of decline per decade would take 53,163 [30,790, 119,915] acres of elevated over-water PV, or 8.55 [4.86, 19.4]% of the current lake surface — roughly 12–48 GW of panels on piles. That is the clearest quantitative argument for prioritising upstream water, including agrivoltaics, over building on the lake.</li>
+<li>The playa arrays may save more water than F1 does. Shading the playa reduces evaporation of shallow groundwater: 82.5 [21.4, 236] acre-ft/yr at full build-out, roughly an order of magnitude more than F1. Whether that water reaches the lake is unknown, and the estimate is prior-driven.</li>
+<li>Birds are the governing impact, and the interval is wide. Projected fatalities at full build-out are 904 [177, 4,593] birds/yr. Almost all of that spread comes from one unmeasured number: how much higher fatality rates are beside a major waterbird concentration than at the desert sites the base rates come from (rank correlation 0.84). Phase 1 monitoring exists to measure exactly that.</li>
 </ul>
 <h3>Projections</h3>
 <h4>Water conservation</h4>
@@ -873,49 +989,49 @@
 <tbody>
 <tr>
 <td>F1 (5 ac) evaporation saved</td>
-<td>8.87 [4.51, 14.4]</td>
+<td>5.64 [2.50, 9.74]</td>
 <td>acre-ft/yr</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>F1 saving as share of lake evaporation</td>
-<td>0.00036 [0.00018, 0.00061]</td>
+<td>0.00023 [9.8e-05, 0.00041]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>F1 equivalent lake-level change</td>
-<td>0.00017 [8.6e-05, 0.00028]</td>
+<td>0.00011 [4.8e-05, 0.00019]</td>
 <td>inches/yr</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>Playa soil-water evaporation avoided — P1</td>
-<td>20.5 [5.33, 59.1]</td>
+<td>20.6 [5.35, 59.0]</td>
 <td>acre-ft/yr</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Playa soil-water evaporation avoided — full build-out</td>
-<td>82.0 [21.3, 236]</td>
+<td>82.5 [21.4, 236]</td>
 <td>acre-ft/yr</td>
 <td>C</td>
 </tr>
 <tr>
-<td>FPV area needed to offset 1 ft of lake decline per decade</td>
-<td>33,834 [20,848, 66,577]</td>
+<td>Over-water PV area needed to offset 1 ft of lake decline per decade</td>
+<td>53,163 [30,790, 119,915]</td>
 <td>acres</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>… as share of current lake surface</td>
-<td>5.43 [3.28, 10.8]</td>
+<td>8.55 [4.86, 19.4]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
-<h4>Light, algae and dust</h4>
+<h4>Light, algae, dust and structure</h4>
 <table>
 <thead>
 <tr>
@@ -928,14 +1044,20 @@
 <tbody>
 <tr>
 <td>F1 effect on lake-wide primary production</td>
-<td>-0.0006 [-0.00074, -0.00047]</td>
+<td>-0.00048 [-0.00065, -0.00031]</td>
 <td>%</td>
-<td>B</td>
+<td>C</td>
 </tr>
 <tr>
 <td>PM10 emission avoided within array footprint</td>
-<td>50.1 [21.5, 78.5]</td>
+<td>49.9 [21.5, 78.5]</td>
 <td>% of footprint emission</td>
+<td>C</td>
+</tr>
+<tr>
+<td>F1 piles required</td>
+<td>124 [43.4, 260]</td>
+<td>piles</td>
 <td>C</td>
 </tr>
 </tbody>
@@ -953,31 +1075,31 @@
 <tbody>
 <tr>
 <td>Avian fatalities — P1 (100 MW)</td>
-<td>227 [44.6, 1,143]</td>
+<td>225 [44.0, 1,142]</td>
 <td>birds/yr</td>
 <td>C</td>
 </tr>
 <tr>
 <td>… of which water-associated species</td>
-<td>74.7 [12.2, 431]</td>
+<td>74.2 [12.0, 429]</td>
 <td>birds/yr</td>
 <td>C</td>
 </tr>
 <tr>
 <td>Avian fatalities — full build-out (402 MW)</td>
-<td>911 [179, 4,595]</td>
+<td>904 [177, 4,593]</td>
 <td>birds/yr</td>
 <td>C</td>
 </tr>
 <tr>
 <td>… of which water-associated species</td>
-<td>300 [49.1, 1,734]</td>
+<td>298 [48.3, 1,723]</td>
 <td>birds/yr</td>
 <td>C</td>
 </tr>
 <tr>
 <td>… as share of ~12 million annual lake users</td>
-<td>0.0076 [0.0015, 0.038]</td>
+<td>0.0075 [0.0015, 0.038]</td>
 <td>%</td>
 <td>C</td>
 </tr>
@@ -1012,11 +1134,11 @@
 </table>
 <h3>Birds and migration disruption</h3>
 <ul>
-<li>Mass grounding is the tail risk the fatality model does not capture. Eared grebes cannot take off from land. On 12 December 2011, a storm grounded thousands of migrating grebes on snow-covered, lit parking lots around St. George and Cedar City; roughly 1,500 died and 3,000–3,500 were rescued. A 1,600-acre dark, reflective array on the departure corridor is a plausible grounding surface under low cloud. One such event would equal about 1.6 years of the projected median background fatalities at full build-out, or about 6.6 years at P1. No defensible rate can be estimated; it should be treated as a design constraint, not a statistic.</li>
-<li>Mitigations that target migration specifically: fragment the array with open corridors rather than one contiguous block; white edge-banding or gridding to break up water-like reflections; no array lighting and only shielded, motion-activated lighting at the substation; underground collector lines and marked (bird-flight-diverter) conductors on any new overhead gen-tie, since waterbirds are among the most power-line-collision-prone groups; and no construction during peak staging (July–August for phalaropes, September–November for grebes).</li>
+<li>Mass grounding is the tail risk the fatality model does not capture. Eared grebes cannot take off from land. On 12 December 2011, a storm grounded thousands of migrating grebes on snow-covered, lit parking lots around St. George and Cedar City; roughly 1,500 died and 3,000–3,500 were rescued. A 1,600-acre dark, reflective array on the departure corridor is a plausible grounding surface under low cloud. One such event would equal about 1.7 years of the projected median background fatalities at full build-out, or about 6.7 years at P1. No defensible rate can be estimated; it should be treated as a design constraint, not a statistic.</li>
+<li>Mitigations that target migration specifically: fragment the array with open corridors rather than one contiguous block; white edge-banding or gridding to break up water-like reflections; no array lighting and only shielded, motion-activated lighting at the substation; underground collector lines and marked (bird-flight-diverter) conductors on any new overhead gen-tie, since waterbirds are among the most power-line-collision-prone groups; and no construction during peak staging (July–August for phalaropes, September–November for grebes). F1's racks over the water are small, but get the same anti-perch and marking treatment.</li>
 <li>Insect food supply: polarised reflections from panels draw aquatic insects to lay eggs on panels instead of water. In one field study, black-framed cells drew 6.9 times more mayfly landings than white-framed ones. Brine flies are a principal food for phalaropes and other shorebirds here, so white gridding serves both insects and birds. No interval is given: there is a single study and no brine-fly data.</li>
 </ul>
-<p><strong>What drives the uncertainty:</strong> for bird fatalities, the unmeasured Great Salt Lake multiplier (ρ = 0.84) dominates the desert base rate (0.50). For the floating-PV area estimate, suppression again dominates (ρ = −0.84), ahead of downwind sheltering, brine salinity and evaporation depth.</p>
+<p><strong>What drives the uncertainty:</strong> for bird fatalities, the unmeasured Great Salt Lake multiplier (ρ = 0.84) dominates the desert base rate (0.51). For the over-water PV area estimate, suppression again dominates (ρ = −0.93), ahead of brine salinity, evaporation depth and downwind sheltering.</p>
 <h2>Input distributions</h2>
 <table>
 <thead>
@@ -1028,39 +1150,49 @@
 </thead>
 <tbody>
 <tr>
-<td>Evaporation suppression over covered area</td>
-<td>Beta(mean 0.55, SD 0.13)</td>
-<td>44% full-scale eddy covariance; 17–90% across models and test benches</td>
+<td>Evaporation suppression beneath an elevated canopy</td>
+<td>Beta(mean 0.40, SD 0.12)</td>
+<td>No lake measurement for elevated arrays. Analogues: 44% measured under a full-scale floating array; 44–90% assumed for fully covered canals (McKuin et al. 2021). Set lower because wind passes beneath an open-sided canopy</td>
 </tr>
 <tr>
 <td>Downwind sheltering bonus</td>
-<td>Triangular(0, 0.15, 0.60)</td>
-<td>35% reduction measured over uncovered water at one site</td>
+<td>Triangular(0, 0.05, 0.25)</td>
+<td>Small: air moves freely under the canopy (35% was measured over open water beside a floating array)</td>
 </tr>
 <tr>
-<td>PAR reduction under array</td>
-<td>Beta(mean 0.75, SD 0.07)</td>
-<td>73% irradiance reduction, Lake Maiwald</td>
+<td>Light (PAR) reduction under the canopy</td>
+<td>Beta(mean 0.60, SD 0.10)</td>
+<td>Below the 73% measured under a floating array; diffuse and side light reach the water, and reservoir pile arrays are deliberately spaced to admit light</td>
+</tr>
+<tr>
+<td>Under-array surface ΔT (summer day)</td>
+<td>Triangular(−1.5, −0.4, +0.2) °C</td>
+<td>0.4 °C cooler measured beneath floating panels in Japanese ponds; shading cools, open sides keep air exchange</td>
+</tr>
+<tr>
+<td>Under-array chlorophyll-a change</td>
+<td>Normal(−20%, 25%), clipped to [−85%, +50%]</td>
+<td>Field range under floating arrays from −80% to increases (Cagle et al. 2025)</td>
+</tr>
+<tr>
+<td>Under-array DO deficit</td>
+<td>Triangular(0.0, 0.3, 1.0) mg/L</td>
+<td>1.1–1.7 mg/L under floating arrays (Lake Maiwald) comes largely from lost reaeration, which an open surface preserves</td>
+</tr>
+<tr>
+<td>Piles per acre</td>
+<td>Triangular(5, 15, 60)</td>
+<td>≈8/acre for large truss platforms at the HG14 offshore array; short-span pond racks need more</td>
+</tr>
+<tr>
+<td>Pile diameter</td>
+<td>Uniform(0.5, 1.2) m</td>
+<td>Typical precast or steel pipe piles</td>
 </tr>
 <tr>
 <td>Little Dell gross evaporation</td>
 <td>Triangular(2.0, 2.6, 3.3) ft/yr</td>
 <td>High-elevation (~5,790 ft) reservoir with winter ice cover; unmeasured</td>
-</tr>
-<tr>
-<td>Under-array surface ΔT (summer day)</td>
-<td>Triangular(−2.0, −0.6, +0.2) °C</td>
-<td>0.4 °C cooler measured in Japanese ponds; reviews report daytime cooling</td>
-</tr>
-<tr>
-<td>Under-array chlorophyll-a change</td>
-<td>Normal(−25%, 25%), clipped to [−85%, +50%]</td>
-<td>Field range from −80% to increases (Cagle et al. 2025; Japanese ponds)</td>
-</tr>
-<tr>
-<td>Under-array DO deficit</td>
-<td>Triangular(0.3, 1.2, 2.2) mg/L</td>
-<td>1.1–1.7 mg/L lower, Lake Maiwald</td>
 </tr>
 <tr>
 <td>GSL freshwater-equivalent evaporation</td>
@@ -1106,34 +1238,32 @@
 </table>
 <h2>Not estimated, and why</h2>
 <ul>
-<li><strong>Fish aggregation under the array:</strong> no field study measuring fish abundance beneath FPV was found; the OSU/USGS modelling team has called for a real-world installation to test predictions.</li>
+<li><strong>Fish aggregation around piles:</strong> no field study measuring fish abundance beneath over-water arrays was found; the OSU/USGS modelling team has called for a real-world installation to test predictions.</li>
+<li><strong>Underwater noise exposure during pile installation:</strong> depends on the method (impact, vibratory or drilled), pile size and bathymetry; set by an acoustic assessment, not this model.</li>
 <li><strong>Guano and coliform loading at Little Dell:</strong> requires site bird counts.</li>
 <li><strong>Mass-grounding event frequency at GSL:</strong> a rare-event process with no rate data; treated as a design constraint.</li>
 <li><strong>Brine fly response to polarised panels:</strong> one relevant mitigation study (mayflies), no brine-fly data.</li>
 </ul>
 <h2>Sources</h2>
 <ul>
+<li><a href="https://www.pv-magazine.com/2025/12/29/china-commissions-worlds-largest-1-gw-open-sea-offshore-solar-project/">China commissions world's largest 1 GW open-sea offshore solar project (HG14, fixed piles), pv magazine</a></li>
+<li><a href="https://electrek.co/2025/12/30/china-brings-the-worlds-first-1-gw-offshore-solar-farm-online/">World's first 1 GW offshore solar farm online, Electrek</a></li>
+<li><a href="https://vietnamagriculture.nongnghiep.vn/a-fishery-in-china-just-deployed-a-giant-70mw-solar-plant-d326661.html">A fishery in China deploys a 70 MW pile-mounted solar plant</a></li>
+<li><a href="https://escholarship.org/content/qt8cj5j07p/qt8cj5j07p.pdf?t=qq63ir">McKuin et al. (2021), Energy and water co-benefits from covering canals with solar panels, Nature Sustainability</a></li>
 <li><a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-11025.html">EGU26-11025: eddy-covariance evaporation measurements over an industrial-scale FPV reservoir</a></li>
-<li><a href="https://www.epj-pv.org/articles/epjpv/pdf/2025/01/pv20240049.pdf">Numerical analysis of evaporation reduction in floating PV, EPJ Photovoltaics (2025)</a></li>
-<li><a href="https://digitalcommons.uri.edu/theses/2738">FPV evaporation reduction, Lake Powell thesis, University of Rhode Island</a></li>
 <li><a href="https://publikationen.bibliothek.kit.edu/1000182956/162166507">Lake Maiwald FPV field measurements, KIT</a></li>
 <li><a href="https://www.frontiersin.org/journals/water/articles/10.3389/frwa.2025.1614008/full">Site-specific relationships between algal biomass and FPV, Frontiers in Water (2025)</a></li>
 <li><a href="https://world-lakes-2025.p.asnevents.com.au/days/2025-07-23/abstract/122128">FPV and phytoplankton in Japanese irrigation ponds, World Lake Conference 2025</a></li>
 <li><a href="https://news.oregonstate.edu/news/floating-solar-panels-show-promise-environmental-impacts-vary-location-study-finds">OSU/USGS (2025), floating solar impacts vary by location</a></li>
-<li><a href="https://www.opb.org/article/2025/11/28/oregon-state-university-study-floating-solar-could-power-millions-with-ecological-trade-offs/">OSU study: floating solar could power millions, but with ecological trade-offs, OPB</a></li>
 <li><a href="https://pubs.usgs.gov/of/1995/0428/report.pdf">Great Salt Lake water budget, USGS Open-File Report 95-428</a></li>
 <li><a href="https://greatsaltlake.utah.gov/wp-content/uploads/GSL-Fact-Sheet.pdf">Great Salt Lake fact sheet, State of Utah</a></li>
 <li><a href="https://www.slc.gov/utilities/conservation/water-conservation-faq/">Water conservation FAQ and supply figures, Salt Lake City Public Utilities</a></li>
 <li><a href="https://www.utah.gov/pmn/files/1444021.pdf">SLCDPU water supply committee summary (2026), Utah Public Notice</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7182256/">Kosciuch et al. (2020), bird mortality at PV facilities, PLOS ONE</a></li>
 <li><a href="https://bioone.org/journals/waterbirds/volume-44/issue-1/063.044.0107/Abundance-Distribution-and-Migration-Patterns-of-North-American-Eared-Grebes/10.1675/063.044.0107.full">Abundance, distribution and migration patterns of North American eared grebes, Waterbirds</a></li>
-<li><a href="https://www.audubon.org/news/dependence-threatened-saline-lakes-leaves-eared-grebes-risk">Dependence on threatened saline lakes leaves eared grebes at risk, Audubon</a></li>
 <li><a href="https://www.southbayrestoration.org/document/coordinated-phalarope-surveys-western-north-american-staging-sites-2019-2020">Coordinated phalarope surveys at western North American staging sites, 2019–2020</a></li>
-<li><a href="https://www.waterboards.ca.gov/waterrights/water_issues/programs/mono_lake/docs/2026/ryan-carle-presentation.pdf">Ryan Carle presentation on phalaropes, California Water Boards (2026)</a></li>
 <li><a href="https://www.npr.org/2011/12/15/143795309/ornithologist-discusses-causes-of-bird-downings">Ornithologist discusses causes of bird downings, NPR (2011)</a></li>
-<li><a href="https://www.startribune.com/mystery-surrounds-crash-landing-of-thousands-of-birds-in-utah/135746003/">Mystery surrounds crash landing of thousands of birds in Utah, Star Tribune</a></li>
 <li><a href="https://arago.elte.hu/sites/default/files/MattSolarPanel_JIC.pdf">Horváth group: polarised light pollution from solar panels, J. Insect Conservation</a></li>
-<li><a href="https://doaj.org/article/71440af2b9ff4fa791a10427f62fd0f4">Fritz et al. (2020), bioreplicated coatings reduce polarised light pollution, PLOS ONE</a></li>
 </ul>
       <p class="doc__nav"><strong>Other documents:</strong> <a href="00-overview.html">Strategy overview</a> · <a href="00-strategy-playbook.html">Strategy playbook</a> · <a href="01-little-dell-summary.html">Little Dell — summary</a> · <a href="01-little-dell-full.html">Little Dell — pre-feasibility site plan</a> · <a href="02-great-salt-lake-summary.html">Great Salt Lake — summary</a> · <a href="02-great-salt-lake-full.html">Great Salt Lake — pre-feasibility site plan</a> · <a href="03-little-dell-ecological-impact.html">Little Dell — ecological impact report</a> · <a href="04-great-salt-lake-ecological-impact.html">Great Salt Lake — ecological impact report</a><br />
       <a href="05-quantitative-ecological-projections.md">View markdown source</a></p>

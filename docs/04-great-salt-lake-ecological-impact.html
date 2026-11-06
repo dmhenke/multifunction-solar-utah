@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -661,12 +717,12 @@
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
 <h1>Great Salt Lake — Ecological Impact Report</h1>
-<p><strong>Scope:</strong> Playa ground-mount Zones P1 (400 ac) and P2 (1,200 ac) above the 4,200 ft contour, plus the 5-acre near-shore FPV research module F1, in the south-shore Gilbert Bay corridor.</p>
+<p><strong>Scope:</strong> Playa ground-mount Zones P1 (400 ac) and P2 (1,200 ac) above the 4,200 ft contour, plus the 5-acre near-shore research module F1 — elevated on piles, rack underside at ≈4,204 ft, nothing resting on the water — in the south-shore Gilbert Bay corridor.</p>
 <p><strong>Companion site plan:</strong> <a href="02-great-salt-lake-full.html">02-great-salt-lake-full</a></p>
 <p><strong>Status:</strong> Screening-level assessment to accompany a Class 5 pre-feasibility plan. Not a NEPA document and not a substitute for agency-led environmental review.</p>
 <hr />
 <h2>Summary</h2>
-<p>Covering no open water at scale removes the shading risk that defeats lake-scale floating PV. That leaves avian interaction — collision, polarised-light attraction, and loss or degradation of open-playa nesting habitat — as the governing ecological question.</p>
+<p>Covering no open water at scale removes the shading risk that defeats a lake-scale over-water array. That leaves avian interaction — collision, polarised-light attraction, and loss or degradation of open-playa nesting habitat — as the governing ecological question.</p>
 <p>The dust co-benefit is real but probably modest at this corridor. University of Utah playa surveys place the principal dust hotspots in Farmington Bay, northern Bear River Bay, the northwest corner and Carrington Bay; the south-shore corridor does not appear among them. The hotspots are also largely below 4,198 ft or in the highest-value bird habitat, so relocating to chase dust benefit would trade against the lake-recovery principle and the flyway.</p>
 <p><strong>Verdict:</strong> Acceptable for Phase 1 (P1 + F1) only as a pre-registered study of avian effects. Phase 2 (P2) must remain formally contingent on that result.</p>
 <hr />
@@ -712,7 +768,7 @@
 <td>Water</td>
 <td>F1 evaporation saving</td>
 <td>Beneficial</td>
-<td>Negligible (≈9 af/yr)</td>
+<td>Negligible (≈6 af/yr)</td>
 <td>High</td>
 <td>Present as research only</td>
 </tr>
@@ -722,7 +778,7 @@
 <td>Adverse</td>
 <td>Negligible at lake scale</td>
 <td>Moderate</td>
-<td>5-acre cap; removal bond</td>
+<td>5-acre cap; removal at 4,198 ft; bond</td>
 </tr>
 <tr>
 <td>Water</td>
@@ -845,15 +901,15 @@
 <hr />
 <h2>2. Water</h2>
 <p><strong>Baseline.</strong> Lake at ≈4,191.6 ft, 6.4 ft below the 4,198 ft healthy target. Fringe springs and groundwater-dependent wetlands along the south shore. Hypersaline brine in Gilbert Bay.</p>
-<p><strong>Mechanism.</strong> P1 and P2 cover no water and sit above the Lake Recovery Reserve. F1 is the only structure on water. Effects therefore operate mainly through runoff, groundwater and the small F1 footprint.</p>
+<p><strong>Mechanism.</strong> P1 and P2 cover no water and sit above the Lake Recovery Reserve. F1 is the only structure over water, and it stands on piles above the surface. Effects therefore operate mainly through runoff, groundwater and the small F1 footprint.</p>
 <p><strong>Expected effects</strong></p>
 <ul>
 <li>Lake volume and recovery: not impeded — the reserve between current stage and 4,200 ft keeps all recoverable surface free of structures (neutral, high confidence).</li>
-<li>F1 evaporation saving ≈9 (4.5–14) acre-ft/yr, roughly 0.0004% of lake evaporation (beneficial, negligible).</li>
+<li>F1 evaporation saving ≈5.6 (2.5–9.7) acre-ft/yr, roughly 0.0002% of lake evaporation (beneficial, negligible).</li>
 <li>F1 shading reduces light to brine phytoplankton beneath 5 acres (adverse, negligible at lake scale).</li>
 <li>Runoff concentrates at panel drip lines, causing rill erosion and local salt redistribution on the playa (adverse, low).</li>
 <li>Panel washing with fresh water would add a consumptive demand in a water-scarce basin (adverse if permitted; avoidable).</li>
-<li>Corrosion products from F1 hardware enter brine locally (adverse, negligible; quantified by the coupon programme).</li>
+<li>Corrosion products from F1 piles and hardware enter brine locally (adverse, negligible; quantified by the coupon programme).</li>
 </ul>
 <p><strong>Mitigation.</strong> No freshwater panel washing — dry or robotic cleaning only. Drip-line erosion control with gravel strips. 300 ft buffers on springs and wetlands. Cable crossings of the reserve by directional bore only.</p>
 <p><strong>Monitoring.</strong> Spring discharge and conductivity at the wetland complex; erosion pins at drip lines; brine chemistry, PAR and chlorophyll-a at F1 versus control.</p>
@@ -869,7 +925,7 @@
 <li>Shade and drip-line moisture beneath panels may allow vegetation to establish. Native halophytes would aid dust control; Phragmites or other invasives would not (mixed).</li>
 <li>F1 reduces light to phytoplankton and any microbialites beneath it (adverse, negligible at lake scale).</li>
 </ul>
-<p><strong>Mitigation.</strong> Avoid vegetated margins in final layout. Active invasive-species management under arrays, with Phragmites control as an explicit operations obligation. Trial native halophyte establishment under a subset of panels as a dust-control experiment.</p>
+<p><strong>Mitigation.</strong> Avoid vegetated margins in final layout, and site F1 piles clear of microbialite structures. Active invasive-species management under arrays, with Phragmites control as an explicit operations obligation. Trial native halophyte establishment under a subset of panels as a dust-control experiment.</p>
 <p><strong>Monitoring.</strong> Annual vegetation cover and species composition under array versus control; crust integrity by repeat photogrammetry; benthic survey beneath F1.</p>
 <hr />
 <h2>4. Fauna</h2>

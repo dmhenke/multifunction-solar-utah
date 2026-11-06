@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -661,14 +717,14 @@
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
 <h1>Little Dell Reservoir — Ecological Impact Report</h1>
-<p><strong>Scope:</strong> Floating PV: Zone A demonstration (12.45 ac, 5.0% coverage) and full build-out (62.45 ac, 25.1% coverage) on a culinary-supply reservoir in the Parleys Canyon Protected Watershed.</p>
+<p><strong>Scope:</strong> Elevated, pile-mounted over-water PV — modules on racks several feet above the water, nothing resting on it: Zone A demonstration (12.45 ac, 5.0% coverage) and full build-out (62.45 ac, 25.1% coverage) on a culinary-supply reservoir in the Parleys Canyon Protected Watershed.</p>
 <p><strong>Companion site plan:</strong> <a href="01-little-dell-full.html">01-little-dell-full</a></p>
 <p><strong>Status:</strong> Screening-level assessment to accompany a Class 5 pre-feasibility plan. Not a NEPA document and not a substitute for agency-led environmental review.</p>
 <hr />
 <h2>Summary</h2>
-<p>At demonstration scale (Zone A, 5% coverage) ecological effects are local, measurable and reversible by removal. At full build-out (25% coverage) two effects become material: reduced dissolved oxygen beneath the array, and bird perching with guano deposition into a culinary source.</p>
-<p>The single largest ecological hazard at this site is not the array itself. It is the introduction of invasive quagga or zebra mussels on construction barges, floats and anchors brought in from other waters. That risk is fully preventable and must be treated as a hard gate.</p>
-<p><strong>Verdict:</strong> Acceptable at demonstration scale with the mitigations below. Build-out beyond Zone A should be contingent on the Zone A dissolved-oxygen and guano monitoring record.</p>
+<p>At demonstration scale (Zone A, 5% coverage) ecological effects are local, measurable and reversible by removal. Because the array is elevated, the water surface stays open to the air, so the oxygen penalty is roughly a third of what a floating array would cause. At full build-out (25% coverage) the effects that become material are bird perching with guano deposition into a culinary source, and the disturbance of installing up to a few thousand piles — sediment resuspension and underwater noise.</p>
+<p>The single largest ecological hazard at this site is not the array itself. It is the introduction of invasive quagga or zebra mussels on construction barges, piles and equipment brought in from other waters. That risk is fully preventable and must be treated as a hard gate.</p>
+<p><strong>Verdict:</strong> Acceptable at demonstration scale with the mitigations below. Build-out beyond Zone A should be contingent on the Zone A guano, oxygen and pile-installation monitoring records — and on bathymetry showing enough water ≲ 40 ft deep to site piles.</p>
 <hr />
 <h2>Impact matrix</h2>
 <p>Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are qualitative screening judgements.</p>
@@ -686,26 +742,26 @@
 <tbody>
 <tr>
 <td>Wind</td>
-<td>Near-surface wind speed over array</td>
+<td>Near-surface wind speed beneath canopy</td>
 <td>Mixed</td>
-<td>Low (A) / Moderate (full)</td>
-<td>Moderate</td>
-<td>Coverage cap; preserve open-water fetch</td>
+<td>Low</td>
+<td>Low</td>
+<td>Open-sided racks; coverage cap; preserve fetch</td>
 </tr>
 <tr>
 <td>Wind</td>
-<td>Shoreline wave erosion</td>
-<td>Beneficial</td>
+<td>Wave action and scour at piles</td>
+<td>Neutral</td>
 <td>Negligible</td>
 <td>Moderate</td>
-<td>None needed</td>
+<td>Scour survey at pile bases</td>
 </tr>
 <tr>
 <td>Water</td>
 <td>Evaporation</td>
 <td>Beneficial</td>
-<td>Low (≈22 → ≈111 af/yr)</td>
-<td>Moderate</td>
+<td>Low (≈14 → ≈71 af/yr)</td>
+<td>Low</td>
 <td>Measure; do not oversell</td>
 </tr>
 <tr>
@@ -720,8 +776,8 @@
 <td>Water</td>
 <td>Dissolved oxygen beneath array</td>
 <td>Adverse</td>
-<td>Low–Moderate</td>
-<td>Moderate</td>
+<td>Low (surface stays open)</td>
+<td>Low</td>
 <td>DO trigger; aeration contingency</td>
 </tr>
 <tr>
@@ -742,11 +798,11 @@
 </tr>
 <tr>
 <td>Water</td>
-<td>Construction turbidity</td>
+<td>Pile installation turbidity</td>
 <td>Adverse</td>
-<td>Low, short-term</td>
+<td>Low–Moderate, short-term</td>
 <td>High</td>
-<td>Silt curtains; seasonal timing</td>
+<td>Drilled/vibratory piles; silt curtains</td>
 </tr>
 <tr>
 <td>Flora</td>
@@ -759,10 +815,10 @@
 <tr>
 <td>Flora</td>
 <td>Littoral macrophytes</td>
-<td>Neutral</td>
-<td>Negligible</td>
-<td>High</td>
-<td>Littoral exclusion at minimum pool</td>
+<td>Adverse</td>
+<td>Low–Moderate</td>
+<td>Moderate</td>
+<td>Avoid dense beds; wider row spacing</td>
 </tr>
 <tr>
 <td>Flora</td>
@@ -792,9 +848,17 @@
 <td>Fauna</td>
 <td>Cutthroat oxygen habitat</td>
 <td>Adverse</td>
-<td>Low–Moderate</td>
+<td>Low</td>
 <td>Low</td>
 <td>DO trigger; array reduction</td>
+</tr>
+<tr>
+<td>Fauna</td>
+<td>Pile-installation noise</td>
+<td>Adverse</td>
+<td>Moderate, short-term</td>
+<td>Moderate</td>
+<td>Drilled/vibratory install; bubble curtains; timing</td>
 </tr>
 <tr>
 <td>Fauna</td>
@@ -825,59 +889,60 @@
 <hr />
 <h2>1. Wind</h2>
 <p><strong>Baseline.</strong> Canyon setting with wind channelled along the Dell Creek / Parleys axis. Short fetch (reservoir ≈1.3 mi long), so wind-driven waves are small but wind remains the main driver of surface mixing and reaeration.</p>
-<p><strong>Mechanism.</strong> A floating array shelters the water surface. Field measurements at Lake Maiwald (Germany) recorded an average 23% reduction in near-surface wind speed at module height and a 73% reduction in irradiance reaching the water beneath the array.</p>
+<p><strong>Mechanism.</strong> An elevated array shades the water but leaves a gap of several feet beneath the modules through which wind still moves. Sheltering is therefore weaker than under a floating array, where Lake Maiwald (Germany) field measurements recorded a 23% reduction in near-surface wind speed; treat that as an upper bound here.</p>
 <p><strong>Expected effects</strong></p>
 <ul>
-<li>Lower wind shear at the surface reduces evaporation beneath and immediately downwind of the array (beneficial).</li>
-<li>The same sheltering reduces wind-driven mixing and surface reaeration, which is the mechanism behind lower dissolved oxygen under panels (adverse; see Water).</li>
-<li>Reduced wave action on the adjacent shoreline marginally lowers shoreline erosion (minor, beneficial).</li>
+<li>Shading, more than wind sheltering, reduces evaporation beneath the array (beneficial, smaller than under a floating cover).</li>
+<li>Wind-driven mixing and surface reaeration are largely preserved because the surface stays open — the main reason the oxygen penalty is much smaller than for a floating array (see Water).</li>
+<li>Wave action is little changed; water flowing past the piles causes local scour around their bases (minor).</li>
 </ul>
-<p><strong>Mitigation.</strong> Cap coverage at 25%. Orient array long axes parallel to the prevailing wind so open-water fetch is preserved between blocks. Maintain open-water gaps between Zones A, B and C rather than consolidating into one block.</p>
+<p><strong>Mitigation.</strong> Keep racks open-sided, with no skirts, so air moves beneath the modules. Cap coverage at 25%. Orient array long axes parallel to the prevailing wind so open-water fetch is preserved between blocks. Maintain open-water gaps between Zones A, B and C rather than consolidating into one block.</p>
 <p><strong>Monitoring.</strong> Paired anemometers on the array and at control station C1; eddy-covariance mast for evaporation and momentum flux.</p>
 <hr />
 <h2>2. Water</h2>
 <p><strong>Baseline.</strong> Deep, cold reservoir (mean depth 82 ft, maximum ≈200 ft) expected to stratify thermally in summer — confirm against SLCDPU temperature-profile records. Culinary source with treatment downstream.</p>
-<p><strong>Mechanism.</strong> Shading and wind sheltering act on stratification in opposite directions: reduced irradiance weakens it, reduced wind mixing stabilises it. The net effect is site-specific and coverage-dependent; modelling at Windermere suggests destabilisation becomes likely above roughly 45% coverage, well above the 25% cap here.</p>
+<p><strong>Mechanism.</strong> Under an elevated array shading dominates and wind sheltering is weak. Shading and wind sheltering act on stratification in opposite directions: reduced irradiance weakens it, reduced wind mixing stabilises it. The net effect is site-specific and coverage-dependent; modelling at Windermere suggests destabilisation becomes likely above roughly 45% coverage, well above the 25% cap here.</p>
 <p><strong>Expected effects</strong></p>
 <ul>
-<li>Evaporation: ≈22 (11–36) acre-ft/yr saved under Zone A, ≈111 (56–180) acre-ft/yr at full build-out, 95% uncertainty intervals (beneficial but small — ≈0.13% of SLCDPU's annual delivery).</li>
-<li>Dissolved oxygen: field studies report DO 1.1–1.7 mg/L lower beneath FPV, with more frequent hypoxia. If bottom water goes anoxic, sediment can release manganese and iron, creating taste, odour and treatment burdens at the intake (adverse).</li>
+<li>Evaporation: ≈14 (6–24) acre-ft/yr saved under Zone A, ≈71 (31–122) acre-ft/yr at full build-out, 95% uncertainty intervals (beneficial but small — ≈0.08% of SLCDPU's annual delivery). Less than a floating cover would save, because wind passes beneath the canopy.</li>
+<li>Dissolved oxygen: floating arrays measure 1.1–1.7 mg/L lower beneath the panels. With the surface open to air, the projected deficit beneath an elevated array is about 0.4 (0.1–0.9) mg/L, from reduced photosynthesis in the shade rather than lost reaeration. Anoxic bottom water would still release manganese and iron at the intake, so the trigger stays (adverse, low).</li>
 <li>Algal production: reduced light under the array suppresses phytoplankton, including bloom-forming cyanobacteria, and may lower disinfection-byproduct precursor loading (beneficial; magnitude unconfirmed).</li>
-<li>Leachates: negligible if the culinary-source materials protocol is followed (glass–glass modules, NSF/ANSI 61 floats, 316 stainless, no antifouling, power electronics onshore).</li>
-<li>Construction turbidity at the shore landing and anchor placement (adverse, short-term).</li>
+<li>Leachates: negligible if the culinary-source materials protocol is followed (glass–glass modules, precast concrete or stainless/duplex piles with no zinc or coal-tar coatings, 316 stainless racks, power electronics onshore). Only the piles touch the water.</li>
+<li>Pile installation resuspends bed sediment and can mobilise nutrients and metals near the intake (adverse, short-term).</li>
 </ul>
-<p><strong>Mitigation.</strong> Site arrays over deep water away from the intake. Set a pre-agreed hypolimnetic DO trigger (e.g. sustained values below a level agreed with SLCDPU and Utah DWR) that requires aeration or array reduction. Silt curtains during anchor placement. Enforce the materials protocol in full.</p>
+<p><strong>Mitigation.</strong> Site arrays away from the intake, in water shallow enough for piles (≲ 40 ft). Set a pre-agreed hypolimnetic DO trigger (e.g. sustained values below a level agreed with SLCDPU and Utah DWR) that requires aeration or array reduction. Drilled or vibratory pile installation inside silt curtains, or from the exposed bed at drawdown. Enforce the materials protocol in full.</p>
 <p><strong>Monitoring.</strong> Thermistor chains and multi-depth DO sondes at T1, T2 and C1; manganese and iron at the raw-water intake; TOC, DOC, UV254 and SUVA monthly; trace metals quarterly; 12-month pre-installation baseline.</p>
 <hr />
 <h2>3. Flora</h2>
 <p><strong>Baseline.</strong> Phytoplankton community; littoral macrophytes on the shallow shelf; riparian willow and cottonwood along Dell Creek; mixed Wasatch foothill slopes (Gambel oak, bigtooth maple, sagebrush — confirm by survey). Noxious weeds such as yellow starthistle are under active management in Salt Lake County.</p>
-<p><strong>Mechanism.</strong> Light reduction beneath the array; physical disturbance limited to the shore transition vault, cable landing and onshore compound.</p>
+<p><strong>Mechanism.</strong> Light reduction beneath the array — smaller than under a floating cover, because diffuse and side light reach the water; pile installation in the bed; physical disturbance at the shore transition vault, cable landing and onshore compound.</p>
 <p><strong>Expected effects</strong></p>
 <ul>
 <li>Phytoplankton biomass reduced beneath the array — fewer blooms, but also a smaller primary-production base for the food web (mixed).</li>
-<li>Littoral macrophytes unaffected because the littoral shelf is excluded from the layout at minimum pool (neutral).</li>
+<li>Littoral macrophytes may be shaded, because the pile-depth limit pushes arrays toward the shallower margins (adverse, low–moderate).</li>
 <li>Small, permanent loss of riparian or upland vegetation at the onshore compound and cable landing (adverse, low).</li>
 <li>Construction traffic and fill can spread noxious weeds into a protected watershed (adverse, preventable).</li>
-<li>Periphyton colonising float undersides adds attached-algal habitat but also fouling load (mixed).</li>
+<li>Periphyton colonises the submerged pile surfaces, adding a little attached-algal habitat (mixed, small).</li>
 </ul>
-<p><strong>Mitigation.</strong> Place onshore works on the existing disturbed day-use pad. Weed-free certification for all equipment, fill and erosion-control materials. Revegetate disturbed ground with a native seed mix approved by SLCDPU watershed staff.</p>
+<p><strong>Mitigation.</strong> Map macrophyte beds with Utah DWR before siting; keep piles and canopy off dense beds and widen row spacing over the shelf. Place onshore works on the existing disturbed day-use pad. Weed-free certification for all equipment, fill and erosion-control materials. Revegetate disturbed ground with a native seed mix approved by SLCDPU watershed staff.</p>
 <p><strong>Monitoring.</strong> Pre- and post-construction vegetation transects at the landing and compound; chlorophyll-a and phycocyanin under array vs control; annual weed survey for three years.</p>
 <hr />
 <h2>4. Fauna</h2>
 <p><strong>Baseline.</strong> Bonneville cutthroat trout brood stock of statewide significance (catch-and-release), plus brook and brown trout; waterfowl and gulls using open water; big game (moose, elk, mule deer) typical of Wasatch canyon watersheds — confirm with Utah DWR.</p>
-<p><strong>Mechanism.</strong> Thermal and oxygen changes in the water column; new floating structure above and below the surface; construction disturbance.</p>
+<p><strong>Mechanism.</strong> Thermal and oxygen changes in the water column; piles as new submerged structure, with a canopy several feet above the water; pile-installation noise; construction disturbance.</p>
 <p><strong>Expected effects</strong></p>
 <ul>
 <li>Cutthroat thermal habitat: surface cooling under panels generally favours cold-water species, an effect the OSU/USGS multi-reservoir study found most pronounced above 50% coverage (beneficial, small at ≤25%).</li>
-<li>Cutthroat oxygen habitat: lower DO beneath the array can compress usable cold-water habitat in late summer (adverse; the key fisheries uncertainty).</li>
-<li>Float undersides act as cover and attract fish, which can also concentrate predation (mixed).</li>
-<li>Gulls, cormorants and waterfowl will perch on array edges. Guano adds nutrients and faecal indicator bacteria to a culinary source and soils modules (adverse, the most underrated issue at this site).</li>
-<li>Some displacement of waterfowl from covered open water (adverse, low).</li>
+<li>Cutthroat oxygen habitat: a small DO deficit beneath the array; with the surface open to air it is far less likely to compress cold-water habitat than under a floating array (adverse, low).</li>
+<li>Piles act as hard substrate and cover and attract fish, which can also concentrate predation (mixed).</li>
+<li>Pile installation — impact driving especially — produces underwater noise that can injure or displace fish (adverse, short-term).</li>
+<li>Gulls and cormorants will perch on rack edges several feet above the water, so guano — nutrients and faecal indicator bacteria — falls straight into a culinary source and soils modules (adverse, the most underrated issue at this site).</li>
+<li>Waterfowl can still reach the water beneath the canopy, though some will avoid it (adverse, low).</li>
 <li>Quagga/zebra mussel introduction on equipment from infested waters would be severe and effectively irreversible (adverse, potentially high).</li>
 <li>Big-game disturbance limited to the construction window (low).</li>
 </ul>
-<p><strong>Mitigation.</strong> Mandatory Utah DWR aquatic-invasive-species decontamination and inspection for every barge, float, anchor and tool entering the reservoir, with documented chain of custody. Bird-deterrent wire or spikes on array perimeters. Construction timed outside cutthroat spawning and waterfowl nesting windows. Co-design the telemetry study with Utah DWR.</p>
-<p><strong>Monitoring.</strong> Acoustic telemetry of tagged cutthroat; E. coli and total coliform at T1, T2, C1 and the intake; perching-bird counts and camera traps; veliger sampling for invasive mussels before and after construction.</p>
+<p><strong>Mitigation.</strong> Mandatory Utah DWR aquatic-invasive-species decontamination and inspection for every barge, pile, rack component and tool entering the reservoir, with documented chain of custody. Bird-deterrent wire or spikes on array perimeters. Construction timed outside cutthroat spawning and waterfowl nesting windows; drilled or vibratory pile installation, with bubble curtains wherever impact driving is unavoidable. Co-design the telemetry study with Utah DWR.</p>
+<p><strong>Monitoring.</strong> Acoustic telemetry of tagged cutthroat; E. coli and total coliform at T1, T2, C1 and the intake; perching-bird counts and camera traps; veliger sampling for invasive mussels before and after construction; hydrophone monitoring during pile installation.</p>
 <hr />
 <h2>Data gaps</h2>
 <ol>
@@ -886,6 +951,7 @@
 <li>Baseline waterbird use counts across seasons.</li>
 <li>Riparian and upland vegetation survey at the proposed landing and compound.</li>
 <li>Veliger baseline sampling to confirm the reservoir is currently mussel-free.</li>
+<li>Bathymetry and bed geotechnics, which decide where piles are feasible at all.</li>
 </ol>
 <h2>Sources</h2>
 <ul>

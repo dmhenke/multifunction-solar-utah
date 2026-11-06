@@ -10,13 +10,13 @@
 
 ## 1. The Finding That Shapes This Entire Document
 
-**Large-scale floating photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.**
+**Large-scale over-water photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.**
 
-Four independent constraints each individually defeat it:
+Any over-water element in this plan is mounted on racks several feet above the water, on piles fixed in the lakebed — nothing rests on the water. The lake's shallowness suits piles (the 1 GW HG14 array in Shandong stands in 1–4 m of water), but four constraints still defeat a large open-water array:
 
-1. **Hydrodynamics.** The lake is extremely shallow with an enormous wind fetch. At the current south-arm stage of ≈4,191.6 ft, much of Gilbert Bay is a few metres deep. Large-array mooring in a shallow, high-fetch, soft-bedded basin subject to wind-driven seiche is not a solved engineering problem at scale.
+1. **Lake-level range.** The lake has ranged from 4,188 ft (2022) to about 4,212 ft (mid-1980s). Racks must clear the highest design stage, and every pile would sit in the Lake Recovery Reserve.
 
-2. **Materials.** Corrosion of steel in this class of brine can exceed 0.6 mm/yr. There is no multi-year FPV operating record anywhere in the world in comparable hypersaline service. Design life and O&M cost are therefore unknown, not merely uncertain.
+2. **Materials.** Corrosion of steel in this class of brine can exceed 0.6 mm/yr. There is no multi-year over-water PV operating record anywhere in the world in comparable hypersaline service. Design life and O&M cost are therefore unknown, not merely uncertain.
 
 3. **Ecology.** Shading reduces photosynthetically active radiation reaching the phytoplankton and microbialite communities that support brine shrimp and brine flies — the food base for roughly 12 million birds annually. The magnitude of that effect at scale is unquantified.
 
@@ -26,10 +26,10 @@ Four independent constraints each individually defeat it:
 
 ## 2. Recommended Strategy: Tiered Site Assessment
 
-Rather than open-water FPV, this plan proposes:
+Rather than an open-water array, this plan proposes:
 
 - **Playa ground-mount array above the 4,200 ft contour** as the primary generation asset (400 ac Phase 1 → 1,600 ac full build-out; 100–402 MW_dc)
-- **Small paired near-shore FPV research module** (5 ac, 2 MW_dc) to answer brine-service and ecological questions at research scale
+- **Small paired near-shore research module F1** (5 ac, 2 MW_dc), elevated on piles with the rack underside at ≈4,204 ft (above the 4,200 ft limit), to answer brine-service and ecological questions at research scale; removed if the lake reaches 4,198 ft or after 5 years
 
 **Key governance principle:** No infrastructure sited below the 4,200 ft contour (lake recovery reserve). No lessee may acquire an economic interest opposed to raising the lake. Full removal bond required.
 
@@ -41,7 +41,7 @@ Rather than open-water FPV, this plan proposes:
 |---|---|---|---|---|---|
 | P1 | Playa ground-mount | 1 | 400 | 100 | ≈185,000 |
 | P2 | Playa ground-mount | 2 | 1,200 | 300 | ≈555,000 |
-| F1 | Near-shore FPV research | 1 | 5 | 2 | ≈3,300 |
+| F1 | Near-shore elevated PV research (pile-mounted) | 1 | 5 | 2 | ≈3,300 |
 | **Total** | | | **1,605** | **402** | **≈743,300** |
 
 Full build-out equals roughly **82,600 Utah households** annually.
@@ -50,7 +50,7 @@ Full build-out equals roughly **82,600 Utah households** annually.
 
 ## 4. The Water Story — Read This First
 
-F1 suppresses ≈9 acre-feet/year (95% UI 4.5–14) of evaporation. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0004% of lake evaporation. **F1 is an experiment, not a water-conservation measure.** Do not oversell the water benefit.
+F1 suppresses ≈5.6 acre-feet/year (95% UI 2.5–9.7) of evaporation — less than a floating cover would, because wind passes beneath an elevated canopy. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0002% of lake evaporation. **F1 is an experiment, not a water-conservation measure.** Do not oversell the water benefit.
 
 ---
 

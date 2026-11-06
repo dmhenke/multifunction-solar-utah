@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -660,9 +716,12 @@
     </nav>
     <main class="doc">
       <a class="doc__back" href="../index.html">&larr; Back to the site</a>
-<h1>Little Dell Reservoir — Floating PV Pre-Feasibility Site Plan</h1>
+<h1>Little Dell Reservoir — Elevated Over-Water PV Pre-Feasibility Site Plan</h1>
 <p><strong>Site:</strong> Parleys Canyon, Salt Lake County, Utah
 <strong>Owner:</strong> Salt Lake City Department of Public Utilities (SLCDPU)</p>
+<blockquote>
+<p><strong>Design basis:</strong> modules are mounted on racks several feet above the water, carried on piles fixed in the reservoir bed. Nothing rests on the water surface.</p>
+</blockquote>
 <hr />
 <h2>Key Parameters</h2>
 <table>
@@ -683,7 +742,7 @@
 </tr>
 <tr>
 <td>Mean depth</td>
-<td>82 ft</td>
+<td>82 ft (maximum ≈200 ft)</td>
 </tr>
 <tr>
 <td>Purpose</td>
@@ -746,36 +805,40 @@
 <hr />
 <h2>Design Basis</h2>
 <ul>
-<li><strong>Power density:</strong> 0.40 MW_dc/acre</li>
-<li><strong>Specific yield:</strong> 1,650 MWh/MW_dc·yr</li>
-<li><strong>Evaporation suppression:</strong> ≈55% under array (field measurement: 44%) → ≈111 af/yr full build-out (95% UI 56–180)</li>
+<li><strong>Structure:</strong> fixed racks, underside ≥ 6 ft above the maximum design water surface (top of flood-control pool plus surcharge, wave run-up and ice), on driven or drilled piles</li>
+<li><strong>Piles:</strong> ≈310 [110, 650] for Zone A; ≈1,550 [540, 3,250] at full build-out (95% uncertainty intervals, span-dependent)</li>
+<li><strong>Power density:</strong> 0.40 MW_dc/acre · <strong>Specific yield:</strong> 1,650 MWh/MW_dc·yr</li>
+<li><strong>Evaporation suppression:</strong> ≈40% beneath the elevated canopy (wind still passes underneath) → ≈71 af/yr full build-out (95% UI 31–122)</li>
 </ul>
-<p><strong>Important:</strong> ≈111 af/yr is ≈0.13% of SLCDPU's annual water delivery. <strong>Do not sell as water conservation.</strong> Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.</p>
+<p><strong>Important:</strong> ≈71 af/yr is ≈0.08% of SLCDPU's annual water delivery. <strong>Do not sell as water conservation.</strong> Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.</p>
+<hr />
+<h2>The Depth Constraint</h2>
+<p>Large pile-mounted over-water arrays stand in shallow water — the 1 GW HG14 array in Shandong uses fixed piles in 1–4 m (≈3–13 ft). Little Dell averages 82 ft deep. Arrays are therefore limited, as a planning assumption, to areas with full-pool depth ≲ 40 ft: the upper basin and perimeter shelf. Deep-basin siting would need 120–250+ ft piles and is not recommended. <strong>A bathymetric survey decides whether a demonstration can be sited here at all.</strong></p>
 <hr />
 <h2>Critical Constraints</h2>
 <ol>
 <li>
-<p><strong>Culinary source.</strong> Glass-glass modules only (no polymer backsheets); 316 stainless fasteners; no antifouling or galvanized materials on water; all power electronics onshore; DC only over water.</p>
+<p><strong>Culinary source.</strong> Glass–glass modules only (no polymer backsheets); 316 stainless or anodized-aluminium racks; precast concrete or stainless/duplex piles — no zinc galvanizing, coal-tar or biocidal coatings below water; all power electronics onshore.</p>
 </li>
 <li>
-<p><strong>Winter ice.</strong> Sheet-ice formation and movement at this elevation (≈5,790 ft) is an unresolved mooring risk.</p>
+<p><strong>Winter ice.</strong> Elevation keeps ice off the modules, but piles must resist sheet-ice thrust and ice-jacking (uplift as frozen-in ice rises with the stage).</p>
 </li>
 <li>
-<p><strong>Seasonal drawdown.</strong> Mooring must accommodate full stage range without grounding array on littoral shelf.</p>
+<p><strong>Water depth.</strong> Pile feasibility limits arrays to ≲ 40 ft full-pool depth pending bathymetry and geotechnical work.</p>
 </li>
 <li>
-<p><strong>Bonneville cutthroat brood stock.</strong> Statewide significance; littoral and tributary zones excluded; acoustic telemetry monitoring required.</p>
+<p><strong>Bonneville cutthroat brood stock.</strong> Statewide significance. No piles or canopy over spawning areas or dense macrophyte beds; drilled or vibratory pile installation outside spawning windows; acoustic telemetry monitoring.</p>
 </li>
 <li>
-<p><strong>Removability is a requirement.</strong> Not a feature. Decommissioning bond and pre-agreed removal triggers.</p>
+<p><strong>Removability is a requirement.</strong> Not a feature. Decommissioning bond, pile extraction or cut-off at the bed, and pre-agreed removal triggers.</p>
 </li>
 </ol>
 <hr />
 <h2>Strategy</h2>
 <p><strong>Phase 4 site in the overall plan.</strong> Little Dell is deliberately <em>not</em> a first mover. The culinary-source framing that makes it attractive is the same framing that makes SLCDPU maximally risk-averse.</p>
 <p><strong>Optimal approach:</strong>
-1. Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant basins, backwash ponds, reclaimed-water storage)
-2. Return to Little Dell in 3 years with SLCDPU's own operating data
+1. Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant basins, backwash ponds, reclaimed-water storage) — shallow, engineered basins that suit pile-mounted racks
+2. Return to Little Dell in 3 years with SLCDPU's own operating data and a bathymetric survey
 3. Converts hardest conversation into easiest one</p>
 <hr />
 <p><em>Class 5 pre-feasibility. Not for construction. Geometry schematic pending survey.</em></p>

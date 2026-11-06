@@ -1,7 +1,9 @@
-# Little Dell Reservoir — Floating PV Pre-Feasibility Site Plan
+# Little Dell Reservoir — Elevated Over-Water PV Pre-Feasibility Site Plan
 
 **Site:** Parleys Canyon, Salt Lake County, Utah
 **Owner:** Salt Lake City Department of Public Utilities (SLCDPU)
+
+> **Design basis:** modules are mounted on racks several feet above the water, carried on piles fixed in the reservoir bed. Nothing rests on the water surface.
 
 ---
 
@@ -11,7 +13,7 @@
 |---|---|
 | Storage capacity | 20,500 acre-feet |
 | Full-pool surface area | ≈249 acres |
-| Mean depth | 82 ft |
+| Mean depth | 82 ft (maximum ≈200 ft) |
 | Purpose | Culinary water supply, flood control, wildlife enhancement |
 | Watershed status | Parleys Canyon Protected Watershed; ≈25% of service-area supply |
 
@@ -30,25 +32,32 @@
 
 ## Design Basis
 
-- **Power density:** 0.40 MW_dc/acre
-- **Specific yield:** 1,650 MWh/MW_dc·yr
-- **Evaporation suppression:** ≈55% under array (field measurement: 44%) → ≈111 af/yr full build-out (95% UI 56–180)
+- **Structure:** fixed racks, underside ≥ 6 ft above the maximum design water surface (top of flood-control pool plus surcharge, wave run-up and ice), on driven or drilled piles
+- **Piles:** ≈310 [110, 650] for Zone A; ≈1,550 [540, 3,250] at full build-out (95% uncertainty intervals, span-dependent)
+- **Power density:** 0.40 MW_dc/acre · **Specific yield:** 1,650 MWh/MW_dc·yr
+- **Evaporation suppression:** ≈40% beneath the elevated canopy (wind still passes underneath) → ≈71 af/yr full build-out (95% UI 31–122)
 
-**Important:** ≈111 af/yr is ≈0.13% of SLCDPU's annual water delivery. **Do not sell as water conservation.** Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.
+**Important:** ≈71 af/yr is ≈0.08% of SLCDPU's annual water delivery. **Do not sell as water conservation.** Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.
+
+---
+
+## The Depth Constraint
+
+Large pile-mounted over-water arrays stand in shallow water — the 1 GW HG14 array in Shandong uses fixed piles in 1–4 m (≈3–13 ft). Little Dell averages 82 ft deep. Arrays are therefore limited, as a planning assumption, to areas with full-pool depth ≲ 40 ft: the upper basin and perimeter shelf. Deep-basin siting would need 120–250+ ft piles and is not recommended. **A bathymetric survey decides whether a demonstration can be sited here at all.**
 
 ---
 
 ## Critical Constraints
 
-1. **Culinary source.** Glass-glass modules only (no polymer backsheets); 316 stainless fasteners; no antifouling or galvanized materials on water; all power electronics onshore; DC only over water.
+1. **Culinary source.** Glass–glass modules only (no polymer backsheets); 316 stainless or anodized-aluminium racks; precast concrete or stainless/duplex piles — no zinc galvanizing, coal-tar or biocidal coatings below water; all power electronics onshore.
 
-2. **Winter ice.** Sheet-ice formation and movement at this elevation (≈5,790 ft) is an unresolved mooring risk.
+2. **Winter ice.** Elevation keeps ice off the modules, but piles must resist sheet-ice thrust and ice-jacking (uplift as frozen-in ice rises with the stage).
 
-3. **Seasonal drawdown.** Mooring must accommodate full stage range without grounding array on littoral shelf.
+3. **Water depth.** Pile feasibility limits arrays to ≲ 40 ft full-pool depth pending bathymetry and geotechnical work.
 
-4. **Bonneville cutthroat brood stock.** Statewide significance; littoral and tributary zones excluded; acoustic telemetry monitoring required.
+4. **Bonneville cutthroat brood stock.** Statewide significance. No piles or canopy over spawning areas or dense macrophyte beds; drilled or vibratory pile installation outside spawning windows; acoustic telemetry monitoring.
 
-5. **Removability is a requirement.** Not a feature. Decommissioning bond and pre-agreed removal triggers.
+5. **Removability is a requirement.** Not a feature. Decommissioning bond, pile extraction or cut-off at the bed, and pre-agreed removal triggers.
 
 ---
 
@@ -57,8 +66,8 @@
 **Phase 4 site in the overall plan.** Little Dell is deliberately *not* a first mover. The culinary-source framing that makes it attractive is the same framing that makes SLCDPU maximally risk-averse.
 
 **Optimal approach:**
-1. Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant basins, backwash ponds, reclaimed-water storage)
-2. Return to Little Dell in 3 years with SLCDPU's own operating data
+1. Demonstrate on SLCDPU's own non-culinary surfaces first (treatment plant basins, backwash ponds, reclaimed-water storage) — shallow, engineered basins that suit pile-mounted racks
+2. Return to Little Dell in 3 years with SLCDPU's own operating data and a bathymetric survey
 3. Converts hardest conversation into easiest one
 
 ---

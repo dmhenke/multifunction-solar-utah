@@ -1,5 +1,7 @@
 ## =============================================================================
 ## Monte Carlo ecological projections — Little Dell Reservoir & Great Salt Lake
+## Design basis: ELEVATED, PILE-MOUNTED over-water PV — modules on racks several feet above the
+## water, carried on piles fixed in the bed. Nothing rests on the water surface.
 ## Base R only. Reproduces analysis/ecological_projections_results.csv within
 ## Monte Carlo error (the numpy port in this folder uses a different RNG stream).
 ##
@@ -41,14 +43,18 @@ add <- function(site, quantity, scenario, unit, x, grade, note = "") {
 }
 
 ## ---- shared parameters --------------------------------------------------------
-## Evaporation suppression over the covered area. Only full-scale field value
-## found: 44% (eddy covariance, EGU26-11025). Models and small benches: ~17–90%.
-s_under <- rbeta_ms(N, 0.55, 0.13)
-## Additional saving from downwind sheltering (EGU26 reports 35% reduction over
-## UNcovered water at one site; coverage unstated) — expressed as a bonus fraction.
-halo    <- rtri(N, 0.00, 0.15, 0.60)
-## Irradiance/PAR reduction under the array (Lake Maiwald field: 73%).
-par_red <- rbeta_ms(N, 0.75, 0.07)
+## Evaporation suppression beneath an ELEVATED canopy. No lake measurement exists for
+## elevated arrays. Analogues: floating PV (44% measured, full scale, EGU26-11025) and
+## canal-top PV (44–90% assumed for fully covered narrow canals, McKuin et al. 2021).
+## An open-sided canopy blocks radiation but lets wind pass beneath, so it is set lower.
+s_under <- rbeta_ms(N, 0.40, 0.12)
+## Downwind sheltering bonus — small, because air moves freely under the canopy.
+halo    <- rtri(N, 0.00, 0.05, 0.25)
+## Light reduction under the canopy: diffuse and side light still reach the water.
+par_red <- rbeta_ms(N, 0.60, 0.10)
+## Piles per acre (large-span trusses ≈8/acre at the HG14 offshore array; short spans higher)
+piles_ac <- rtri(N, 5, 15, 60)
+pile_d   <- runif(N, 0.5, 1.2)                  # pile diameter, m
 
 ## ============================== LITTLE DELL ===================================
 S     <- "Little Dell"
@@ -58,30 +64,31 @@ E_ld  <- rtri(N, 2.0, 2.6, 3.3)                # gross evaporation, ft/yr (≈5,
 for (sc in list(list("Zone A (5%)", 12.45), list("Full build-out (25%)", 62.45))) {
   scen <- sc[[1]]; A <- sc[[2]]; cov <- A / A_res
   saved <- A * E_ld * s_under * (1 + halo)
-  add(S, "Evaporation saved", scen, "acre-ft/yr", saved, "B")
+  add(S, "Evaporation saved", scen, "acre-ft/yr", saved, "C", "elevated-canopy suppression unmeasured")
   add(S, "Evaporation saved, share of reservoir evaporation", scen, "%",
-      100 * saved / (A_res * E_ld), "B")
+      100 * saved / (A_res * E_ld), "C")
   add(S, "Evaporation saved, share of storage capacity", scen, "%",
-      100 * saved / 20500, "B")
+      100 * saved / 20500, "C")
   delivery <- runif(N, 80000, 97000)           # SLCDPU delivered ~81,600 af (2022), ~97,000 af (2020)
   add(S, "Evaporation saved, share of SLCDPU annual delivery", scen, "%",
-      100 * saved / delivery, "B")
+      100 * saved / delivery, "C")
 
-  dT_under <- rtri(N, -2.0, -0.6, 0.2)          # °C, summer daytime (field: ~0.4 °C cooler)
+  dT_under <- rtri(N, -1.5, -0.4, 0.2)          # °C; shading cools, open sides keep air exchange
   mixw     <- runif(N, 0.5, 1.0)
-  add(S, "Surface water temp change under array (summer day)", scen, "°C", dT_under, "B")
+  add(S, "Surface water temp change under array (summer day)", scen, "°C", dT_under, "C")
   add(S, "Reservoir-mean surface temp change (summer)", scen, "°C", dT_under * cov * mixw, "C")
-  add(S, "Light (PAR) reduction under array", scen, "%", 100 * par_red, "B")
+  add(S, "Light (PAR) reduction under array", scen, "%", 100 * par_red, "C")
 
-  chl_under <- pmin(pmax(rnorm(N, -0.25, 0.25), -0.85), 0.50)   # field: −80% to increases
-  add(S, "Chlorophyll-a change under array", scen, "%", 100 * chl_under, "B",
+  chl_under <- pmin(pmax(rnorm(N, -0.20, 0.25), -0.85), 0.50)   # field (floating): −80% to increases
+  add(S, "Chlorophyll-a change under array", scen, "%", 100 * chl_under, "C",
       "sign uncertain; trophic-state dependent")
   add(S, "Reservoir-wide chlorophyll-a change", scen, "%", 100 * chl_under * cov, "C")
   fll <- runif(N, 0.3, 0.9)                     # light-limited share of production
   add(S, "Reservoir-wide primary production change", scen, "%", -100 * cov * par_red * fll, "C")
 
-  do_def <- rtri(N, 0.3, 1.2, 2.2)              # mg/L (Maiwald: 1.1–1.7 lower)
-  add(S, "Dissolved-oxygen deficit under array", scen, "mg/L", do_def, "B")
+  do_def <- rtri(N, 0.0, 0.3, 1.0)              # mg/L; surface open to air (floating: 1.1–1.7 lower)
+  add(S, "Dissolved-oxygen deficit under array", scen, "mg/L", do_def, "C",
+      "surface stays open to air and wind")
   add(S, "Reservoir-mean DO deficit", scen, "mg/L", do_def * cov * mixw, "C")
 
   g_t <- runif(N, 0, 0.5); g_o <- runif(N, 0, 0.5)
@@ -90,7 +97,10 @@ for (sc in list(list("Zone A (5%)", 12.45), list("Full build-out (25%)", 62.45))
   emerg <- runif(N, -0.2, 0.6)
   add(S, "Aquatic-insect emergence change, reservoir-wide", scen, "%", -100 * cov * emerg, "C",
       "prior-driven")
-  add(S, "Open water removed from waterfowl use", scen, "acres", rep(A, N), "A", "deterministic")
+  add(S, "Water surface beneath canopy (remains open)", scen, "acres", rep(A, N), "A", "deterministic")
+  n_p <- A * piles_ac
+  add(S, "Piles required", scen, "piles", n_p, "C", "span-dependent")
+  add(S, "Reservoir bed occupied by piles", scen, "m²", n_p * pi * (pile_d / 2)^2, "C")
 }
 
 ## ============================ GREAT SALT LAKE =================================
@@ -102,14 +112,15 @@ lake_ac  <- runif(N, 5.5e5, 7.0e5)              # surface area near 4,191.6 ft
 tot_evap <- runif(N, 2.0e6, 3.0e6)              # af/yr total evaporation
 
 saved_f1 <- 5 * E_gsl * s_under * (1 + halo)
-add(S, "F1 evaporation saved", "F1 (5 ac)", "acre-ft/yr", saved_f1, "B")
-add(S, "F1 saving, share of lake evaporation", "F1 (5 ac)", "%", 100 * saved_f1 / tot_evap, "B")
-add(S, "F1 equivalent lake-level change", "F1 (5 ac)", "inches/yr", 12 * saved_f1 / lake_ac, "B")
+add(S, "F1 evaporation saved", "F1 (5 ac)", "acre-ft/yr", saved_f1, "C", "elevated-canopy suppression unmeasured")
+add(S, "F1 saving, share of lake evaporation", "F1 (5 ac)", "%", 100 * saved_f1 / tot_evap, "C")
+add(S, "F1 equivalent lake-level change", "F1 (5 ac)", "inches/yr", 12 * saved_f1 / lake_ac, "C")
 need <- 6e4 / (E_gsl * s_under * (1 + halo))    # 1 ft over 10 yr ≈ 60,000 af/yr
-add(S, "FPV area needed to offset 1 ft of decline per decade", "hypothetical", "acres", need, "B")
-add(S, "  … as share of current lake surface", "hypothetical", "%", 100 * need / lake_ac, "B")
+add(S, "Over-water PV area needed to offset 1 ft of decline per decade", "hypothetical", "acres", need, "C")
+add(S, "  … as share of current lake surface", "hypothetical", "%", 100 * need / lake_ac, "C")
 add(S, "F1 lake-scale primary-production change", "F1 (5 ac)", "%",
-    -100 * (5 / lake_ac) * par_red, "B")
+    -100 * (5 / lake_ac) * par_red, "C")
+add(S, "F1 piles required", "F1 (5 ac)", "piles", 5 * piles_ac, "C", "span-dependent")
 
 gcr   <- runif(N, 0.35, 0.50)                   # ground-coverage ratio
 e_pl  <- rtri(N, 0.1, 0.3, 1.0)                 # playa evaporation from shallow groundwater, ft/yr

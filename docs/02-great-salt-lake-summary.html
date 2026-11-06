@@ -591,6 +591,61 @@
         background-color: var(--global-warning-block-bg);
       }
 
+      /* ----- Ecology tab ------------------------------------------------ */
+      .eco-jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      .content .eco-jump a {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid var(--global-theme-color);
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border-bottom-width: 1px;
+      }
+
+      .content .eco-jump a:hover {
+        background-color: var(--global-theme-color);
+        color: var(--global-hover-text-color);
+      }
+
+      .eco-compare th[scope="row"] {
+        white-space: nowrap;
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.05rem;
+        vertical-align: top;
+      }
+
+      .eco-compare td {
+        vertical-align: top;
+        width: 45%;
+      }
+
+      .eco-compare__icon {
+        color: var(--global-theme-color);
+      }
+
+      .eco-compare__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+      }
+
+      .eco-compare .ui,
+      .proj-table .ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .eco__na {
+        color: var(--global-text-color-light);
+      }
+
       /* ----- Footer ---------------------------------------------------- */
       footer.site-footer {
         background-color: var(--global-footer-bg-color);
@@ -633,6 +688,7 @@
       .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
       .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
       .doc pre code { background: none; padding: 0; }
+      .doc img { max-width: 100%; height: auto; border: 1px solid var(--global-divider-color); border-radius: 8px; background: #fff; margin: 0.5rem 0 1.2rem; }
       .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
       .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
       .doc th { font-weight: 600; border-bottom-width: 2px; }
@@ -668,14 +724,14 @@
 <strong>Companion strategy document:</strong> <em>Multifunction Solar on Utah's Public Waters and Working Lands</em></p>
 <hr />
 <h2>1. The Finding That Shapes This Entire Document</h2>
-<p><strong>Large-scale floating photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.</strong></p>
-<p>Four independent constraints each individually defeat it:</p>
+<p><strong>Large-scale over-water photovoltaics on the open water of Great Salt Lake is not a viable proposition, and this plan does not propose it.</strong></p>
+<p>Any over-water element in this plan is mounted on racks several feet above the water, on piles fixed in the lakebed — nothing rests on the water. The lake's shallowness suits piles (the 1 GW HG14 array in Shandong stands in 1–4 m of water), but four constraints still defeat a large open-water array:</p>
 <ol>
 <li>
-<p><strong>Hydrodynamics.</strong> The lake is extremely shallow with an enormous wind fetch. At the current south-arm stage of ≈4,191.6 ft, much of Gilbert Bay is a few metres deep. Large-array mooring in a shallow, high-fetch, soft-bedded basin subject to wind-driven seiche is not a solved engineering problem at scale.</p>
+<p><strong>Lake-level range.</strong> The lake has ranged from 4,188 ft (2022) to about 4,212 ft (mid-1980s). Racks must clear the highest design stage, and every pile would sit in the Lake Recovery Reserve.</p>
 </li>
 <li>
-<p><strong>Materials.</strong> Corrosion of steel in this class of brine can exceed 0.6 mm/yr. There is no multi-year FPV operating record anywhere in the world in comparable hypersaline service. Design life and O&amp;M cost are therefore unknown, not merely uncertain.</p>
+<p><strong>Materials.</strong> Corrosion of steel in this class of brine can exceed 0.6 mm/yr. There is no multi-year over-water PV operating record anywhere in the world in comparable hypersaline service. Design life and O&amp;M cost are therefore unknown, not merely uncertain.</p>
 </li>
 <li>
 <p><strong>Ecology.</strong> Shading reduces photosynthetically active radiation reaching the phytoplankton and microbialite communities that support brine shrimp and brine flies — the food base for roughly 12 million birds annually. The magnitude of that effect at scale is unquantified.</p>
@@ -686,10 +742,10 @@
 </ol>
 <hr />
 <h2>2. Recommended Strategy: Tiered Site Assessment</h2>
-<p>Rather than open-water FPV, this plan proposes:</p>
+<p>Rather than an open-water array, this plan proposes:</p>
 <ul>
 <li><strong>Playa ground-mount array above the 4,200 ft contour</strong> as the primary generation asset (400 ac Phase 1 → 1,600 ac full build-out; 100–402 MW_dc)</li>
-<li><strong>Small paired near-shore FPV research module</strong> (5 ac, 2 MW_dc) to answer brine-service and ecological questions at research scale</li>
+<li><strong>Small paired near-shore research module F1</strong> (5 ac, 2 MW_dc), elevated on piles with the rack underside at ≈4,204 ft (above the 4,200 ft limit), to answer brine-service and ecological questions at research scale; removed if the lake reaches 4,198 ft or after 5 years</li>
 </ul>
 <p><strong>Key governance principle:</strong> No infrastructure sited below the 4,200 ft contour (lake recovery reserve). No lessee may acquire an economic interest opposed to raising the lake. Full removal bond required.</p>
 <hr />
@@ -724,7 +780,7 @@
 </tr>
 <tr>
 <td>F1</td>
-<td>Near-shore FPV research</td>
+<td>Near-shore elevated PV research (pile-mounted)</td>
 <td>1</td>
 <td>5</td>
 <td>2</td>
@@ -743,7 +799,7 @@
 <p>Full build-out equals roughly <strong>82,600 Utah households</strong> annually.</p>
 <hr />
 <h2>4. The Water Story — Read This First</h2>
-<p>F1 suppresses ≈9 acre-feet/year (95% UI 4.5–14) of evaporation. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0004% of lake evaporation. <strong>F1 is an experiment, not a water-conservation measure.</strong> Do not oversell the water benefit.</p>
+<p>F1 suppresses ≈5.6 acre-feet/year (95% UI 2.5–9.7) of evaporation — less than a floating cover would, because wind passes beneath an elevated canopy. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0002% of lake evaporation. <strong>F1 is an experiment, not a water-conservation measure.</strong> Do not oversell the water benefit.</p>
 <hr />
 <h2>5. Critical Design Constraints</h2>
 <ol>

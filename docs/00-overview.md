@@ -57,4 +57,4 @@ The strongest thesis: not "cover a lake" but "what is the marginal cost of a sav
 
 **For site details, see the Little Dell and Great Salt Lake tabs above.**
 
-**For full strategy, governance, and funding guidance, download the [complete playbook](multifunction-solar-utah-playbook.pdf).**
+**For full strategy, governance, and funding guidance, download the [complete playbook](00-strategy-playbook.md).**

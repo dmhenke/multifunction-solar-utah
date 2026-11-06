@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-theme-setting="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantitative ecological projections — Multifunction Solar on Utah's Public Waters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700|Spectral:400,500,600,700|JetBrains+Mono:400,500&display=swap"
+    />
+    <script>
+      // Applied before first paint to avoid a flash of the wrong theme.
+      (function () {
+        var setting = "system";
+        try {
+          setting = localStorage.getItem("theme-setting") || "system";
+        } catch (e) {
+          /* storage unavailable — fall back to system */
+        }
+        var resolved =
+          setting === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : setting;
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.setAttribute("data-theme-setting", setting);
+      })();
+    </script>
+    <style>
+      /* ---------------------------------------------------------------
+       * Theme variables — mirrors the al-folio clinical-teal palette used
+       * on davidhenke.github.io (_sass/_variables.scss, _sass/_themes.scss).
+       * --------------------------------------------------------------- */
+      :root {
+        color-scheme: light;
+        --global-bg-color: #ffffff;
+        --global-code-bg-color: rgba(181, 9, 172, 0.05);
+        --global-text-color: #000000;
+        --global-text-color-light: #828282;
+        --global-theme-color: #0d9488;
+        --global-hover-color: #0f766e;
+        --global-hover-text-color: #ffffff;
+        --global-footer-bg-color: #1c1c1d;
+        --global-footer-text-color: #e8e8e8;
+        --global-footer-link-color: #ffffff;
+        --global-divider-color: rgba(0, 0, 0, 0.1);
+        --global-card-bg-color: #ffffff;
+        --global-highlight-color: #b71c1c;
+        --global-surface-color: #fbfbfc;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #fff8d8;
+        --global-warning-block-text: #6b5900;
+        --global-warning-block-title: #b29400;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #ffe0e0;
+        --global-danger-block-text: #660000;
+        --global-danger-block-title: #cc0000;
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --global-bg-color: #1c1c1d;
+        --global-code-bg-color: #2c3237;
+        --global-text-color: #e8e8e8;
+        --global-text-color-light: #828282;
+        --global-theme-color: #2dd4bf;
+        --global-hover-color: #2dd4bf;
+        --global-hover-text-color: #1c1c1d;
+        --global-footer-bg-color: #e8e8e8;
+        --global-footer-text-color: #1c1c1d;
+        --global-footer-link-color: #000000;
+        --global-divider-color: #424246;
+        --global-card-bg-color: #212529;
+        --global-highlight-color: #ff6b6b;
+        --global-surface-color: #161617;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #6b5900;
+        --global-warning-block-text: #fff2af;
+        --global-warning-block-title: #fff8d8;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #660000;
+        --global-danger-block-text: #ffb9b9;
+        --global-danger-block-title: #ffe0e0;
+      }
+
+      /* ----- Base ---------------------------------------------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-feature-settings: "kern", "liga", "cv02", "cv03", "cv04", "cv11";
+        letter-spacing: 0.005em;
+        line-height: 1.7;
+        color: var(--global-text-color);
+        background-color: var(--global-bg-color);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Spectral", Georgia, "Times New Roman", serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      code,
+      pre,
+      kbd,
+      tt {
+        font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.86em;
+        background-color: var(--global-code-bg-color);
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+      }
+
+      a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+
+      /* ----- Navbar -------------------------------------------------- */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding: 0.85rem 1.5rem;
+        background-color: color-mix(in srgb, var(--global-bg-color) 88%, transparent);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .navbar__brand {
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      .navbar__brand:hover {
+        color: var(--global-theme-color);
+      }
+
+      .navbar__links {
+        display: flex;
+        gap: 1.25rem;
+        margin-left: auto;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .navbar__links a {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--global-text-color);
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .navbar__links a:hover,
+      .navbar__links a.is-current {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0.35rem;
+        color: var(--global-text-color);
+        transition: color 0.18s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--global-theme-color);
+      }
+
+      /* ----- Page header --------------------------------------------- */
+      .page-header {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 3.25rem 1.5rem 1.75rem;
+      }
+
+      .page-header__eyebrow {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--global-theme-color);
+        margin-bottom: 0.6rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+      }
+
+      .page-header p {
+        font-size: 1.08rem;
+        color: var(--global-text-color-light);
+        max-width: 62ch;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+      }
+
+      /* ----- Tabs ---------------------------------------------------- */
+      .tabs {
+        display: flex;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .tab-button {
+        background: transparent;
+        border: none;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .tab-button:hover {
+        color: var(--global-theme-color);
+      }
+
+      .tab-button.active {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.25s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ----- Content card -------------------------------------------- */
+      .content {
+        background-color: var(--global-card-bg-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        padding: 2.25rem;
+      }
+
+      .content h2 {
+        font-size: 1.75rem;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .content h2:first-child {
+        margin-top: 0;
+      }
+
+      .content h3 {
+        font-size: 1.28rem;
+        margin-top: 1.9rem;
+        margin-bottom: 0.7rem;
+        color: var(--global-theme-color);
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+      }
+
+      .content ul,
+      .content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.15rem;
+      }
+
+      .content li {
+        margin-bottom: 0.45rem;
+      }
+
+      .content em {
+        color: var(--global-text-color-light);
+      }
+
+      /* Understated teal underline that thickens on hover. */
+      .content a {
+        background-image: linear-gradient(var(--global-theme-color), var(--global-theme-color));
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 1px;
+        transition: background-size 0.2s ease;
+      }
+
+      .content a:hover {
+        background-size: 100% 2px;
+      }
+
+      /* ----- Tables --------------------------------------------------- */
+      .content table {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+      }
+
+      .content table th {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 2px solid var(--global-divider-color);
+      }
+
+      .content table td {
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        vertical-align: top;
+      }
+
+      .content table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .content table tbody tr:hover {
+        background-color: color-mix(in srgb, var(--global-theme-color) 6%, transparent);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      /* ----- Callout blocks ------------------------------------------- */
+      .alert,
+      .note {
+        margin: 1.75rem 0;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+      }
+
+      .alert {
+        border-left: 3px solid var(--global-danger-block);
+        background-color: var(--global-danger-block-bg);
+        color: var(--global-danger-block-text);
+      }
+
+      .alert strong {
+        color: var(--global-danger-block-title);
+      }
+
+      .note {
+        border-left: 3px solid var(--global-warning-block);
+        background-color: var(--global-warning-block-bg);
+        color: var(--global-warning-block-text);
+      }
+
+      .note strong {
+        color: var(--global-warning-block-title);
+      }
+
+      .caution {
+        color: var(--global-highlight-color);
+      }
+
+      /* ----- Diagrams -------------------------------------------------- */
+      .diagram {
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .diagram img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+        background-color: #ffffff;
+      }
+
+      /* ----- Ecological impact report ------------------------------- */
+      .eco {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--global-divider-color);
+      }
+
+      .eco__scope,
+      .eco__sources {
+        color: var(--global-text-color-light);
+        font-size: 0.92rem;
+      }
+
+      .eco-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.9rem;
+        margin: 1.5rem 0 2rem;
+      }
+
+      .content a.eco-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        background-color: var(--global-surface-color);
+        color: var(--global-text-color);
+        text-decoration: none;
+        border-bottom: 1px solid var(--global-divider-color);
+        transition: border-color 0.15s ease;
+      }
+
+      .content a.eco-card:hover {
+        border-color: var(--global-theme-color);
+      }
+
+      .eco-card__icon {
+        font-size: 1.4rem;
+        color: var(--global-theme-color);
+        line-height: 1;
+      }
+
+      .eco-card__title {
+        font-family: "Spectral", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.15rem;
+      }
+
+      .eco-card__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.05rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        border: 1px solid transparent;
+      }
+
+      .badge--beneficial {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
+
+      .badge--adverse {
+        color: var(--global-danger-block-title);
+        background-color: var(--global-danger-block-bg);
+      }
+
+      .badge--mixed {
+        color: var(--global-warning-block-text);
+        background-color: var(--global-warning-block-bg);
+      }
+
+      .badge--neutral {
+        color: var(--global-text-color-light);
+        border-color: var(--global-divider-color);
+      }
+
+      .eco-matrix td:nth-child(3) {
+        white-space: nowrap;
+      }
+
+      details.eco-domain {
+        margin: 1rem 0;
+        padding: 0.4rem 1.1rem 0.6rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+      }
+
+      details.eco-domain summary {
+        cursor: pointer;
+        font-family: "Spectral", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 0.4rem 0;
+        color: var(--global-text-color);
+      }
+
+      details.eco-domain summary span {
+        color: var(--global-theme-color);
+        margin-right: 0.3rem;
+      }
+
+      details.eco-domain[open] summary {
+        margin-bottom: 0.4rem;
+      }
+
+      /* ----- Quantitative projections ---------------------------------- */
+      .proj h4 {
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 1.6rem 0 0.4rem;
+        color: var(--global-theme-color);
+      }
+
+      .proj-table td.ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .proj-note {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--global-text-color-light);
+      }
+
+      .grade {
+        display: inline-block;
+        min-width: 1.4rem;
+        text-align: center;
+        padding: 0 0.35rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid var(--global-divider-color);
+      }
+
+      .grade--A {
+        color: var(--global-text-color-light);
+      }
+
+      .grade--B {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
+
+      .grade--C {
+        color: var(--global-warning-block-text);
+        background-color: var(--global-warning-block-bg);
+      }
+
+      /* ----- Footer ---------------------------------------------------- */
+      footer.site-footer {
+        background-color: var(--global-footer-bg-color);
+        color: var(--global-footer-text-color);
+        font-size: 0.88rem;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      footer.site-footer a {
+        color: var(--global-footer-link-color);
+        text-decoration: underline;
+      }
+
+      footer.site-footer p + p {
+        margin-top: 0.4rem;
+        color: var(--global-footer-text-color);
+        opacity: 0.75;
+      }
+
+      @media (max-width: 600px) {
+        .page-header h1 {
+          font-size: 1.85rem;
+        }
+        .content {
+          padding: 1.4rem;
+        }
+      }
+    
+      .doc { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+      .doc__back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+      .doc h1 { font-size: 2.1rem; line-height: 1.2; margin-bottom: 1.2rem; }
+      .doc h2 { font-size: 1.55rem; margin: 2.4rem 0 0.8rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--global-divider-color); }
+      .doc h3 { font-size: 1.25rem; margin: 1.8rem 0 0.6rem; }
+      .doc h4 { font-size: 1.05rem; margin: 1.4rem 0 0.5rem; color: var(--global-theme-color); }
+      .doc p, .doc ul, .doc ol, .doc blockquote, .doc pre { margin-bottom: 1rem; }
+      .doc ul, .doc ol { padding-left: 1.6rem; }
+      .doc li { margin-bottom: 0.35rem; }
+      .doc hr { border: 0; border-top: 1px solid var(--global-divider-color); margin: 2rem 0; }
+      .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
+      .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
+      .doc pre code { background: none; padding: 0; }
+      .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
+      .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
+      .doc th { font-weight: 600; border-bottom-width: 2px; }
+      .doc a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+      .doc__nav { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--global-divider-color); font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="navbar__brand" href="https://dmhenke.github.io/davidhenke2.github.io/">David Henke</a>
+      <div class="navbar__links">
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/">about</a>
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/projects/">projects</a>
+        <a href="https://github.com/dmhenke/multifunction-solar-utah">repository</a>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle light, dark, or system colour theme"
+          title="Toggle theme"
+        >
+          <span id="theme-icon" aria-hidden="true">&#9788;</span>
+        </button>
+      </div>
+    </nav>
+    <main class="doc">
+      <a class="doc__back" href="../index.html">&larr; Back to the site</a>
+<h1>Quantitative Ecological Projections — Little Dell Reservoir and Great Salt Lake</h1>
+<p><strong>Date:</strong> 5 November 2026<br />
+<strong>Method:</strong> Monte Carlo uncertainty propagation, 100,000 draws, seed 20261105. Reference implementation in base R: <a href="../analysis/ecological_projections.R">analysis/ecological_projections.R</a>. Results: <a href="../analysis/ecological_projections_results.csv">analysis/ecological_projections_results.csv</a>.</p>
+<h2>How to read the intervals</h2>
+<p>Each value is a <strong>median with a 95% uncertainty interval (UI)</strong> — the 2.5th and 97.5th percentiles of outputs when every uncertain input is sampled from a distribution set from the literature. No site measurements exist yet, so these are not sampling-based confidence intervals; they express how uncertain the projection is given current knowledge.</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Deterministic (geometry)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Inputs taken from field measurements or validated models</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Analogue transfer or structural prior — the interval reflects assumptions, not data. Treat as a bounded guess to be replaced by monitoring.</td>
+</tr>
+</tbody>
+</table>
+<h2>Correction to earlier figures</h2>
+<p>The site plans assumed 80% evaporation suppression beneath the panels. The only full-scale field measurement found (eddy covariance over an industrial-scale reservoir, May–October 2025) reports <strong>44%</strong> over the covered area, plus a 35% reduction over uncovered water nearby. This analysis uses suppression ~ Beta(mean 0.55, SD 0.13) plus a downwind-sheltering bonus. The resulting water-saving medians are roughly a quarter (Little Dell) to a half (Great Salt Lake F1) lower than the earlier point estimates of ≈30 / ≈150 acre-ft/yr (Little Dell) and ≈16 acre-ft/yr (F1), which these projections supersede.</p>
+<h2>Little Dell Reservoir</h2>
+<h3>Key findings</h3>
+<ul>
+<li>Water saved is about a quarter lower than first estimated. Full build-out saves 111 [56.4, 180] acre-ft/yr — about 17.1% of the reservoir's own evaporation and 0.126 [0.064, 0.205]% of SLCDPU's annual water delivery. Zone A saves 22.2 [11.2, 35.8] acre-ft/yr. The earlier ≈30 and ≈150 acre-ft/yr figures assumed 80% suppression under the panels; the only full-scale field measurement found reports 44%.</li>
+<li>Algae: direction is genuinely uncertain. Light under the panels falls by roughly three-quarters, but measured chlorophyll-a responses at real FPV sites range from an 80% decrease to increases, depending on trophic state and mixing. Reservoir-wide primary production is projected to fall, which means fewer blooms but also less food at the base of the food web.</li>
+<li>Oxygen is the effect to watch. The under-array deficit of about 1.2 mg/L is well supported by field data. Diluted across the reservoir it is small, but it concentrates where the array shelters the surface — exactly where a late-summer hypolimnetic DO trigger is needed.</li>
+<li>Fish and insects: the model cannot tell you the sign. Cooling helps cold-water trout and oxygen loss hurts them; no field study has measured both at a comparable site. The intervals for trout habitat and insect emergence are the assumed ranges, centred near zero, and should be read as "unknown" until monitoring replaces them.</li>
+</ul>
+<h3>Projections</h3>
+<h4>Water conservation</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Zone A (5%)</th>
+<th>Full build-out (25%)</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaporation saved</td>
+<td>22.2 [11.2, 35.8]</td>
+<td>111 [56.4, 180]</td>
+<td>acre-ft/yr</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Share of reservoir's own evaporation</td>
+<td>3.42 [1.78, 5.25]</td>
+<td>17.1 [8.92, 26.3]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Share of storage capacity (20,500 af)</td>
+<td>0.108 [0.055, 0.175]</td>
+<td>0.543 [0.275, 0.877]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Share of SLCDPU annual water delivery</td>
+<td>0.025 [0.013, 0.041]</td>
+<td>0.126 [0.064, 0.205]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<h4>Light, temperature and algae</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Zone A (5%)</th>
+<th>Full build-out (25%)</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light (PAR) reduction under array</td>
+<td>75.5 [60.2, 87.3]</td>
+<td>75.5 [60.2, 87.3]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Surface temperature change under array (summer day)</td>
+<td>-0.757 [-1.72, -0.0068]</td>
+<td>-0.756 [-1.72, -0.0099]</td>
+<td>°C</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Reservoir-mean surface temperature change</td>
+<td>-0.028 [-0.071, -0.00025]</td>
+<td>-0.139 [-0.356, -0.0018]</td>
+<td>°C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Chlorophyll-a change under array</td>
+<td>-25.1 [-74.2, 23.7]</td>
+<td>-25.1 [-74.1, 24.4]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Reservoir-wide chlorophyll-a change</td>
+<td>-1.26 [-3.71, 1.19]</td>
+<td>-6.29 [-18.6, 6.12]</td>
+<td>%</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Reservoir-wide primary production change</td>
+<td>-2.23 [-3.52, -1.14]</td>
+<td>-11.2 [-17.7, -5.72]</td>
+<td>%</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h4>Oxygen, fish and insects</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Zone A (5%)</th>
+<th>Full build-out (25%)</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dissolved-oxygen deficit under array</td>
+<td>1.23 [0.504, 1.98]</td>
+<td>1.23 [0.507, 1.98]</td>
+<td>mg/L</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Reservoir-mean dissolved-oxygen deficit</td>
+<td>0.045 [0.017, 0.084]</td>
+<td>0.224 [0.088, 0.423]</td>
+<td>mg/L</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Net summer cold-water (trout) habitat change</td>
+<td>0.00017 [-1.94, 1.94]</td>
+<td>-0.0052 [-9.76, 9.74]</td>
+<td>% of reservoir</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Aquatic-insect emergence, reservoir-wide</td>
+<td>-0.994 [-2.90, 0.902]</td>
+<td>-5.04 [-14.5, 4.52]</td>
+<td>%</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Open water removed from waterfowl use</td>
+<td>12.4 [12.4, 12.4]</td>
+<td>62.5 [62.5, 62.5]</td>
+<td>acres</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<h3>Birds and migration</h3>
+<ul>
+<li>Little Dell is not a major migration stopover; open-water loss to waterfowl is the array footprint itself (12.45 acres at Zone A, 62.45 at full build-out).</li>
+<li>The material bird issue is perching: gulls, cormorants and waterfowl on array edges deposit guano — nutrients and faecal indicator bacteria — directly into a culinary source. Perimeter deterrent wire or spikes and coliform monitoring at the intake are the response. No defensible loading estimate exists without site bird counts.</li>
+<li>Shielded, motion-activated lighting only at the onshore compound; no lighting on the water.</li>
+</ul>
+<p><strong>What drives the uncertainty:</strong> for water saved, the under-array evaporation suppression coefficient (Spearman ρ = 0.85) dominates evaporation depth (0.35) and downwind sheltering (0.34). Measuring suppression at Zone A narrows every water number at once.</p>
+<h2>Great Salt Lake</h2>
+<h3>Key findings</h3>
+<ul>
+<li>Floating solar cannot meaningfully move the lake. F1 saves 8.87 [4.51, 14.4] acre-ft/yr — about 0.00017 inches of lake level per year. Offsetting just 1 ft of decline per decade would take 33,834 [20,848, 66,577] acres of floating PV, or 5.43 [3.28, 10.8]% of the current lake surface — roughly 8–27 GW of panels at FPV power densities. That is the clearest quantitative argument for prioritising upstream water (including agrivoltaics) over covering the lake.</li>
+<li>The playa arrays may save more water than F1 does. Shading the playa reduces evaporation of shallow groundwater: 82.0 [21.3, 236] acre-ft/yr at full build-out, roughly an order of magnitude more than F1. Whether that water reaches the lake is unknown, and the estimate is prior-driven.</li>
+<li>Birds are the governing impact, and the interval is wide. Projected fatalities at full build-out are 911 [179, 4,595] birds/yr. Almost all of that spread comes from one unmeasured number: how much higher fatality rates are beside a major waterbird concentration than at the desert sites the base rates come from (rank correlation 0.84). Phase 1 monitoring exists to measure exactly that.</li>
+</ul>
+<h3>Projections</h3>
+<h4>Water conservation</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Median [95% UI]</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1 (5 ac) evaporation saved</td>
+<td>8.87 [4.51, 14.4]</td>
+<td>acre-ft/yr</td>
+<td>B</td>
+</tr>
+<tr>
+<td>F1 saving as share of lake evaporation</td>
+<td>0.00036 [0.00018, 0.00061]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>F1 equivalent lake-level change</td>
+<td>0.00017 [8.6e-05, 0.00028]</td>
+<td>inches/yr</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Playa soil-water evaporation avoided — P1</td>
+<td>20.5 [5.33, 59.1]</td>
+<td>acre-ft/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Playa soil-water evaporation avoided — full build-out</td>
+<td>82.0 [21.3, 236]</td>
+<td>acre-ft/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>FPV area needed to offset 1 ft of lake decline per decade</td>
+<td>33,834 [20,848, 66,577]</td>
+<td>acres</td>
+<td>B</td>
+</tr>
+<tr>
+<td>… as share of current lake surface</td>
+<td>5.43 [3.28, 10.8]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<h4>Light, algae and dust</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Median [95% UI]</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1 effect on lake-wide primary production</td>
+<td>-0.0006 [-0.00074, -0.00047]</td>
+<td>%</td>
+<td>B</td>
+</tr>
+<tr>
+<td>PM10 emission avoided within array footprint</td>
+<td>50.1 [21.5, 78.5]</td>
+<td>% of footprint emission</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h4>Birds</h4>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Median [95% UI]</th>
+<th>Unit</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avian fatalities — P1 (100 MW)</td>
+<td>227 [44.6, 1,143]</td>
+<td>birds/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>… of which water-associated species</td>
+<td>74.7 [12.2, 431]</td>
+<td>birds/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Avian fatalities — full build-out (402 MW)</td>
+<td>911 [179, 4,595]</td>
+<td>birds/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>… of which water-associated species</td>
+<td>300 [49.1, 1,734]</td>
+<td>birds/yr</td>
+<td>C</td>
+</tr>
+<tr>
+<td>… as share of ~12 million annual lake users</td>
+<td>0.0076 [0.0015, 0.038]</td>
+<td>%</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h3>Migration calendar</h3>
+<table>
+<thead>
+<tr>
+<th>Species group</th>
+<th>When</th>
+<th>Why it matters here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wilson's phalarope</td>
+<td>Staging in early-to-late summer before migration to South America</td>
+<td>The lake is the species' principal staging site; one estimate holds up to 60% of the world population there at once.</td>
+</tr>
+<tr>
+<td>Eared grebe</td>
+<td>Fall staging September–November; departure late November–early January, after sunset on calm, clear nights</td>
+<td>Monthly averages of about 968,000 (Sept), 320,000 (Oct) and 524,000 (Nov); long-run staging estimates of ~1.4 million (1997–2012 average) to 2.6–5.6 million (2013–2017 counts).</td>
+</tr>
+<tr>
+<td>Shorebirds (avocet, stilt, snowy plover)</td>
+<td>Spring–summer breeding; snowy plover nests on open playa</td>
+<td>Direct overlap with playa array footprint — the primary habitat-loss pathway.</td>
+</tr>
+</tbody>
+</table>
+<h3>Birds and migration disruption</h3>
+<ul>
+<li>Mass grounding is the tail risk the fatality model does not capture. Eared grebes cannot take off from land. On 12 December 2011, a storm grounded thousands of migrating grebes on snow-covered, lit parking lots around St. George and Cedar City; roughly 1,500 died and 3,000–3,500 were rescued. A 1,600-acre dark, reflective array on the departure corridor is a plausible grounding surface under low cloud. One such event would equal about 1.6 years of the projected median background fatalities at full build-out, or about 6.6 years at P1. No defensible rate can be estimated; it should be treated as a design constraint, not a statistic.</li>
+<li>Mitigations that target migration specifically: fragment the array with open corridors rather than one contiguous block; white edge-banding or gridding to break up water-like reflections; no array lighting and only shielded, motion-activated lighting at the substation; underground collector lines and marked (bird-flight-diverter) conductors on any new overhead gen-tie, since waterbirds are among the most power-line-collision-prone groups; and no construction during peak staging (July–August for phalaropes, September–November for grebes).</li>
+<li>Insect food supply: polarised reflections from panels draw aquatic insects to lay eggs on panels instead of water. In one field study, black-framed cells drew 6.9 times more mayfly landings than white-framed ones. Brine flies are a principal food for phalaropes and other shorebirds here, so white gridding serves both insects and birds. No interval is given: there is a single study and no brine-fly data.</li>
+</ul>
+<p><strong>What drives the uncertainty:</strong> for bird fatalities, the unmeasured Great Salt Lake multiplier (ρ = 0.84) dominates the desert base rate (0.50). For the floating-PV area estimate, suppression again dominates (ρ = −0.84), ahead of downwind sheltering, brine salinity and evaporation depth.</p>
+<h2>Input distributions</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Distribution</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaporation suppression over covered area</td>
+<td>Beta(mean 0.55, SD 0.13)</td>
+<td>44% full-scale eddy covariance; 17–90% across models and test benches</td>
+</tr>
+<tr>
+<td>Downwind sheltering bonus</td>
+<td>Triangular(0, 0.15, 0.60)</td>
+<td>35% reduction measured over uncovered water at one site</td>
+</tr>
+<tr>
+<td>PAR reduction under array</td>
+<td>Beta(mean 0.75, SD 0.07)</td>
+<td>73% irradiance reduction, Lake Maiwald</td>
+</tr>
+<tr>
+<td>Little Dell gross evaporation</td>
+<td>Triangular(2.0, 2.6, 3.3) ft/yr</td>
+<td>High-elevation (~5,790 ft) reservoir with winter ice cover; unmeasured</td>
+</tr>
+<tr>
+<td>Under-array surface ΔT (summer day)</td>
+<td>Triangular(−2.0, −0.6, +0.2) °C</td>
+<td>0.4 °C cooler measured in Japanese ponds; reviews report daytime cooling</td>
+</tr>
+<tr>
+<td>Under-array chlorophyll-a change</td>
+<td>Normal(−25%, 25%), clipped to [−85%, +50%]</td>
+<td>Field range from −80% to increases (Cagle et al. 2025; Japanese ponds)</td>
+</tr>
+<tr>
+<td>Under-array DO deficit</td>
+<td>Triangular(0.3, 1.2, 2.2) mg/L</td>
+<td>1.1–1.7 mg/L lower, Lake Maiwald</td>
+</tr>
+<tr>
+<td>GSL freshwater-equivalent evaporation</td>
+<td>Triangular(3.0, 3.33, 4.17) ft/yr</td>
+<td>36–50 in, ~40 in central (USGS-era water budgets)</td>
+</tr>
+<tr>
+<td>GSL brine evaporation factor</td>
+<td>Uniform(0.65, 0.85)</td>
+<td>Near-saturated brine evaporates ~70% of fresh water</td>
+</tr>
+<tr>
+<td>GSL surface area</td>
+<td>Uniform(550,000, 700,000) acres</td>
+<td>Near 4,191.6 ft stage</td>
+</tr>
+<tr>
+<td>GSL total evaporation</td>
+<td>Uniform(2.0, 3.0) million af/yr</td>
+<td>State fact sheet (~2 MAF) vs USGS-era (~3 MAF)</td>
+</tr>
+<tr>
+<td>Desert PV fatality rate</td>
+<td>Lognormal(median 1.5, 97.5th 3.5) birds/MW/yr</td>
+<td>Kosciuch et al. 2020: high-end 2.49; 1.8–2.5 across California sites</td>
+</tr>
+<tr>
+<td>GSL waterbird multiplier</td>
+<td>Lognormal(median 1.5, 97.5th 6.0)</td>
+<td><strong>No data</strong> — allows rates up to the 9.9 birds/MW/yr reported at one PV site</td>
+</tr>
+<tr>
+<td>Water-associated share of fatalities</td>
+<td>Beta(mean 0.35, SD 0.12)</td>
+<td>&lt;13% in desert; assumed higher at GSL</td>
+</tr>
+<tr>
+<td>Playa groundwater evaporation</td>
+<td>Triangular(0.1, 0.3, 1.0) ft/yr</td>
+<td>Discharge-playa range; unmeasured here</td>
+</tr>
+</tbody>
+</table>
+<h2>Not estimated, and why</h2>
+<ul>
+<li><strong>Fish aggregation under the array:</strong> no field study measuring fish abundance beneath FPV was found; the OSU/USGS modelling team has called for a real-world installation to test predictions.</li>
+<li><strong>Guano and coliform loading at Little Dell:</strong> requires site bird counts.</li>
+<li><strong>Mass-grounding event frequency at GSL:</strong> a rare-event process with no rate data; treated as a design constraint.</li>
+<li><strong>Brine fly response to polarised panels:</strong> one relevant mitigation study (mayflies), no brine-fly data.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-11025.html">EGU26-11025: eddy-covariance evaporation measurements over an industrial-scale FPV reservoir</a></li>
+<li><a href="https://www.epj-pv.org/articles/epjpv/pdf/2025/01/pv20240049.pdf">Numerical analysis of evaporation reduction in floating PV, EPJ Photovoltaics (2025)</a></li>
+<li><a href="https://digitalcommons.uri.edu/theses/2738">FPV evaporation reduction, Lake Powell thesis, University of Rhode Island</a></li>
+<li><a href="https://publikationen.bibliothek.kit.edu/1000182956/162166507">Lake Maiwald FPV field measurements, KIT</a></li>
+<li><a href="https://www.frontiersin.org/journals/water/articles/10.3389/frwa.2025.1614008/full">Site-specific relationships between algal biomass and FPV, Frontiers in Water (2025)</a></li>
+<li><a href="https://world-lakes-2025.p.asnevents.com.au/days/2025-07-23/abstract/122128">FPV and phytoplankton in Japanese irrigation ponds, World Lake Conference 2025</a></li>
+<li><a href="https://news.oregonstate.edu/news/floating-solar-panels-show-promise-environmental-impacts-vary-location-study-finds">OSU/USGS (2025), floating solar impacts vary by location</a></li>
+<li><a href="https://www.opb.org/article/2025/11/28/oregon-state-university-study-floating-solar-could-power-millions-with-ecological-trade-offs/">OSU study: floating solar could power millions, but with ecological trade-offs, OPB</a></li>
+<li><a href="https://pubs.usgs.gov/of/1995/0428/report.pdf">Great Salt Lake water budget, USGS Open-File Report 95-428</a></li>
+<li><a href="https://greatsaltlake.utah.gov/wp-content/uploads/GSL-Fact-Sheet.pdf">Great Salt Lake fact sheet, State of Utah</a></li>
+<li><a href="https://www.slc.gov/utilities/conservation/water-conservation-faq/">Water conservation FAQ and supply figures, Salt Lake City Public Utilities</a></li>
+<li><a href="https://www.utah.gov/pmn/files/1444021.pdf">SLCDPU water supply committee summary (2026), Utah Public Notice</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7182256/">Kosciuch et al. (2020), bird mortality at PV facilities, PLOS ONE</a></li>
+<li><a href="https://bioone.org/journals/waterbirds/volume-44/issue-1/063.044.0107/Abundance-Distribution-and-Migration-Patterns-of-North-American-Eared-Grebes/10.1675/063.044.0107.full">Abundance, distribution and migration patterns of North American eared grebes, Waterbirds</a></li>
+<li><a href="https://www.audubon.org/news/dependence-threatened-saline-lakes-leaves-eared-grebes-risk">Dependence on threatened saline lakes leaves eared grebes at risk, Audubon</a></li>
+<li><a href="https://www.southbayrestoration.org/document/coordinated-phalarope-surveys-western-north-american-staging-sites-2019-2020">Coordinated phalarope surveys at western North American staging sites, 2019–2020</a></li>
+<li><a href="https://www.waterboards.ca.gov/waterrights/water_issues/programs/mono_lake/docs/2026/ryan-carle-presentation.pdf">Ryan Carle presentation on phalaropes, California Water Boards (2026)</a></li>
+<li><a href="https://www.npr.org/2011/12/15/143795309/ornithologist-discusses-causes-of-bird-downings">Ornithologist discusses causes of bird downings, NPR (2011)</a></li>
+<li><a href="https://www.startribune.com/mystery-surrounds-crash-landing-of-thousands-of-birds-in-utah/135746003/">Mystery surrounds crash landing of thousands of birds in Utah, Star Tribune</a></li>
+<li><a href="https://arago.elte.hu/sites/default/files/MattSolarPanel_JIC.pdf">Horváth group: polarised light pollution from solar panels, J. Insect Conservation</a></li>
+<li><a href="https://doaj.org/article/71440af2b9ff4fa791a10427f62fd0f4">Fritz et al. (2020), bioreplicated coatings reduce polarised light pollution, PLOS ONE</a></li>
+</ul>
+      <p class="doc__nav"><strong>Other documents:</strong> <a href="00-overview.html">Strategy overview</a> · <a href="00-strategy-playbook.html">Strategy playbook</a> · <a href="01-little-dell-summary.html">Little Dell — summary</a> · <a href="01-little-dell-full.html">Little Dell — pre-feasibility site plan</a> · <a href="02-great-salt-lake-summary.html">Great Salt Lake — summary</a> · <a href="02-great-salt-lake-full.html">Great Salt Lake — pre-feasibility site plan</a> · <a href="03-little-dell-ecological-impact.html">Little Dell — ecological impact report</a> · <a href="04-great-salt-lake-ecological-impact.html">Great Salt Lake — ecological impact report</a><br />
+      <a href="05-quantitative-ecological-projections.md">View markdown source</a></p>
+    </main>
+    <footer class="site-footer">
+      <p>Class 5 pre-feasibility documentation · Multifunction Solar on Utah's Public Waters and Working Lands</p>
+    </footer>
+    <script>
+      // ----- Theme toggle: system -> light -> dark, matching al-folio ---
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        var icon = document.getElementById("theme-icon");
+        var media = window.matchMedia("(prefers-color-scheme: dark)");
+        var ICONS = { system: "◑", light: "☀", dark: "☽" };
+
+        function read() {
+          try {
+            return localStorage.getItem("theme-setting") || "system";
+          } catch (e) {
+            return "system";
+          }
+        }
+
+        function apply(setting) {
+          var resolved = setting === "system" ? (media.matches ? "dark" : "light") : setting;
+          root.setAttribute("data-theme", resolved);
+          root.setAttribute("data-theme-setting", setting);
+          icon.textContent = ICONS[setting];
+          toggle.title = "Theme: " + setting;
+        }
+
+        apply(read());
+
+        toggle.addEventListener("click", function () {
+          var order = ["system", "light", "dark"];
+          var next = order[(order.indexOf(read()) + 1) % order.length];
+          try {
+            localStorage.setItem("theme-setting", next);
+          } catch (e) {
+            /* storage unavailable — theme still applies for this page view */
+          }
+          apply(next);
+        });
+
+        media.addEventListener("change", function () {
+          if (read() === "system") apply("system");
+        });
+      })();
+    </script>
+  </body>
+</html>

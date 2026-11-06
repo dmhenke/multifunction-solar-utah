@@ -64,7 +64,7 @@ If you lead with "agrivoltaics is a water-generation technology for the Great Sa
 
 **Realistic technical envelope.** At 249 acres, a 20–30% coverage array is roughly 50–75 acres → on the order of **18–34 MW_dc** at contemporary FPV power densities. That is materially useful.
 
-**But be precise about the water claim.** Gross annual lake evaporation at this elevation is on the order of 2.5–3.5 ft. Total reservoir evaporation is therefore roughly **600–870 acre-feet per year**. A 25% array cutting 80% of evaporation beneath it saves roughly **120–175 acre-feet per year** — about 0.02% of the SLCDPU service area's annual supply. *Do not sell Little Dell as a water conservation project.* Sell it as (a) distributed generation close to load, (b) a water-quality intervention (reduced solar radiation suppresses algal growth and can reduce disinfection-byproduct precursors), and (c) the best-instrumented FPV research site in the Intermountain West.
+**But be precise about the water claim.** Gross annual lake evaporation at this elevation is on the order of 2.5–3.5 ft. Total reservoir evaporation is therefore roughly **600–870 acre-feet per year**. A 25% array saves roughly **111 acre-feet per year (95% uncertainty interval 56–180)** — about 0.13% of SLCDPU's annual water delivery. *(Revised November 2026: the original 80% suppression assumption was replaced by a field-based ≈55%, and the supply share corrected; see `docs/05-quantitative-ecological-projections.md`.)* *Do not sell Little Dell as a water conservation project.* Sell it as (a) distributed generation close to load, (b) a water-quality intervention (reduced solar radiation suppresses algal growth and can reduce disinfection-byproduct precursors), and (c) the best-instrumented FPV research site in the Intermountain West.
 
 **Honest barriers.**
 
@@ -296,6 +296,8 @@ sites$net_cost_per_af <- vapply(seq_len(nrow(sites)),
                                 numeric(1))
 print(sites, row.names = FALSE)
 ```
+
+> **Note (November 2026):** the default `evap_supp_frac = 0.80` below overstates suppression. The only full-scale field measurement found reports 44%; the Monte Carlo projections in `analysis/ecological_projections.R` use Beta(mean 0.55, SD 0.13). The water figures in this section are therefore upper-end illustrations.
 
 **What the default assumptions actually produce (verified numerically):** Little Dell at 25% coverage → ≈62 array acres, ≈24.9 MW_dc, ≈46,200 MWh/yr, ≈149 acre-feet/yr saved. Utah Lake at 5% coverage → ≈1,920 MW_dc, which independently reproduces the ~2 GW figure Water Wise Solar Solutions presented to the Legislature — a useful cross-check that their arithmetic is sound. LCOE lands near **$81/MWh**, and the residual cost charged to water is roughly **$7,500–10,600 per acre-foot**.
 

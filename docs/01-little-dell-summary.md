@@ -32,9 +32,9 @@
 
 - **Power density:** 0.40 MW_dc/acre
 - **Specific yield:** 1,650 MWh/MW_dc·yr
-- **Evaporation suppression:** 80% under array → ≈150 af/yr full build-out
+- **Evaporation suppression:** ≈55% under array (field measurement: 44%) → ≈111 af/yr full build-out (95% UI 56–180)
 
-**Important:** 150 af/yr is 0.02% of SLCDPU service-area supply. **Do not sell as water conservation.** Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.
+**Important:** ≈111 af/yr is ≈0.13% of SLCDPU's annual water delivery. **Do not sell as water conservation.** Sell as (a) distributed generation near load, (b) water-quality intervention (algal/DBP-precursor suppression), (c) research value.
 
 ---
 

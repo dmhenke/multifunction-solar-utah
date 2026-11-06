@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-theme-setting="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strategy overview — Multifunction Solar on Utah's Public Waters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700|Spectral:400,500,600,700|JetBrains+Mono:400,500&display=swap"
+    />
+    <script>
+      // Applied before first paint to avoid a flash of the wrong theme.
+      (function () {
+        var setting = "system";
+        try {
+          setting = localStorage.getItem("theme-setting") || "system";
+        } catch (e) {
+          /* storage unavailable — fall back to system */
+        }
+        var resolved =
+          setting === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : setting;
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.setAttribute("data-theme-setting", setting);
+      })();
+    </script>
+    <style>
+      /* ---------------------------------------------------------------
+       * Theme variables — mirrors the al-folio clinical-teal palette used
+       * on davidhenke.github.io (_sass/_variables.scss, _sass/_themes.scss).
+       * --------------------------------------------------------------- */
+      :root {
+        color-scheme: light;
+        --global-bg-color: #ffffff;
+        --global-code-bg-color: rgba(181, 9, 172, 0.05);
+        --global-text-color: #000000;
+        --global-text-color-light: #828282;
+        --global-theme-color: #0d9488;
+        --global-hover-color: #0f766e;
+        --global-hover-text-color: #ffffff;
+        --global-footer-bg-color: #1c1c1d;
+        --global-footer-text-color: #e8e8e8;
+        --global-footer-link-color: #ffffff;
+        --global-divider-color: rgba(0, 0, 0, 0.1);
+        --global-card-bg-color: #ffffff;
+        --global-highlight-color: #b71c1c;
+        --global-surface-color: #fbfbfc;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #fff8d8;
+        --global-warning-block-text: #6b5900;
+        --global-warning-block-title: #b29400;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #ffe0e0;
+        --global-danger-block-text: #660000;
+        --global-danger-block-title: #cc0000;
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --global-bg-color: #1c1c1d;
+        --global-code-bg-color: #2c3237;
+        --global-text-color: #e8e8e8;
+        --global-text-color-light: #828282;
+        --global-theme-color: #2dd4bf;
+        --global-hover-color: #2dd4bf;
+        --global-hover-text-color: #1c1c1d;
+        --global-footer-bg-color: #e8e8e8;
+        --global-footer-text-color: #1c1c1d;
+        --global-footer-link-color: #000000;
+        --global-divider-color: #424246;
+        --global-card-bg-color: #212529;
+        --global-highlight-color: #ff6b6b;
+        --global-surface-color: #161617;
+
+        --global-warning-block: #e7c000;
+        --global-warning-block-bg: #6b5900;
+        --global-warning-block-text: #fff2af;
+        --global-warning-block-title: #fff8d8;
+        --global-danger-block: #cc0000;
+        --global-danger-block-bg: #660000;
+        --global-danger-block-text: #ffb9b9;
+        --global-danger-block-title: #ffe0e0;
+      }
+
+      /* ----- Base ---------------------------------------------------- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-feature-settings: "kern", "liga", "cv02", "cv03", "cv04", "cv11";
+        letter-spacing: 0.005em;
+        line-height: 1.7;
+        color: var(--global-text-color);
+        background-color: var(--global-bg-color);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Spectral", Georgia, "Times New Roman", serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      code,
+      pre,
+      kbd,
+      tt {
+        font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 0.86em;
+        background-color: var(--global-code-bg-color);
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+      }
+
+      a {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+
+      /* ----- Navbar -------------------------------------------------- */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding: 0.85rem 1.5rem;
+        background-color: color-mix(in srgb, var(--global-bg-color) 88%, transparent);
+        backdrop-filter: saturate(180%) blur(12px);
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .navbar__brand {
+        font-family: "Spectral", Georgia, serif;
+        font-size: 1.15rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--global-text-color);
+      }
+
+      .navbar__brand:hover {
+        color: var(--global-theme-color);
+      }
+
+      .navbar__links {
+        display: flex;
+        gap: 1.25rem;
+        margin-left: auto;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .navbar__links a {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--global-text-color);
+        padding-bottom: 2px;
+        border-bottom: 1px solid transparent;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .navbar__links a:hover,
+      .navbar__links a.is-current {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0.35rem;
+        color: var(--global-text-color);
+        transition: color 0.18s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--global-theme-color);
+      }
+
+      /* ----- Page header --------------------------------------------- */
+      .page-header {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 3.25rem 1.5rem 1.75rem;
+      }
+
+      .page-header__eyebrow {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--global-theme-color);
+        margin-bottom: 0.6rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+      }
+
+      .page-header p {
+        font-size: 1.08rem;
+        color: var(--global-text-color-light);
+        max-width: 62ch;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+      }
+
+      /* ----- Tabs ---------------------------------------------------- */
+      .tabs {
+        display: flex;
+        gap: 0.25rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .tab-button {
+        background: transparent;
+        border: none;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .tab-button:hover {
+        color: var(--global-theme-color);
+      }
+
+      .tab-button.active {
+        color: var(--global-theme-color);
+        border-bottom-color: var(--global-theme-color);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.25s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ----- Content card -------------------------------------------- */
+      .content {
+        background-color: var(--global-card-bg-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        padding: 2.25rem;
+      }
+
+      .content h2 {
+        font-size: 1.75rem;
+        margin-top: 2.2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--global-divider-color);
+      }
+
+      .content h2:first-child {
+        margin-top: 0;
+      }
+
+      .content h3 {
+        font-size: 1.28rem;
+        margin-top: 1.9rem;
+        margin-bottom: 0.7rem;
+        color: var(--global-theme-color);
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+      }
+
+      .content ul,
+      .content ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.15rem;
+      }
+
+      .content li {
+        margin-bottom: 0.45rem;
+      }
+
+      .content em {
+        color: var(--global-text-color-light);
+      }
+
+      /* Understated teal underline that thickens on hover. */
+      .content a {
+        background-image: linear-gradient(var(--global-theme-color), var(--global-theme-color));
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 1px;
+        transition: background-size 0.2s ease;
+      }
+
+      .content a:hover {
+        background-size: 100% 2px;
+      }
+
+      /* ----- Tables --------------------------------------------------- */
+      .content table {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+      }
+
+      .content table th {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 2px solid var(--global-divider-color);
+      }
+
+      .content table td {
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--global-divider-color);
+        vertical-align: top;
+      }
+
+      .content table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .content table tbody tr:hover {
+        background-color: color-mix(in srgb, var(--global-theme-color) 6%, transparent);
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      /* ----- Callout blocks ------------------------------------------- */
+      .alert,
+      .note {
+        margin: 1.75rem 0;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+      }
+
+      .alert {
+        border-left: 3px solid var(--global-danger-block);
+        background-color: var(--global-danger-block-bg);
+        color: var(--global-danger-block-text);
+      }
+
+      .alert strong {
+        color: var(--global-danger-block-title);
+      }
+
+      .note {
+        border-left: 3px solid var(--global-warning-block);
+        background-color: var(--global-warning-block-bg);
+        color: var(--global-warning-block-text);
+      }
+
+      .note strong {
+        color: var(--global-warning-block-title);
+      }
+
+      .caution {
+        color: var(--global-highlight-color);
+      }
+
+      /* ----- Diagrams -------------------------------------------------- */
+      .diagram {
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .diagram img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--global-divider-color);
+        background-color: #ffffff;
+      }
+
+      /* ----- Ecological impact report ------------------------------- */
+      .eco {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--global-divider-color);
+      }
+
+      .eco__scope,
+      .eco__sources {
+        color: var(--global-text-color-light);
+        font-size: 0.92rem;
+      }
+
+      .eco-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.9rem;
+        margin: 1.5rem 0 2rem;
+      }
+
+      .content a.eco-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        background-color: var(--global-surface-color);
+        color: var(--global-text-color);
+        text-decoration: none;
+        border-bottom: 1px solid var(--global-divider-color);
+        transition: border-color 0.15s ease;
+      }
+
+      .content a.eco-card:hover {
+        border-color: var(--global-theme-color);
+      }
+
+      .eco-card__icon {
+        font-size: 1.4rem;
+        color: var(--global-theme-color);
+        line-height: 1;
+      }
+
+      .eco-card__title {
+        font-family: "Spectral", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.15rem;
+      }
+
+      .eco-card__tally {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.05rem 0.5rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        border: 1px solid transparent;
+      }
+
+      .badge--beneficial {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
+
+      .badge--adverse {
+        color: var(--global-danger-block-title);
+        background-color: var(--global-danger-block-bg);
+      }
+
+      .badge--mixed {
+        color: var(--global-warning-block-text);
+        background-color: var(--global-warning-block-bg);
+      }
+
+      .badge--neutral {
+        color: var(--global-text-color-light);
+        border-color: var(--global-divider-color);
+      }
+
+      .eco-matrix td:nth-child(3) {
+        white-space: nowrap;
+      }
+
+      details.eco-domain {
+        margin: 1rem 0;
+        padding: 0.4rem 1.1rem 0.6rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+      }
+
+      details.eco-domain summary {
+        cursor: pointer;
+        font-family: "Spectral", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 0.4rem 0;
+        color: var(--global-text-color);
+      }
+
+      details.eco-domain summary span {
+        color: var(--global-theme-color);
+        margin-right: 0.3rem;
+      }
+
+      details.eco-domain[open] summary {
+        margin-bottom: 0.4rem;
+      }
+
+      /* ----- Quantitative projections ---------------------------------- */
+      .proj h4 {
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 1.6rem 0 0.4rem;
+        color: var(--global-theme-color);
+      }
+
+      .proj-table td.ui {
+        font-family: "JetBrains Mono", Menlo, monospace;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .proj-note {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--global-text-color-light);
+      }
+
+      .grade {
+        display: inline-block;
+        min-width: 1.4rem;
+        text-align: center;
+        padding: 0 0.35rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid var(--global-divider-color);
+      }
+
+      .grade--A {
+        color: var(--global-text-color-light);
+      }
+
+      .grade--B {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
+
+      .grade--C {
+        color: var(--global-warning-block-text);
+        background-color: var(--global-warning-block-bg);
+      }
+
+      /* ----- Footer ---------------------------------------------------- */
+      footer.site-footer {
+        background-color: var(--global-footer-bg-color);
+        color: var(--global-footer-text-color);
+        font-size: 0.88rem;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      footer.site-footer a {
+        color: var(--global-footer-link-color);
+        text-decoration: underline;
+      }
+
+      footer.site-footer p + p {
+        margin-top: 0.4rem;
+        color: var(--global-footer-text-color);
+        opacity: 0.75;
+      }
+
+      @media (max-width: 600px) {
+        .page-header h1 {
+          font-size: 1.85rem;
+        }
+        .content {
+          padding: 1.4rem;
+        }
+      }
+    
+      .doc { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+      .doc__back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+      .doc h1 { font-size: 2.1rem; line-height: 1.2; margin-bottom: 1.2rem; }
+      .doc h2 { font-size: 1.55rem; margin: 2.4rem 0 0.8rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--global-divider-color); }
+      .doc h3 { font-size: 1.25rem; margin: 1.8rem 0 0.6rem; }
+      .doc h4 { font-size: 1.05rem; margin: 1.4rem 0 0.5rem; color: var(--global-theme-color); }
+      .doc p, .doc ul, .doc ol, .doc blockquote, .doc pre { margin-bottom: 1rem; }
+      .doc ul, .doc ol { padding-left: 1.6rem; }
+      .doc li { margin-bottom: 0.35rem; }
+      .doc hr { border: 0; border-top: 1px solid var(--global-divider-color); margin: 2rem 0; }
+      .doc blockquote { border-left: 3px solid var(--global-theme-color); padding: 0.4rem 1rem; color: var(--global-text-color-light); }
+      .doc pre { overflow-x: auto; padding: 1rem; border-radius: 8px; background: var(--global-code-bg-color); }
+      .doc pre code { background: none; padding: 0; }
+      .doc table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 0.9rem; display: block; overflow-x: auto; }
+      .doc th, .doc td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--global-divider-color); text-align: left; vertical-align: top; }
+      .doc th { font-weight: 600; border-bottom-width: 2px; }
+      .doc a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+      .doc__nav { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--global-divider-color); font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="navbar__brand" href="https://dmhenke.github.io/davidhenke2.github.io/">David Henke</a>
+      <div class="navbar__links">
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/">about</a>
+        <a href="https://dmhenke.github.io/davidhenke2.github.io/projects/">projects</a>
+        <a href="https://github.com/dmhenke/multifunction-solar-utah">repository</a>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle light, dark, or system colour theme"
+          title="Toggle theme"
+        >
+          <span id="theme-icon" aria-hidden="true">&#9788;</span>
+        </button>
+      </div>
+    </nav>
+    <main class="doc">
+      <a class="doc__back" href="../index.html">&larr; Back to the site</a>
+<h1>Multifunction Solar on Utah's Public Waters and Working Lands</h1>
+<p>A research-first strategy for solarizing public water bodies and working lands where solar has more than one function: power generation paired with water conservation, dust suppression, or ecosystem enhancement.</p>
+<h2>Sites</h2>
+<h3>Little Dell Reservoir (drinking water)</h3>
+<ul>
+<li><strong>Capacity:</strong> 20,500 acre-feet, ≈249 surface acres</li>
+<li><strong>Current use:</strong> Culinary supply, flood control, wildlife habitat</li>
+<li><strong>Strategy:</strong> Demonstration (5% coverage, 5 MW) + scaling (25% coverage, 25 MW)</li>
+<li><strong>Key benefit:</strong> Distributed generation near load; water-quality intervention via algal suppression; best-instrumented FPV research site in the Intermountain West</li>
+<li><strong>Challenge:</strong> Culinary source means zero contamination risk is non-negotiable</li>
+</ul>
+<h3>Great Salt Lake (sovereign lands)</h3>
+<ul>
+<li><strong>Stage:</strong> ≈4,191.6 ft (6.4 ft below 4,198 ft healthy target)</li>
+<li><strong>Strategy:</strong> Playa ground-mount primary (1,605 acres, 402 MW_dc, 743,000 MWh/yr) + research FPV module (5 acres, 2 MW_dc)</li>
+<li><strong>Key benefit:</strong> Material generation (≈83,000 households); dust suppression on exposed lakebed; avian impact research  </li>
+<li><strong>Governing principle:</strong> No infrastructure that opposes lake recovery; all siting above 4,200 ft contour (lake recovery reserve)</li>
+<li><strong>Challenge:</strong> Open-water FPV defeated by hydrodynamics, materials, ecology, and public trust</li>
+</ul>
+<h2>Phased Approach</h2>
+<p><strong>Phase 0 — Research &amp; Credibility (Months 0–3)</strong>
+- Literature synthesis
+- University partnership
+- Screening model validation</p>
+<p><strong>Phase 1 — Policy Insertion &amp; Instrumentation (Months 3–12)</strong>
+- Comment on CMP update (time-critical)
+- Instrument existing projects (Signal Hill)
+- Publish workshop synthesis</p>
+<p><strong>Phase 2 — Funded Demonstration (Months 12–30)</strong>
+- Build small pilot at non-culinary water surface
+- Agrivoltaics demonstration on working farm
+- Publish results including negative findings</p>
+<p><strong>Phase 3 — Structure the Venture (Months 24–42)</strong>
+- Advisory entity, research institute, or development company
+- Convert Phase 2 credibility into operational entity</p>
+<p><strong>Phase 4 — Scale to Named Sites (Year 3+)</strong>
+- Little Dell: approach with materials/water-quality evidence package
+- Great Salt Lake: approach only with evidence thresholds met</p>
+<h2>Key Insight</h2>
+<p><strong>Agrivoltaics on Utah farmland is a more powerful Great Salt Lake water intervention than floating solar on the Great Salt Lake itself.</strong></p>
+<ul>
+<li>Shading irrigated crops reduces crop ET 20–50% in arid climates</li>
+<li>That is a reduction in <em>consumptive</em> use — water legally dedicable instream</li>
+<li>Utah has a functioning legal channel: water-leasing and change-application framework</li>
+</ul>
+<p>The strongest thesis: not "cover a lake" but "what is the marginal cost of a saved acre-foot and delivered MWh, jointly, across the portfolio?"</p>
+<hr />
+<p><strong>For site details, see the Little Dell and Great Salt Lake tabs above.</strong></p>
+<p><strong>For full strategy, governance, and funding guidance, download the <a href="00-strategy-playbook.html">complete playbook</a>.</strong></p>
+      <p class="doc__nav"><strong>Other documents:</strong> <a href="00-strategy-playbook.html">Strategy playbook</a> · <a href="01-little-dell-summary.html">Little Dell — summary</a> · <a href="01-little-dell-full.html">Little Dell — pre-feasibility site plan</a> · <a href="02-great-salt-lake-summary.html">Great Salt Lake — summary</a> · <a href="02-great-salt-lake-full.html">Great Salt Lake — pre-feasibility site plan</a> · <a href="03-little-dell-ecological-impact.html">Little Dell — ecological impact report</a> · <a href="04-great-salt-lake-ecological-impact.html">Great Salt Lake — ecological impact report</a> · <a href="05-quantitative-ecological-projections.html">Quantitative ecological projections</a><br />
+      <a href="00-overview.md">View markdown source</a></p>
+    </main>
+    <footer class="site-footer">
+      <p>Class 5 pre-feasibility documentation · Multifunction Solar on Utah's Public Waters and Working Lands</p>
+    </footer>
+    <script>
+      // ----- Theme toggle: system -> light -> dark, matching al-folio ---
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.getElementById("theme-toggle");
+        var icon = document.getElementById("theme-icon");
+        var media = window.matchMedia("(prefers-color-scheme: dark)");
+        var ICONS = { system: "◑", light: "☀", dark: "☽" };
+
+        function read() {
+          try {
+            return localStorage.getItem("theme-setting") || "system";
+          } catch (e) {
+            return "system";
+          }
+        }
+
+        function apply(setting) {
+          var resolved = setting === "system" ? (media.matches ? "dark" : "light") : setting;
+          root.setAttribute("data-theme", resolved);
+          root.setAttribute("data-theme-setting", setting);
+          icon.textContent = ICONS[setting];
+          toggle.title = "Theme: " + setting;
+        }
+
+        apply(read());
+
+        toggle.addEventListener("click", function () {
+          var order = ["system", "light", "dark"];
+          var next = order[(order.indexOf(read()) + 1) % order.length];
+          try {
+            localStorage.setItem("theme-setting", next);
+          } catch (e) {
+            /* storage unavailable — theme still applies for this page view */
+          }
+          apply(next);
+        });
+
+        media.addEventListener("change", function () {
+          if (read() === "system") apply("system");
+        });
+      })();
+    </script>
+  </body>
+</html>

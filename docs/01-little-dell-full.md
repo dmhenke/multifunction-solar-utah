@@ -73,16 +73,16 @@ The array zones in §4 are what remains after subtracting the following. Each ex
 
 | Zone | Phase | Area (ac) | Coverage of full pool | Capacity (MW_dc) | Energy (MWh/yr) | Evaporation saved (af/yr) |
 |---|---|---|---|---|---|---|
-| **A** | 1 — Demonstration | 12.45 | 5.0% | 4.98 | ≈8,200 | ≈30 |
-| **B** | 2 — Build-out | 30.00 | 12.1% | 12.00 | ≈19,800 | ≈72 |
-| **C** | 3 — Build-out | 20.00 | 8.0% | 8.00 | ≈13,200 | ≈48 |
-| **Total** | | **62.45** | **25.1%** | **24.98** | **≈41,200** | **≈150** |
+| **A** | 1 — Demonstration | 12.45 | 5.0% | 4.98 | ≈8,200 | ≈22 |
+| **B** | 2 — Build-out | 30.00 | 12.1% | 12.00 | ≈19,800 | ≈53 |
+| **C** | 3 — Build-out | 20.00 | 8.0% | 8.00 | ≈13,200 | ≈36 |
+| **Total** | | **62.45** | **25.1%** | **24.98** | **≈41,200** | **≈111** (95% UI 56–180) |
 
 ### 4.2 Basis of the numbers
 
 - **Power density 0.40 MW_dc/acre.** Typical for tilted FPV including inter-row spacing and maintenance walkways.
 - **Specific yield 1,650 MWh/MW_dc·yr.** This is *lower* than the 1,750 figure used in the companion strategy document's generic screening, and deliberately so: FPV is normally installed at 10–15° tilt for wind-load reasons rather than the ≈30° latitude-optimal tilt, which costs roughly 5–8% of annual yield. The ≈6% gain from module cooling over water is netted against that penalty. At 5,790 ft with meaningful winter snow, low tilt also sheds snow poorly — see §6.5.
-- **Evaporation suppression 80% under the array footprint,** applied only to the covered area. Note that whole-reservoir suppression is *not* 80% × coverage in reality: an array alters wind field and surface temperature beyond its own footprint, in both directions. The number above should be read as an upper bound pending measurement.
+- **Evaporation suppression ≈55% under the array footprint (95% UI ≈30–80%),** revised from the 80% originally assumed after the only full-scale field measurement found reported 44%; a downwind-sheltering bonus is added for uncovered water. Values in the table are medians with 95% uncertainty intervals from the Monte Carlo projections (`docs/05-quantitative-ecological-projections.md`). Note that whole-reservoir suppression is *not* simply suppression × coverage: an array alters wind field and surface temperature beyond its own footprint, in both directions. The number above should be read as an upper bound pending measurement.
 - **Module count:** ≈8,300 modules at 600 W for Zone A; ≈41,600 at full build-out.
 
 ### 4.3 Context for the energy number
@@ -91,7 +91,7 @@ Full build-out (≈41,200 MWh/yr) is roughly the annual consumption of **4,500�
 
 ### 4.4 Context for the water number — read this before using it
 
-Full build-out saves on the order of **150 acre-feet per year**, which is approximately **0.02% of SLCDPU's service-area annual supply**. This is a genuinely small number.
+Full build-out saves about **111 acre-feet per year (95% UI 56–180)**, which is approximately **0.13% (0.06–0.21%) of SLCDPU's annual water delivery** (≈80,000–97,000 acre-ft/yr). This is a genuinely small number.
 
 **Do not present Little Dell as a water conservation project.** The evaporation benefit is real, measurable, and worth quantifying — but it is not the case for the project and will not survive a competent engineer's scrutiny as such. The case for Little Dell is:
 

@@ -50,7 +50,7 @@ Full build-out equals roughly **82,600 Utah households** annually.
 
 ## 4. The Water Story — Read This First
 
-F1 suppresses ≈16 acre-feet/year of evaporation. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses 0.0005% of lake evaporation. **F1 is an experiment, not a water-conservation measure.** Do not oversell the water benefit.
+F1 suppresses ≈9 acre-feet/year (95% UI 4.5–14) of evaporation. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0004% of lake evaporation. **F1 is an experiment, not a water-conservation measure.** Do not oversell the water benefit.
 
 ---
 

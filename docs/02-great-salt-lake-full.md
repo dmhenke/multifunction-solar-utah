@@ -109,7 +109,7 @@ Full build-out is equivalent to the annual electricity consumption of roughly **
 
 ### 5.2 The water number — read this before using it
 
-Zone F1 suppresses roughly **16 acre-feet per year** of evaporation. Great Salt Lake evaporation is of order **10⁶ acre-feet per year**. F1 therefore addresses approximately **0.0005%** of lake evaporation.
+Zone F1 suppresses roughly **9 acre-feet per year (95% UI 4.5–14)** of evaporation, revised from ≈16 after evaporation suppression was re-based on field measurement (see `docs/05-quantitative-ecological-projections.md`). Great Salt Lake evaporation is of order **10⁶ acre-feet per year**. F1 therefore addresses approximately **0.0004%** of lake evaporation.
 
 **F1 is an experiment. It is not a water-conservation measure, and it must never be presented as one.** Any FPV footprint large enough to meaningfully affect the lake's water balance would be large enough to trigger every objection in §1. This is the central honest limitation of floating solar on Great Salt Lake, and stating it first is what makes the rest of the proposal credible.
 

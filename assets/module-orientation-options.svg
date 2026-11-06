@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 700" width="1160" height="700" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="moArrG" markerWidth="10" markerHeight="10" refX="8" refY="3.4" orient="auto">
+      <path d="M0,0 L8,3.4 L0,6.8 Z" fill="#2b7a4b"/>
+    </marker>
+    <marker id="moArrY" markerWidth="10" markerHeight="10" refX="8" refY="3.4" orient="auto">
+      <path d="M0,0 L8,3.4 L0,6.8 Z" fill="#e0a21a"/>
+    </marker>
+    <pattern id="moBed" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#cbb994"/>
+      <circle cx="3" cy="3" r="1.1" fill="#a08c63"/>
+      <circle cx="8" cy="7" r="1.1" fill="#a08c63"/>
+    </pattern>
+  </defs>
+  <rect width="1160" height="700" fill="#ffffff"/>
+
+  <!-- ===== TITLE ===== -->
+  <text x="40" y="44" font-size="23" font-weight="700" fill="#12283d">Module Orientation Options — Elevated Over-Water Arrays</text>
+  <text x="40" y="68" font-size="13.5" fill="#4a5b6b">Both options stand on piles with racks several feet above the water. Same footprint shown; schematic, not to scale.</text>
+  <line x1="40" y1="84" x2="1120" y2="84" stroke="#12283d" stroke-width="1.6"/>
+
+  <!-- ===================== PANEL T: TILTED ===================== -->
+  <text x="40" y="116" font-size="16" font-weight="700" fill="#1f4e79">OPTION T — TILTED 10–15°, SOUTH-FACING (baseline)</text>
+  <!-- sun -->
+  <circle cx="90" cy="160" r="18" fill="#f6c445"/>
+  <line x1="110" y1="172" x2="170" y2="205" stroke="#e0a21a" stroke-width="2" marker-end="url(#moArrY)"/>
+  <!-- water + bed -->
+  <rect x="40" y="300" width="520" height="120" fill="#cfe3f0"/>
+  <rect x="150" y="300" width="350" height="120" fill="#b5ccdc"/>
+  <path d="M40,420 C200,414 360,426 560,418 L560,470 L40,470 Z" fill="url(#moBed)" stroke="#8a7650" stroke-width="1.2"/>
+  <line x1="40" y1="300" x2="560" y2="300" stroke="#2f6a95" stroke-width="2"/>
+  <!-- piles -->
+  <g fill="#9aa3ab" stroke="#4f5a63" stroke-width="1.2">
+    <rect x="170" y="246" width="10" height="200"/><rect x="320" y="246" width="10" height="200"/><rect x="470" y="246" width="10" height="200"/>
+  </g>
+  <rect x="150" y="238" width="350" height="9" fill="#7d8790" stroke="#4f5a63" stroke-width="1.2"/>
+  <!-- tilted modules: dense rows -->
+  <g fill="#1f4e79" stroke="#0d2c48" stroke-width="1.2">
+    <path d="M154,236 L208,236 L208,214 Z"/><path d="M214,236 L268,236 L268,214 Z"/><path d="M274,236 L328,236 L328,214 Z"/>
+    <path d="M334,236 L388,236 L388,214 Z"/><path d="M394,236 L448,236 L448,214 Z"/><path d="M440,236 L494,236 L494,214 Z"/>
+  </g>
+  <text x="325" y="372" font-size="11" fill="#1b3d5c" text-anchor="middle">broad shade — light under array −60%</text>
+  <line x1="60" y1="276" x2="540" y2="276" stroke="#2b7a4b" stroke-width="1.8" stroke-dasharray="10 6" marker-end="url(#moArrG)"/>
+  <text x="62" y="268" font-size="10" fill="#2b7a4b">wind passes beneath</text>
+
+  <!-- ===================== PANEL V: VERTICAL ===================== -->
+  <text x="600" y="116" font-size="16" font-weight="700" fill="#7a3f9e">OPTION V — VERTICAL BIFACIAL, EAST/WEST-FACING</text>
+  <circle cx="640" cy="200" r="16" fill="#f6c445"/>
+  <text x="640" y="232" font-size="9.5" fill="#8a6a1e" text-anchor="middle">morning (E)</text>
+  <circle cx="1100" cy="200" r="16" fill="#f6c445"/>
+  <text x="1100" y="232" font-size="9.5" fill="#8a6a1e" text-anchor="middle">evening (W)</text>
+  <line x1="658" y1="204" x2="722" y2="214" stroke="#e0a21a" stroke-width="2" marker-end="url(#moArrY)"/>
+  <line x1="1082" y1="204" x2="1028" y2="214" stroke="#e0a21a" stroke-width="2" marker-end="url(#moArrY)"/>
+  <!-- water + bed -->
+  <rect x="600" y="300" width="520" height="120" fill="#cfe3f0"/>
+  <g fill="#c4d8e6">
+    <rect x="740" y="300" width="20" height="120"/><rect x="850" y="300" width="20" height="120"/><rect x="960" y="300" width="20" height="120"/>
+  </g>
+  <path d="M600,420 C760,414 920,426 1120,418 L1120,470 L600,470 Z" fill="url(#moBed)" stroke="#8a7650" stroke-width="1.2"/>
+  <line x1="600" y1="300" x2="1120" y2="300" stroke="#2f6a95" stroke-width="2"/>
+  <!-- piles -->
+  <g fill="#9aa3ab" stroke="#4f5a63" stroke-width="1.2">
+    <rect x="745" y="246" width="10" height="200"/><rect x="855" y="246" width="10" height="200"/><rect x="965" y="246" width="10" height="200"/>
+  </g>
+  <rect x="710" y="238" width="300" height="9" fill="#7d8790" stroke="#4f5a63" stroke-width="1.2"/>
+  <!-- vertical modules: thin walls, wide spacing -->
+  <g fill="#3b2a5c" stroke="#24173a" stroke-width="1.2">
+    <rect x="745" y="168" width="10" height="70"/><rect x="855" y="168" width="10" height="70"/><rect x="965" y="168" width="10" height="70"/>
+  </g>
+  <text x="860" y="160" font-size="10" fill="#3b2a5c" text-anchor="middle">rows run north–south · both faces generate</text>
+  <text x="860" y="372" font-size="11" fill="#1b3d5c" text-anchor="middle">narrow shade strips — light under array −25%</text>
+  <line x1="620" y1="276" x2="1100" y2="276" stroke="#2b7a4b" stroke-width="1.8" stroke-dasharray="10 6" marker-end="url(#moArrG)"/>
+  <text x="622" y="268" font-size="10" fill="#2b7a4b">rows act as wind fences when wind crosses them</text>
+
+  <!-- ===================== COMPARISON TABLE ===================== -->
+  <rect x="40" y="492" width="1080" height="190" rx="6" fill="#fafbfc" stroke="#c6d0d9" stroke-width="1.4"/>
+  <g font-size="11.5" fill="#25384a">
+    <text x="56" y="516" font-weight="700" fill="#12283d">Same footprint (median, 95% interval)</text>
+    <text x="520" y="516" font-weight="700" fill="#1f4e79">Option T — tilted</text>
+    <text x="800" y="516" font-weight="700" fill="#7a3f9e">Option V — vertical</text>
+    <line x1="56" y1="524" x2="1104" y2="524" stroke="#c6d0d9"/>
+    <text x="56" y="544">Little Dell, full build-out — energy</text><text x="520" y="544">41,200 MWh/yr</text><text x="800" y="544">18,700 [14,500–23,700] MWh/yr</text>
+    <text x="56" y="563">Little Dell — water saved</text><text x="520" y="563">71 [31–122] acre-ft/yr</text><text x="800" y="563">35 [12–72] acre-ft/yr</text>
+    <text x="56" y="582">Little Dell — oxygen deficit under array</text><text x="520" y="582">0.41 [0.09–0.87] mg/L</text><text x="800" y="582">0.18 [0.04–0.43] mg/L</text>
+    <text x="56" y="601">Great Salt Lake playa, full build-out — energy</text><text x="520" y="601">740,000 MWh/yr</text><text x="800" y="601">467,000 [358,000–593,000] MWh/yr</text>
+    <text x="56" y="620">Great Salt Lake playa — bird fatalities</text><text x="520" y="620">904 [177–4,593] /yr</text><text x="800" y="620">439 [73–2,590] /yr</text>
+    <text x="56" y="639">Great Salt Lake playa — PM10 avoided in footprint</text><text x="520" y="639">50% [21–79%]</text><text x="800" y="639">57% [31–84%] — rows act as sand fences</text>
+  </g>
+  <text x="56" y="664" font-size="10.5" fill="#7b8794">Vertical sheds snow and dust and peaks morning and evening, but over low-albedo water it yields less per MW, and its wide row spacing carries fewer MW per acre.</text>
+</svg>

@@ -117,6 +117,25 @@ Zone F1 suppresses roughly **5.6 acre-feet per year (95% UI 2.5–9.7)** of evap
 
 *(Note: the frequently-cited ~3 million acre-feet/yr GSL evaporation figure traces to a developer's presentation to the Legislative Water Development Commission in January 2026 and has not been independently verified here. Confirm against USGS and Utah Division of Water Resources water-balance products before citing it in any submission.)*
 
+### 5.3 Module orientation option — vertical bifacial
+
+![Tilted versus vertical bifacial orientation](../assets/module-orientation-options.svg)
+
+The playa is where vertical bifacial modules make most sense. Salt crust reflects roughly 30–50% of sunlight onto the rear faces (a global simulation found vertical modules can beat optimally tilted ones by up to 15% at 50% albedo), vertical faces shed dust, and rows running north–south act as sand fences across the prevailing south-westerly wind. Same 1,600-acre footprint, median [95% uncertainty interval]:
+
+| | Tilted (baseline) | Vertical bifacial |
+|---|---|---|
+| Capacity | 400 MW_dc | 244 [191, 303] MW_dc |
+| Annual energy | 740,000 [709,000, 771,000] MWh/yr | 467,000 [358,000, 593,000] MWh/yr |
+| Avian fatalities | 904 [177, 4,593] /yr | 439 [73, 2,590] /yr |
+| Avian fatalities per GWh | 1.21 [0.24, 6.2] | 0.94 [0.16, 5.5] |
+| PM10 avoided within footprint | 50% [21, 79] | 57% [31, 84] |
+| Playa groundwater evaporation avoided | 82 [21, 236] acre-ft/yr | 33 [8, 105] acre-ft/yr |
+
+- **Birds:** fewer deaths in absolute terms mostly because fewer MW fit on the land. Per GWh the difference rests on an assumed orientation effect (median 0.8×): vertical rows present far less water-like area seen from above, but vertical faces add collision risk. No data exist either way.
+- **F1:** a vertical F1 would generate ≈1,500 instead of ≈3,300 MWh/yr and save ≈2.8 instead of ≈5.6 acre-ft/yr; its research value lies in the brine-service data, which either orientation provides.
+- **Recommendation:** build P1 as paired 200-acre tilted and vertical blocks, so the Phase 1 avian and dust monitoring measures the orientation effect directly before P2 is designed.
+
 ---
 
 ## 6. Siting Constraints Inventory

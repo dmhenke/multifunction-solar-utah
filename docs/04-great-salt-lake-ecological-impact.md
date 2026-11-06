@@ -125,6 +125,10 @@ Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are 
 
 ---
 
+## Module orientation option (vertical bifacial)
+
+On the playa, vertical bifacial rows would shade less ground (≈10–25% versus ≈35–50% for tilted), so they avoid less groundwater evaporation (≈33 vs ≈82 acre-ft/yr at full build-out), but their rows act as sand fences, raising projected dust avoided within the footprint to ≈57% [31, 84] from ≈50%. Projected bird deaths fall to ≈439 [73, 2,590] per year, mostly because fewer MW fit on the land; per GWh the difference depends on an assumed, unmeasured orientation effect. Pairing tilted and vertical blocks in P1 is the way to measure it. See `docs/05-quantitative-ecological-projections.md`.
+
 ## Data gaps
 
 1. Corridor-specific bird-use surveys across all seasons, especially shorebird nesting locations.

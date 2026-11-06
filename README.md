@@ -12,6 +12,8 @@ Two Class 5 pre-feasibility site plans (AACE International; expected accuracy �
 
 **Design basis for any array over water:** modules on racks several feet above the water, carried on piles fixed in the bed. Nothing rests on the water surface. The open water beneath stays in contact with air and wind.
 
+**Module orientation option:** tilted 10–15° south (baseline) or vertical bifacial, east/west-facing. Vertical shades the water far less, sheds snow and dust, and acts as a sand fence on the playa, but carries less capacity per acre and yields less over dark water.
+
 | Site | Configuration | Capacity | Annual energy |
 |---|---|---|---|
 | **Little Dell Reservoir** | Elevated, pile-mounted over-water PV, 3 zones, 25.1% coverage | 24.98 MW_dc | ≈41,200 MWh |
@@ -30,7 +32,9 @@ multifunction-solar-utah/
 ├── README.md
 ├── assets/
 │   ├── little-dell-site-plan.svg
-│   └── great-salt-lake-solar-site-plan.svg
+│   ├── great-salt-lake-solar-site-plan.svg
+│   ├── elevated-over-water-pv-section.svg
+│   └── module-orientation-options.svg
 └── docs/
     ├── 00-overview.md                  Strategy summary
     ├── 00-strategy-playbook.md         Full playbook: stakeholders, funding, counterarguments, R model
@@ -100,6 +104,10 @@ Monte Carlo propagation (100,000 draws) of literature-based input distributions,
 | GSL F1 water saved | 5.6 [2.5, 9.7] acre-ft/yr |
 | Over-water PV area needed to offset 1 ft of GSL decline per decade | ≈53,000 [31,000, 120,000] acres (≈8.5% of the lake) |
 | GSL avian fatalities, full build-out | ≈900 [180, 4,600] birds/yr |
+| *Vertical option:* Little Dell energy, full build-out | 18,700 [14,500, 23,700] MWh/yr (tilted 41,200) |
+| *Vertical option:* Little Dell light reduction under array | 24% [11, 42] (tilted 60%) |
+| *Vertical option:* GSL playa energy, full build-out | 467,000 [358,000, 593,000] MWh/yr (tilted 740,000) |
+| *Vertical option:* GSL avian fatalities, full build-out | ≈440 [73, 2,590] birds/yr |
 
 Evaporation suppression is set at ≈40% for an elevated, open-sided canopy — below the 44% measured under a full-scale floating array, because wind still passes beneath elevated panels. No lake measurement for elevated arrays exists, so all water figures are grade C. The Little Dell share of supply was also corrected from an early 0.02% to ≈0.08% of SLCDPU's annual delivery.
 

@@ -126,6 +126,10 @@ Direction: Beneficial / Adverse / Mixed / Neutral. Magnitude and confidence are 
 
 ---
 
+## Module orientation option (vertical bifacial)
+
+Vertical east/west-facing modules on the same piles change the ecological picture at Little Dell in one direction: less of everything the array does to the water. Light under the array falls by ≈24% instead of ≈60%, the oxygen deficit is ≈0.18 instead of ≈0.41 mg/L, and reservoir-wide primary production changes by ≈−3.5% instead of ≈−8.8% at full build-out. Water saved halves (≈35 vs ≈71 acre-ft/yr). Perching birds still use rack tops; bird interaction with vertical faces is unmeasured. The cost is energy: less than half the tilted output from the same footprint. See `docs/05-quantitative-ecological-projections.md`.
+
 ## Data gaps
 
 1. SLCDPU temperature and DO profile records to establish stratification regime and existing hypolimnetic oxygen status.

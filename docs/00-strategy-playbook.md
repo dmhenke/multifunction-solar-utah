@@ -6,6 +6,7 @@
 **Strategic posture chosen:** Hybrid — establish scientific credibility through a funded feasibility and monitoring program, then convert findings into a development vehicle or public-private partnership.
 **Site posture chosen:** Staged — pilot on low-controversy water bodies, then scale toward Little Dell Reservoir and Great Salt Lake.
 **Design basis (revised November 2026):** over-water arrays are **elevated** — modules on racks several feet above the water, carried on piles fixed in the bed. Nothing rests on the water surface. This replaces the floating basis of earlier drafts and is itself a differentiator: the proposals already before the Legislature are for *floating* arrays. An elevated design takes floats out of contact with drinking water, keeps the water surface open to the air (a much smaller oxygen penalty), and is unaffected by drawdown. The costs are higher capital cost, foundations in the bed, and a practical limit to shallow water — every large precedent, including the 1 GW HG14 array in Shandong, stands in 1–4 m of water.
+**Module orientation option:** every array can be tilted (baseline) or vertical bifacial (east/west-facing). Vertical shades the water far less and suits the bright Great Salt Lake playa, but halves output per acre over dark water. Pairing both orientations in each first-phase build turns the biggest unknowns — bird interaction and evaporation — into measurements.
 
 ---
 

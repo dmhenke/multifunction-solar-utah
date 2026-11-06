@@ -146,6 +146,25 @@ Every large pile-mounted over-water array found stands in **shallow water**. The
 4. Geotechnical capacity and embedment of reservoir-bed sediments; scour around piles.
 5. Vibration transmission from pile installation toward the embankment, reviewed by dam-safety engineers.
 
+### 5.5 Module orientation option — vertical bifacial
+
+![Tilted versus vertical bifacial orientation](../assets/module-orientation-options.svg)
+
+Option V mounts two-sided modules vertically, facing east and west, in rows running north–south on the same piles and racks. Same footprint, median [95% uncertainty interval]:
+
+| | Tilted (baseline) | Vertical bifacial |
+|---|---|---|
+| Capacity, full build-out | 25.0 MW_dc | 12.6 [10.1, 15.4] MW_dc |
+| Annual energy, full build-out | 41,200 [39,300, 43,100] MWh/yr | 18,700 [14,500, 23,700] MWh/yr |
+| Evaporation saved | 71 [31, 122] acre-ft/yr | 35 [12, 72] acre-ft/yr |
+| Light reduction under the array | 60% [40, 79] | 24% [11, 42] |
+| Oxygen deficit under the array | 0.41 [0.09, 0.87] mg/L | 0.18 [0.04, 0.43] mg/L |
+| Piles, full build-out | ≈1,550 [540, 3,250] | ≈1,050 [390, 2,180] |
+
+- **For:** far less shading of the water, a smaller oxygen penalty, snow sheds from vertical faces (a real problem for 10–15° tilt at 5,790 ft), and morning and evening output peaks.
+- **Against:** water reflects only 5–8% of light, so the rear faces gain little and output per MW falls; wide row spacing halves the capacity per acre; vertical faces carry larger wind loads onto the piles. Matching tilted output would need ≈137 [109, 176] acres of water under ~40 ft deep — more than the reservoir is likely to offer.
+- **Recommendation:** split Zone A into paired tilted and vertical blocks. The demonstration then measures evaporation, light, oxygen, snow and energy for both orientations at the same site.
+
 ---
 
 ## 6. Drinking-Water Materials and Contamination-Control Protocol

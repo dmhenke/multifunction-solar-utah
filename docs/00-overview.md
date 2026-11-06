@@ -4,6 +4,8 @@ A research-first strategy for solarizing public water bodies and working lands w
 
 **Design basis for water sites:** panels are mounted on racks several feet above the water, carried on piles fixed in the bed. Nothing rests on the water surface. The open water beneath stays in contact with air and wind, which keeps the oxygen penalty small, but also means less evaporation is saved than a floating cover would save.
 
+
+**Module orientation option:** modules can be tilted 10–15° toward the south (baseline) or mounted vertically as two-sided (bifacial) panels facing east and west. Vertical modules shade the water far less, shed snow and dust, and peak morning and evening, but carry less capacity per acre and yield less over dark water. They fit the Great Salt Lake playa better than Little Dell.
 ## Sites
 
 ### Little Dell Reservoir (drinking water)

@@ -142,6 +142,73 @@ for (sc in list(list("P1 (100 MW)", 100), list("Full build-out (402 MW)", 402)))
 add(S, "PM10 emission avoided within array footprint", "operations", "% of footprint emission",
     100 * runif(N, 0.2, 0.8), "C", "corridor emissivity unmeasured")
 
+## =============================================================================
+## MODULE-ORIENTATION OPTION: VERTICAL BIFACIAL, EAST–WEST FACING (rows run N–S)
+## Appended after all baseline (tilted) draws, so baseline results are unchanged.
+## =============================================================================
+TILT <- "tilted"; VERT <- "vertical bifacial"
+y_tilt_w <- rtri(N, 1550, 1650, 1750)            # MWh/MW_dc/yr, low tilt over water
+y_tilt_p <- rtri(N, 1750, 1850, 1950)            # MWh/MW_dc/yr, fixed tilt on playa
+## Vertical/tilted yield ratio: low water albedo penalises vertical; snow/ice albedo and a
+## snow-free face partly compensate. High-albedo salt crust (0.3–0.5) favours vertical.
+r_vert_w <- rtri(N, 0.78, 0.90, 1.02)
+r_vert_p <- rtri(N, 0.92, 1.03, 1.15)
+dens_v_w <- rtri(N, 0.15, 0.20, 0.26)            # MW_dc/acre over water (tilted 0.40)
+dens_v_p <- rtri(N, 0.11, 0.15, 0.20)            # MW_dc/acre on playa (tilted 0.25)
+s_v      <- rbeta_ms(N, 0.20, 0.08)              # evaporation suppression, vertical rows
+halo_v   <- rtri(N, 0.00, 0.05, 0.30)            # rows act as wind fences when wind crosses them
+par_v    <- rbeta_ms(N, 0.25, 0.08)              # light reduction under a vertical array
+do_v     <- rtri(N, 0.0, 0.1, 0.5)               # mg/L
+piles_v  <- rtri(N, 4, 10, 40)                   # piles per acre
+fll_v    <- runif(N, 0.3, 0.9)
+
+S <- "Little Dell"
+for (sc in list(list("Zone A (5%)", 12.45), list("Full build-out (25%)", 62.45))) {
+  scen <- sc[[1]]; A <- sc[[2]]; cov <- A / A_res
+  add(S, "Capacity", paste(scen, "—", TILT), "MW_dc", rep(0.40 * A, N), "A", "0.40 MW_dc/acre")
+  add(S, "Annual energy", paste(scen, "—", TILT), "MWh/yr", 0.40 * A * y_tilt_w, "C")
+  add(S, "Capacity", paste(scen, "—", VERT), "MW_dc", dens_v_w * A, "C", "wider row spacing")
+  add(S, "Annual energy", paste(scen, "—", VERT), "MWh/yr", dens_v_w * A * y_tilt_w * r_vert_w, "C", "morning/evening peaks")
+  sv <- A * E_ld * s_v * (1 + halo_v)
+  add(S, "Evaporation saved", paste(scen, "—", VERT), "acre-ft/yr", sv, "C")
+  add(S, "Evaporation saved, share of SLCDPU annual delivery", paste(scen, "—", VERT), "%",
+      100 * sv / runif(N, 80000, 97000), "C")
+  add(S, "Light (PAR) reduction under array", paste(scen, "—", VERT), "%", 100 * par_v, "C")
+  add(S, "Reservoir-wide primary production change", paste(scen, "—", VERT), "%", -100 * cov * par_v * fll_v, "C")
+  add(S, "Dissolved-oxygen deficit under array", paste(scen, "—", VERT), "mg/L", do_v, "C")
+  add(S, "Piles required", paste(scen, "—", VERT), "piles", A * piles_v, "C", "span-dependent")
+  e_t <- 0.40 * A * y_tilt_w; e_v <- dens_v_w * A * y_tilt_w * r_vert_w
+  add(S, "Area for energy equal to tilted", paste(scen, "—", VERT), "acres", A * e_t / e_v, "C")
+}
+
+S <- "Great Salt Lake"
+add(S, "Annual energy", paste("F1 (5 ac) —", TILT), "MWh/yr", 2 * y_tilt_w, "C")
+add(S, "Annual energy", paste("F1 (5 ac) —", VERT), "MWh/yr", dens_v_w * 5 * y_tilt_w * r_vert_w, "C")
+add(S, "F1 evaporation saved", paste("F1 (5 ac) —", VERT), "acre-ft/yr", 5 * E_gsl * s_v * (1 + halo_v), "C")
+add(S, "F1 piles required", paste("F1 (5 ac) —", VERT), "piles", 5 * piles_v, "C", "span-dependent")
+shade_v  <- runif(N, 0.10, 0.25)                 # playa fraction shaded by vertical rows
+f_dust_v <- runif(N, 0.30, 0.85)                 # rows act as sand fences across the SW wind
+M_vert   <- rlnorm_q(N, 0.8, 1.6)                # fatality multiplier vs tilted — sign uncertain
+for (sc in list(list("P1 (400 ac)", 400), list("Full build-out (1,600 ac)", 1600))) {
+  scen <- sc[[1]]; A <- sc[[2]]
+  add(S, "Capacity", paste(scen, "—", TILT), "MW_dc", rep(0.25 * A, N), "A", "0.25 MW_dc/acre")
+  add(S, "Annual energy", paste(scen, "—", TILT), "MWh/yr", 0.25 * A * y_tilt_p, "C")
+  mw_v <- dens_v_p * A
+  add(S, "Capacity", paste(scen, "—", VERT), "MW_dc", mw_v, "C", "wider row spacing")
+  add(S, "Annual energy", paste(scen, "—", VERT), "MWh/yr", mw_v * y_tilt_p * r_vert_p, "C",
+      "high-albedo salt crust favours bifacial")
+  add(S, "Playa soil-water evaporation avoided", paste(scen, "—", VERT), "acre-ft/yr", A * shade_v * e_pl * g_red, "C")
+  fat_v <- mw_v * R_base * M_gsl * M_vert
+  add(S, "Avian fatalities", paste(scen, "—", VERT), "birds/yr", fat_v, "C", "orientation effect on birds unmeasured")
+  fat_t <- 0.25 * A * R_base * M_gsl
+  add(S, "Avian fatalities per GWh", paste(scen, "—", TILT), "birds/GWh", fat_t / (0.25 * A * y_tilt_p / 1000), "C")
+  add(S, "Avian fatalities per GWh", paste(scen, "—", VERT), "birds/GWh", fat_v / (mw_v * y_tilt_p * r_vert_p / 1000), "C")
+  add(S, "Area for energy equal to tilted", paste(scen, "—", VERT), "acres",
+      A * (0.25 * y_tilt_p) / (dens_v_p * y_tilt_p * r_vert_p), "C")
+}
+add(S, "PM10 emission avoided within array footprint", paste("operations —", VERT), "% of footprint emission",
+    100 * f_dust_v, "C", "rows act as sand fences")
+
 ## ---- output -----------------------------------------------------------------
 out <- do.call(rbind, results)
 print(out[, c("site", "scenario", "quantity", "median", "lo95", "hi95", "unit", "grade")],

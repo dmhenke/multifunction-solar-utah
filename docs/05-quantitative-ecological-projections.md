@@ -31,9 +31,10 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 
 - Water saved is modest, and smaller than a floating cover would give. Full build-out saves 70.9 [31.4, 122] acre-ft/yr — about 10.9% of the reservoir's own evaporation and 0.080 [0.035, 0.139]% of SLCDPU's annual water delivery. Zone A saves 14.1 [6.27, 24.2] acre-ft/yr. Wind still passes beneath an elevated canopy, so suppression (≈40%) sits below the 44% measured under a full-scale floating array. No measurement exists for elevated arrays over a lake, so every water figure is grade C.
 - The oxygen penalty is small. With the water surface open to the air, the projected deficit beneath the array is 0.408 [0.086, 0.868] mg/L — about a third of the 1.1–1.7 mg/L measured under floating arrays. Across the whole reservoir it is 0.075 [0.015, 0.180] mg/L. The hypolimnetic DO trigger stays as a precaution.
-- Algae: direction is uncertain. Light under the panels falls by about 60% — less than under floats, because diffuse and side light reach the water. Measured chlorophyll-a responses at real over-water sites range from an 80% decrease to increases. Reservoir-wide primary production is projected to change -8.76 [-15.2, -4.17]% — fewer blooms, but less food at the base of the food web.
+- Algae: direction is uncertain. Light under the panels falls by about 60.3% — less than under floats, because diffuse and side light reach the water. Measured chlorophyll-a responses at real over-water sites range from an 80% decrease to increases. Reservoir-wide primary production is projected to change -8.76 [-15.2, -4.17]% — fewer blooms, but less food at the base of the food web.
 - Piles are the new footprint. Zone A needs 309 [108, 648] piles; full build-out 1,548 [543, 3,249]. They occupy only 819 [194, 2,720] m² of bed at full build-out, but installing them resuspends sediment and makes underwater noise — managed with drilled or vibratory installation, silt curtains and timing.
 - Fish and insects: the model cannot tell you the sign. Cooling helps cold-water trout and oxygen loss hurts them; piles add cover and also concentrate predators. The intervals for trout habitat and insect emergence are the assumed ranges, centred near zero — read them as "unknown" until monitoring replaces them.
+- Vertical bifacial option. On the same footprint, vertical east/west-facing modules cut light under the array to 24.4 [11.2, 42.1]% and the oxygen deficit to 0.184 [0.036, 0.430] mg/L, and they shed snow. But over low-albedo water they generate only 18,744 [14,548, 23,681] MWh/yr against 41,220 [39,280, 43,144] tilted, and save half the water. Matching tilted output would take 137 [109, 176] acres — more water ≲ 40 ft deep than the reservoir is likely to have. Recommendation: test both orientations side by side within Zone A.
 
 ### Projections
 
@@ -74,6 +75,19 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 | Piles required | 309 [108, 648] | 1,548 [543, 3,249] | piles | C |
 | Reservoir bed occupied by piles | 163 [38.8, 542] | 819 [194, 2,720] | m² | C |
 
+#### Module orientation: tilted vs vertical bifacial (same footprint)
+
+| Quantity | Tilted (baseline) | Vertical bifacial | Unit |
+|---|---|---|---|
+| Capacity, full build-out | 25.0 [25.0, 25.0] | 12.6 [10.1, 15.4] | MW_dc |
+| Annual energy, full build-out | 41,220 [39,280, 43,144] | 18,744 [14,548, 23,681] | MWh/yr |
+| Annual energy, Zone A | 8,218 [7,831, 8,601] | 3,737 [2,900, 4,721] | MWh/yr |
+| Evaporation saved, full build-out | 70.9 [31.4, 122] | 34.9 [12.3, 71.8] | acre-ft/yr |
+| Light (PAR) reduction under array | 60.3 [39.8, 78.6] | 24.4 [11.2, 42.1] | % |
+| Reservoir-wide primary production change | -8.76 [-15.2, -4.17] | -3.49 [-7.59, -1.31] | % |
+| Dissolved-oxygen deficit under array | 0.408 [0.086, 0.868] | 0.184 [0.036, 0.430] | mg/L |
+| Piles required, full build-out | 1,548 [543, 3,249] | 1,047 [394, 2,179] | piles |
+
 ### Birds and migration
 
 - Little Dell is not a major migration stopover. With racks several feet above the water, waterfowl can still use the water beneath the canopy (12.45 acres at Zone A, 62.45 at full build-out), though some will avoid it.
@@ -89,6 +103,7 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 - Solar over the water cannot meaningfully move the lake. F1 saves 5.64 [2.50, 9.74] acre-ft/yr — about 0.00011 inches of lake level per year. Offsetting just 1 ft of decline per decade would take 53,163 [30,790, 119,915] acres of elevated over-water PV, or 8.55 [4.86, 19.4]% of the current lake surface — roughly 12–48 GW of panels on piles. That is the clearest quantitative argument for prioritising upstream water, including agrivoltaics, over building on the lake.
 - The playa arrays may save more water than F1 does. Shading the playa reduces evaporation of shallow groundwater: 82.5 [21.4, 236] acre-ft/yr at full build-out, roughly an order of magnitude more than F1. Whether that water reaches the lake is unknown, and the estimate is prior-driven.
 - Birds are the governing impact, and the interval is wide. Projected fatalities at full build-out are 904 [177, 4,593] birds/yr. Almost all of that spread comes from one unmeasured number: how much higher fatality rates are beside a major waterbird concentration than at the desert sites the base rates come from (rank correlation 0.84). Phase 1 monitoring exists to measure exactly that.
+- Vertical bifacial is a strong candidate on the playa. Salt crust reflects 30–50% of sunlight, which favours two-sided vertical modules; they also shed dust and act as sand fences (57.5 [31.4, 83.6]% of footprint dust avoided vs 49.9 [21.5, 78.5]% tilted). Wider row spacing lowers output to 466,624 [357,821, 592,564] MWh/yr on the same 1,600 acres. Projected bird deaths fall to 439 [72.5, 2,595] per year, but per GWh the difference (0.941 [0.158, 5.50] vs 1.21 [0.238, 6.17]) rests entirely on an assumed orientation effect. Recommendation: build P1 as paired tilted and vertical blocks so the avian study measures it.
 
 ### Projections
 
@@ -121,6 +136,19 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 | Avian fatalities — full build-out (402 MW) | 904 [177, 4,593] | birds/yr | C |
 | … of which water-associated species | 298 [48.3, 1,723] | birds/yr | C |
 | … as share of ~12 million annual lake users | 0.0075 [0.0015, 0.038] | % | C |
+
+#### Module orientation: tilted vs vertical bifacial (same footprint)
+
+| Quantity | Tilted (baseline) | Vertical bifacial | Unit |
+|---|---|---|---|
+| Playa capacity, full build-out | 400 [400, 400] | 244 [191, 303] | MW_dc |
+| Playa annual energy, full build-out | 739,952 [708,937, 771,039] | 466,624 [357,821, 592,564] | MWh/yr |
+| Avian fatalities, full build-out | 904 [177, 4,593] | 439 [72.5, 2,595] | birds/yr |
+| Avian fatalities per GWh generated | 1.21 [0.238, 6.17] | 0.941 [0.158, 5.50] | birds/GWh |
+| PM10 emission avoided within footprint | 49.9 [21.5, 78.5] | 57.5 [31.4, 83.6] | % |
+| Playa soil-water evaporation avoided | 82.5 [21.4, 236] | 32.9 [7.93, 105] | acre-ft/yr |
+| F1 annual energy | 3,300 [3,145, 3,454] | 1,501 [1,165, 1,896] | MWh/yr |
+| F1 evaporation saved | 5.64 [2.50, 9.74] | 2.78 [0.984, 5.75] | acre-ft/yr |
 
 ### Migration calendar
 
@@ -159,6 +187,14 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 | GSL waterbird multiplier | Lognormal(median 1.5, 97.5th 6.0) | **No data** — allows rates up to the 9.9 birds/MW/yr reported at one PV site |
 | Water-associated share of fatalities | Beta(mean 0.35, SD 0.12) | <13% in desert; assumed higher at GSL |
 | Playa groundwater evaporation | Triangular(0.1, 0.3, 1.0) ft/yr | Discharge-playa range; unmeasured here |
+| **Vertical option:** yield ratio vs tilted, over water | Triangular(0.78, 0.90, 1.02) | Low water albedo (≈0.05–0.08) penalises vertical; snow/ice albedo and a snow-free face partly compensate |
+| **Vertical option:** yield ratio vs tilted, playa | Triangular(0.92, 1.03, 1.15) | Salt-crust albedo 0.3–0.5: simulation shows vertical up to +15% at 0.5; desert field data show clean tilted ≈4% ahead; vertical soils less |
+| **Vertical option:** power density | Triangular(0.15, 0.20, 0.26) MW_dc/acre over water; (0.11, 0.15, 0.20) on playa | Wide row spacing; a 4.1 MWp vertical agrivoltaic array in Germany occupies ≈12–14 ha |
+| **Vertical option:** evaporation suppression | Beta(mean 0.20, SD 0.08) | Thin shade strips; little canopy |
+| **Vertical option:** light reduction | Beta(mean 0.25, SD 0.08) | Shade falls in narrow strips that move through the day |
+| **Vertical option:** DO deficit | Triangular(0.0, 0.1, 0.5) mg/L | Less shade, open surface |
+| **Vertical option:** dust avoided in footprint | Uniform(30%, 85%) | Rows act as sand fences across the prevailing wind |
+| **Vertical option:** bird-fatality multiplier vs tilted | Lognormal(median 0.8, 97.5th 1.6) | **No data.** Less water-like area seen from above, but vertical faces add collision risk — sign uncertain |
 
 ## Not estimated, and why
 
@@ -188,3 +224,7 @@ Each value is a **median with a 95% uncertainty interval (UI)** — the 2.5th an
 - [Coordinated phalarope surveys at western North American staging sites, 2019–2020](https://www.southbayrestoration.org/document/coordinated-phalarope-surveys-western-north-american-staging-sites-2019-2020)
 - [Ornithologist discusses causes of bird downings, NPR (2011)](https://www.npr.org/2011/12/15/143795309/ornithologist-discusses-causes-of-bird-downings)
 - [Horváth group: polarised light pollution from solar panels, J. Insect Conservation](https://arago.elte.hu/sites/default/files/MattSolarPanel_JIC.pdf)
+- [Optimization and performance of bifacial solar modules: a global perspective (vertical vs tilted by albedo), arXiv](https://arxiv.org/pdf/1709.10026)
+- [Comparison of energy performance of vertical and tilted bifacial PV modules in arid environments, HBKU](https://elmi.hbku.edu.qa/en/publications/comparison-of-energy-performance-of-vertical-and-tilted-bifacial-/)
+- [Vertical bifacial solar farms: physics, design, and global optimization, arXiv](https://arxiv.org/pdf/1704.08630v2)
+- [Agrivoltaic project with vertically mounted bifacial panels goes online in Germany, pv magazine](https://www.pv-magazine.com/2020/10/08/agrivoltaic-project-with-vertically-mounted-bifacial-panels-goes-online-in-germany/)

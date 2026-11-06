@@ -47,6 +47,12 @@ Large pile-mounted over-water arrays stand in shallow water — the 1 GW HG14 ar
 
 ---
 
+## Module Orientation Option
+
+Vertical bifacial modules (east/west-facing, rows north–south) would cut light under the array from ≈60% to ≈24% and the oxygen deficit from 0.41 to 0.18 mg/L, and they shed snow. But over dark water they generate less than half the tilted output from the same footprint (≈18,700 vs ≈41,200 MWh/yr at full build-out). **Recommendation:** split Zone A into paired tilted and vertical blocks.
+
+---
+
 ## Critical Constraints
 
 1. **Culinary source.** Glass–glass modules only (no polymer backsheets); 316 stainless or anodized-aluminium racks; precast concrete or stainless/duplex piles — no zinc galvanizing, coal-tar or biocidal coatings below water; all power electronics onshore.

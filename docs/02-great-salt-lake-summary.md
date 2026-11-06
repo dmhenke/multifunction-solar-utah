@@ -48,6 +48,12 @@ Full build-out equals roughly **82,600 Utah households** annually.
 
 ---
 
+## Module Orientation Option
+
+Vertical bifacial modules suit the playa: bright salt crust feeds their rear faces, they shed dust, and their rows act as sand fences. On the same 1,600 acres they would carry ≈244 MW and ≈467,000 MWh/yr (tilted: 400 MW, ≈740,000 MWh/yr), with projected bird deaths of ≈440/yr instead of ≈900. **Recommendation:** build P1 as paired tilted and vertical blocks so the avian study measures the orientation effect.
+
+---
+
 ## 4. The Water Story — Read This First
 
 F1 suppresses ≈5.6 acre-feet/year (95% UI 2.5–9.7) of evaporation — less than a floating cover would, because wind passes beneath an elevated canopy. Great Salt Lake evaporation is order 10⁶ acre-feet/year. F1 therefore addresses about 0.0002% of lake evaporation. **F1 is an experiment, not a water-conservation measure.** Do not oversell the water benefit.

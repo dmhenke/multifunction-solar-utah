@@ -49,3 +49,48 @@ Great Salt Lake,Avian fatalities,Full build-out (402 MW),birds/yr,904.059,176.74
 Great Salt Lake,  … of which water-associated species,Full build-out (402 MW),birds/yr,298.308,48.3281,1722.62,C,
 Great Salt Lake,  … as share of ~12 M annual lake users,Full build-out (402 MW),%,0.00753383,0.00147291,0.0382726,C,
 Great Salt Lake,PM10 emission avoided within array footprint,operations,% of footprint emission,49.9317,21.4645,78.5479,C,corridor emissivity unmeasured
+Little Dell,Capacity,Zone A (5%) — tilted,MW_dc,4.98,4.98,4.98,A,0.40 MW_dc/acre
+Little Dell,Annual energy,Zone A (5%) — tilted,MWh/yr,8217.53,7830.78,8601.12,C,
+Little Dell,Capacity,Zone A (5%) — vertical bifacial,MW_dc,2.51873,2.01286,3.07766,C,wider row spacing
+Little Dell,Annual energy,Zone A (5%) — vertical bifacial,MWh/yr,3736.9,2900.18,4721.08,C,morning/evening peaks
+Little Dell,Evaporation saved,Zone A (5%) — vertical bifacial,acre-ft/yr,6.95458,2.44575,14.3051,C,
+Little Dell,"Evaporation saved, share of SLCDPU annual delivery",Zone A (5%) — vertical bifacial,%,0.00786273,0.00276293,0.0163406,C,
+Little Dell,Light (PAR) reduction under array,Zone A (5%) — vertical bifacial,%,24.3989,11.1907,42.0563,C,
+Little Dell,Reservoir-wide primary production change,Zone A (5%) — vertical bifacial,%,-0.69503,-1.51261,-0.260643,C,
+Little Dell,Dissolved-oxygen deficit under array,Zone A (5%) — vertical bifacial,mg/L,0.184165,0.0356252,0.429532,C,
+Little Dell,Piles required,Zone A (5%) — vertical bifacial,piles,208.651,78.4964,434.31,C,span-dependent
+Little Dell,Area for energy equal to tilted,Zone A (5%) — vertical bifacial,acres,27.3485,21.7923,35.1131,C,
+Little Dell,Capacity,Full build-out (25%) — tilted,MW_dc,24.98,24.98,24.98,A,0.40 MW_dc/acre
+Little Dell,Annual energy,Full build-out (25%) — tilted,MWh/yr,41219.7,39279.7,43143.8,C,
+Little Dell,Capacity,Full build-out (25%) — vertical bifacial,MW_dc,12.6341,10.0966,15.4377,C,wider row spacing
+Little Dell,Annual energy,Full build-out (25%) — vertical bifacial,MWh/yr,18744.5,14547.5,23681.3,C,morning/evening peaks
+Little Dell,Evaporation saved,Full build-out (25%) — vertical bifacial,acre-ft/yr,34.8846,12.268,71.7551,C,
+Little Dell,"Evaporation saved, share of SLCDPU annual delivery",Full build-out (25%) — vertical bifacial,%,0.0394683,0.013882,0.0818381,C,
+Little Dell,Light (PAR) reduction under array,Full build-out (25%) — vertical bifacial,%,24.3989,11.1907,42.0563,C,
+Little Dell,Reservoir-wide primary production change,Full build-out (25%) — vertical bifacial,%,-3.48631,-7.58735,-1.3074,C,
+Little Dell,Dissolved-oxygen deficit under array,Full build-out (25%) — vertical bifacial,mg/L,0.184165,0.0356252,0.429532,C,
+Little Dell,Piles required,Full build-out (25%) — vertical bifacial,piles,1046.6,393.743,2178.53,C,span-dependent
+Little Dell,Area for energy equal to tilted,Full build-out (25%) — vertical bifacial,acres,137.182,109.312,176.13,C,
+Great Salt Lake,Annual energy,F1 (5 ac) — tilted,MWh/yr,3300.21,3144.89,3454.26,C,
+Great Salt Lake,Annual energy,F1 (5 ac) — vertical bifacial,MWh/yr,1500.76,1164.73,1896.02,C,
+Great Salt Lake,F1 evaporation saved,F1 (5 ac) — vertical bifacial,acre-ft/yr,2.77777,0.983889,5.75,C,
+Great Salt Lake,F1 piles required,F1 (5 ac) — vertical bifacial,piles,83.7954,31.5247,174.422,C,span-dependent
+Great Salt Lake,Capacity,P1 (400 ac) — tilted,MW_dc,100,100,100,A,0.25 MW_dc/acre
+Great Salt Lake,Annual energy,P1 (400 ac) — tilted,MWh/yr,184988,177234,192760,C,
+Great Salt Lake,Capacity,P1 (400 ac) — vertical bifacial,MW_dc,61.0669,47.7816,75.8128,C,wider row spacing
+Great Salt Lake,Annual energy,P1 (400 ac) — vertical bifacial,MWh/yr,116656,89455.3,148141,C,high-albedo salt crust favours bifacial
+Great Salt Lake,Playa soil-water evaporation avoided,P1 (400 ac) — vertical bifacial,acre-ft/yr,8.22084,1.98306,26.2797,C,
+Great Salt Lake,Avian fatalities,P1 (400 ac) — vertical bifacial,birds/yr,109.671,18.117,648.658,C,orientation effect on birds unmeasured
+Great Salt Lake,Avian fatalities per GWh,P1 (400 ac) — tilted,birds/GWh,1.21488,0.23752,6.17059,C,
+Great Salt Lake,Avian fatalities per GWh,P1 (400 ac) — vertical bifacial,birds/GWh,0.941114,0.157995,5.49747,C,
+Great Salt Lake,Area for energy equal to tilted,P1 (400 ac) — vertical bifacial,acres,634.095,501.299,823.323,C,
+Great Salt Lake,Capacity,"Full build-out (1,600 ac) — tilted",MW_dc,400,400,400,A,0.25 MW_dc/acre
+Great Salt Lake,Annual energy,"Full build-out (1,600 ac) — tilted",MWh/yr,739952,708937,771039,C,
+Great Salt Lake,Capacity,"Full build-out (1,600 ac) — vertical bifacial",MW_dc,244.268,191.127,303.251,C,wider row spacing
+Great Salt Lake,Annual energy,"Full build-out (1,600 ac) — vertical bifacial",MWh/yr,466624,357821,592564,C,high-albedo salt crust favours bifacial
+Great Salt Lake,Playa soil-water evaporation avoided,"Full build-out (1,600 ac) — vertical bifacial",acre-ft/yr,32.8834,7.93224,105.119,C,
+Great Salt Lake,Avian fatalities,"Full build-out (1,600 ac) — vertical bifacial",birds/yr,438.685,72.4678,2594.63,C,orientation effect on birds unmeasured
+Great Salt Lake,Avian fatalities per GWh,"Full build-out (1,600 ac) — tilted",birds/GWh,1.21488,0.23752,6.17059,C,
+Great Salt Lake,Avian fatalities per GWh,"Full build-out (1,600 ac) — vertical bifacial",birds/GWh,0.941114,0.157995,5.49747,C,
+Great Salt Lake,Area for energy equal to tilted,"Full build-out (1,600 ac) — vertical bifacial",acres,2536.38,2005.2,3293.29,C,
+Great Salt Lake,PM10 emission avoided within array footprint,operations — vertical bifacial,% of footprint emission,57.4674,31.3598,83.6368,C,rows act as sand fences

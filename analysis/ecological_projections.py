@@ -101,6 +101,71 @@ for scen, MW in [("P1 (100 MW)",100.0),("Full build-out (402 MW)",402.0)]:
 f_dust = rng.uniform(0.2, 0.8, N)
 add(S,"PM10 emission avoided within array footprint","operations","% of footprint emission",100*f_dust,"C","corridor emissivity unmeasured")
 
+# =====================================================================================
+# MODULE-ORIENTATION OPTION: VERTICAL BIFACIAL, EAST–WEST FACING (rows run north–south)
+# Appended after all baseline (tilted) draws, so baseline results are unchanged.
+# =====================================================================================
+TILT, VERT = "tilted", "vertical bifacial"
+# --- energy, both orientations ---
+y_tilt_w = tri(1550, 1650, 1750)          # MWh/MW_dc·yr, low-tilt over water (Little Dell / F1)
+y_tilt_p = tri(1750, 1850, 1950)          # MWh/MW_dc·yr, fixed tilt on playa
+# Vertical/tilted yield ratio: low albedo over water (≈0.05–0.08) penalises vertical; winter
+# snow/ice albedo and no snow cover on the face partly compensate. On salt-crust playa
+# (albedo ≈0.3–0.5) vertical can match or beat tilted (simulation: up to +15% at 0.5;
+# desert field data: clean tilted ≈4% ahead) and soils less.
+r_vert_w = tri(0.78, 0.90, 1.02)
+r_vert_p = tri(0.92, 1.03, 1.15)
+dens_v_w = tri(0.15, 0.20, 0.26)          # MW_dc/acre: vertical rows need wide spacing (tilted 0.40)
+dens_v_p = tri(0.11, 0.15, 0.20)          # MW_dc/acre on playa (tilted 0.25; Next2Sun agri ≈0.12–0.14)
+# --- vertical over-water ecology ---
+s_v    = beta_ms(0.20, 0.08)              # evaporation suppression: thin shade strips, little canopy
+halo_v = tri(0.00, 0.05, 0.30)            # rows can act as wind fences when wind crosses them
+par_v  = beta_ms(0.25, 0.08)              # light reduction under a vertical array
+do_v   = tri(0.0, 0.1, 0.5)               # mg/L
+piles_v= tri(4, 10, 40)                   # piles per acre (posts along north–south rows)
+fll_v  = rng.uniform(0.3, 0.9, N)
+
+S = "Little Dell"
+for scen, A in [("Zone A (5%)", 12.45), ("Full build-out (25%)", 62.45)]:
+    cov = A/A_res
+    add(S,"Capacity",f"{scen} — {TILT}","MW_dc",np.full(N, 0.40*A),"A","0.40 MW_dc/acre")
+    add(S,"Annual energy",f"{scen} — {TILT}","MWh/yr",0.40*A*y_tilt_w,"C")
+    add(S,"Capacity",f"{scen} — {VERT}","MW_dc",dens_v_w*A,"C","wider row spacing")
+    add(S,"Annual energy",f"{scen} — {VERT}","MWh/yr",dens_v_w*A*y_tilt_w*r_vert_w,"C","morning/evening peaks")
+    sv = A*E_ld*s_v*(1+halo_v)
+    add(S,"Evaporation saved",f"{scen} — {VERT}","acre-ft/yr",sv,"C")
+    add(S,"Evaporation saved, share of SLCDPU annual delivery",f"{scen} — {VERT}","%",100*sv/rng.uniform(80_000, 97_000, N),"C")
+    add(S,"Light (PAR) reduction under array",f"{scen} — {VERT}","%",100*par_v,"C")
+    add(S,"Reservoir-wide primary production change",f"{scen} — {VERT}","%",-100*cov*par_v*fll_v,"C")
+    add(S,"Dissolved-oxygen deficit under array",f"{scen} — {VERT}","mg/L",do_v,"C")
+    add(S,"Piles required",f"{scen} — {VERT}","piles",A*piles_v,"C","span-dependent")
+    e_t = 0.40*A*y_tilt_w; e_v = dens_v_w*A*y_tilt_w*r_vert_w
+    add(S,"Area for energy equal to tilted",f"{scen} — {VERT}","acres",A*e_t/e_v,"C")
+
+S = "Great Salt Lake"
+add(S,"Annual energy",f"F1 (5 ac) — {TILT}","MWh/yr",2.0*y_tilt_w,"C")
+add(S,"Annual energy",f"F1 (5 ac) — {VERT}","MWh/yr",dens_v_w*5.0*y_tilt_w*r_vert_w,"C")
+add(S,"F1 evaporation saved",f"F1 (5 ac) — {VERT}","acre-ft/yr",5.0*E_gsl*s_v*(1+halo_v),"C")
+add(S,"F1 piles required",f"F1 (5 ac) — {VERT}","piles",5.0*piles_v,"C","span-dependent")
+shade_v = rng.uniform(0.10, 0.25, N)      # fraction of playa shaded by vertical rows (tilted GCR 0.35–0.50)
+f_dust_v = rng.uniform(0.30, 0.85, N)     # rows act as sand fences across the SW wind
+M_vert   = lnorm_q(0.8, 1.6)              # fatality-rate multiplier vs tilted: less water-like area seen
+                                          # from above, but vertical faces add collision risk — sign uncertain
+for scen, A in [("P1 (400 ac)", 400.0), ("Full build-out (1,600 ac)", 1600.0)]:
+    add(S,"Capacity",f"{scen} — {TILT}","MW_dc",np.full(N, 0.25*A),"A","0.25 MW_dc/acre")
+    add(S,"Annual energy",f"{scen} — {TILT}","MWh/yr",0.25*A*y_tilt_p,"C")
+    mw_v = dens_v_p*A
+    add(S,"Capacity",f"{scen} — {VERT}","MW_dc",mw_v,"C","wider row spacing")
+    add(S,"Annual energy",f"{scen} — {VERT}","MWh/yr",mw_v*y_tilt_p*r_vert_p,"C","high-albedo salt crust favours bifacial")
+    add(S,"Playa soil-water evaporation avoided",f"{scen} — {VERT}","acre-ft/yr",A*shade_v*e_pl*g_red,"C")
+    fat_v = mw_v*R_base*M_gsl*M_vert
+    add(S,"Avian fatalities",f"{scen} — {VERT}","birds/yr",fat_v,"C","orientation effect on birds unmeasured")
+    fat_t = 0.25*A*R_base*M_gsl
+    add(S,"Avian fatalities per GWh",f"{scen} — {TILT}","birds/GWh",fat_t/(0.25*A*y_tilt_p/1000),"C")
+    add(S,"Avian fatalities per GWh",f"{scen} — {VERT}","birds/GWh",fat_v/(mw_v*y_tilt_p*r_vert_p/1000),"C")
+    add(S,"Area for energy equal to tilted",f"{scen} — {VERT}","acres",A*(0.25*y_tilt_p)/(dens_v_p*y_tilt_p*r_vert_p),"C")
+add(S,"PM10 emission avoided within array footprint",f"operations — {VERT}","% of footprint emission",100*f_dust_v,"C","rows act as sand fences")
+
 with open(sys.argv[1], "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader()
     for r in rows: w.writerow({k:(f"{v:.6g}" if isinstance(v,float) else v) for k,v in r.items()})
@@ -108,6 +173,7 @@ for r in rows:
     print(f"{r['site'][:6]:6} | {r['scenario'][:22]:22} | {r['quantity'][:56]:56} | {r['median']:>10.4g} [{r['lo95']:.4g}, {r['hi95']:.4g}] {r['unit']} ({r['grade']})")
 
 # sensitivity (Spearman via ranks)
+
 rk = lambda x: np.argsort(np.argsort(x)).astype(float)
 sp = lambda a, b: np.corrcoef(rk(a), rk(b))[0, 1]
 ld_full = 62.45*E_ld*s_under*(1+halo)
